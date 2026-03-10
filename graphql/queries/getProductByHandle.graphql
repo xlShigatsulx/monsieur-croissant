@@ -1,0 +1,5 @@
+query GetProductByHandle($handle: String!) {
+  product(handle: $handle) {
+    ...ProductFields
+  }
+}

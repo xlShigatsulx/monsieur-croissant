@@ -1,0 +1,9 @@
+query GetProducts($first: Int!) {
+  products(first: $first) {
+    edges {
+      node {
+        ...ProductFields
+      }
+    }
+  }
+}

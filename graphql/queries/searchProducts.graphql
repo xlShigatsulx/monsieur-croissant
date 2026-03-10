@@ -1,0 +1,18 @@
+query SearchProducts($query: String!, $first: Int!, $after: String) {
+  search(query: $query, first: $first, after: $after, types: PRODUCT) {
+    edges {
+      node {
+        ... on Product {
+          ...ProductFields
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    totalCount
+  }
+}
