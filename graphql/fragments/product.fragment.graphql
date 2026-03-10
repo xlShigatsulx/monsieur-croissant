@@ -1,0 +1,34 @@
+fragment ProductFields on Product {
+  id
+  title
+  handle
+  description
+  availableForSale
+  priceRange {
+    minVariantPrice {
+      amount
+      currencyCode
+    }
+    maxVariantPrice {
+      amount
+      currencyCode
+    }
+  }
+  images(first: 5) {
+    edges {
+      node {
+        url
+        altText
+        width
+        height
+      }
+    }
+  }
+  variants(first: 100) {
+    edges {
+      node {
+        ...VariantFields
+      }
+    }
+  }
+}

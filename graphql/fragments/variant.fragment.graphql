@@ -1,0 +1,29 @@
+fragment VariantFields on ProductVariant {
+  id
+  title
+  availableForSale
+  quantityAvailable
+  price {
+    amount
+    currencyCode
+  }
+  compareAtPrice {
+    amount
+    currencyCode
+  }
+  selectedOptions {
+    name
+    value
+  }
+  image {
+    url
+    altText
+    width
+    height
+  }
+  product {
+    id
+    title
+    handle
+  }
+}

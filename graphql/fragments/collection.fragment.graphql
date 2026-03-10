@@ -1,0 +1,12 @@
+fragment CollectionFields on Collection {
+  id
+  title
+  handle
+  description
+  image {
+    url
+    altText
+    width
+    height
+  }
+}
