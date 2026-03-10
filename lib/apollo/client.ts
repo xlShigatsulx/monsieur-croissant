@@ -1,6 +1,7 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, HttpLink } from '@apollo/client'
 import { SetContextLink } from '@apollo/client/link/context'
 import { SHOPIFY_CONFIG, STOREFRONT_API_URL } from '@/lib/shopify/config'
+import { cache } from './cache'
 
 function makeClient() {
   const httpLink = new HttpLink({ uri: STOREFRONT_API_URL })
@@ -14,7 +15,7 @@ function makeClient() {
 
   return new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache,
   })
 }
 
