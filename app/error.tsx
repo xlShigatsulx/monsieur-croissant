@@ -15,24 +15,33 @@ export default function Error({
   }, [error])
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-50'>
-      <div className='text-center'>
-        <h1 className='text-4xl font-bold text-gray-900 mb-4'>Oops!</h1>
-        <p className='text-lg text-gray-600 mb-8'>
-          Something went wrong. We're sorry for the inconvenience.
+    <div className='min-h-screen flex items-center justify-center bg-cream'>
+      <div className='text-center px-4'>
+        <p className='font-cormorant italic text-8xl text-caramel/30 font-light leading-none mb-2'>
+          500
         </p>
-        <div className='flex gap-4 justify-center'>
+        <h1 className='font-cormorant italic text-3xl text-mocha font-light mb-3'>
+          Щось пішло не так
+        </h1>
+        <p className='font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50 mb-10'>
+          Вибачте за незручності, спробуйте ще раз
+        </p>
+        <div className='flex items-center justify-center gap-6'>
           <button
-            onClick={() => reset()}
-            className='px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'
+            onClick={reset}
+            className='font-jost text-[11px] tracking-[0.2em] uppercase
+              text-caramel border border-caramel/40 hover:border-caramel
+              hover:bg-caramel/10 rounded-full px-8 py-3
+              transition-all duration-300 cursor-pointer'
           >
-            Try Again
+            Спробувати знову
           </button>
           <Link
             href='/'
-            className='px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300'
+            className='font-jost text-[11px] tracking-[0.2em] uppercase
+              text-mocha/60 hover:text-caramel transition-colors duration-300'
           >
-            Back Home
+            На головну
           </Link>
         </div>
       </div>
