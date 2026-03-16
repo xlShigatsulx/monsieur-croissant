@@ -1,1 +1,167 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #fdf6f0;
+  --color-mocha: #3a2318;
+  --color-caramel: #c4977a;
+  --color-caramel-light: #ddc5b5;
+  --color-sand: #efe0d5;
+
+  --font-cormorant: var(--font-cormorant), serif;
+  --font-jost: var(--font-jost), sans-serif;
+
+  --animate-caption-up: captionUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-progress: progressFill 4.5s linear forwards;
+}
+
+/* ── Keyframes ───────────────────────────────────────── */
+@keyframes captionUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Base ────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-mocha);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-cormorant);
+    color: var(--color-mocha);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-caramel);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-caramel);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-sand);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-caramel-light);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-caramel);
+  }
+}
+
+/* ── Components ──────────────────────────────────────── */
+@layer components {
+  .btn-outline {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-caramel);
+    border: 1px solid color-mix(in srgb, var(--color-caramel) 40%, transparent);
+    border-radius: 999px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      background-color 0.3s;
+
+    &:hover {
+      border-color: var(--color-caramel);
+      background-color: color-mix(
+        in srgb,
+        var(--color-caramel) 10%,
+        transparent
+      );
+    }
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 32px -8px rgba(58, 35, 24, 0.12);
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 16px 48px -8px rgba(58, 35, 24, 0.2);
+    }
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-caramel);
+    border: 1px solid color-mix(in srgb, var(--color-caramel) 30%, transparent);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-caramel) 40%, transparent);
+    margin: 24px auto;
+  }
+}
+
+/* ── Utilities ───────────────────────────────────────── */
+@layer utilities {
+  .animation-delay-50 {
+    animation-delay: 50ms;
+  }
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+  .animation-delay-250 {
+    animation-delay: 250ms;
+  }
+  .animation-delay-350 {
+    animation-delay: 350ms;
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-caramel),
+      var(--color-mocha)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
