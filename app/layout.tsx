@@ -1,11 +1,24 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { Cormorant, Jost } from 'next/font/google'
 import './globals.css'
 import { ApolloClientProvider } from '@/lib/apollo/provider'
+import { AuthProvider } from '@/context/AuthContext'
+import { Header } from '@/components/layout/Header/Header'
+import { CartProvider } from '@/context/CartContext'
 
-const montserrat = Montserrat({
-  variable: '--font-montserrat',
+const cormorant = Cormorant({
   subsets: ['latin'],
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-jost',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -19,9 +32,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='ua'>
-      <body className={`${montserrat.variable} font-sans`}>
-        <ApolloClientProvider>{children}</ApolloClientProvider>
+    <html
+      lang='ua'
+      className={`${cormorant.variable} ${jost.variable}`}
+    >
+      <body>
+        <ApolloClientProvider>
+          <AuthProvider>
+            <CartProvider>
+              <Header />
+              {children}
+            </CartProvider>
+          </AuthProvider>
+        </ApolloClientProvider>
       </body>
     </html>
   )
