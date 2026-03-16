@@ -8,7 +8,7 @@ const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
 
 const config: CodegenConfig = {
   schema: {
-    [`https://${domain}/api/2025-04/graphql.json`]: {
+    [`https://${domain}/api/2026-01/graphql.json`]: {
       headers: {
         'X-Shopify-Storefront-Access-Token': token!,
       },
@@ -26,6 +26,8 @@ const config: CodegenConfig = {
         withHooks: true,
         withComponent: false,
         withHOC: false,
+        apolloReactHooksImportFrom: '@apollo/client/react',
+        apolloReactCommonImportFrom: '@apollo/client/react',
         scalars: {
           Decimal: 'string',
           URL: 'string',
