@@ -1,0 +1,33 @@
+query GetShop {
+  shop {
+    name
+    brand {
+      logo {
+        image {
+          url
+          altText
+          width
+          height
+        }
+      }
+      squareLogo {
+        image {
+          url
+          altText
+          width
+          height
+        }
+      }
+      colors {
+        primary {
+          background
+          foreground
+        }
+        secondary {
+          background
+          foreground
+        }
+      }
+    }
+  }
+}
