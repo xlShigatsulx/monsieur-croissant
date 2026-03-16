@@ -2,20 +2,25 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-gray-50'>
-      <div className='text-center'>
-        <h1 className='text-6xl font-bold text-gray-900 mb-4'>404</h1>
-        <h2 className='text-2xl font-semibold text-gray-700 mb-2'>
-          Page Not Found
-        </h2>
-        <p className='text-gray-600 mb-8'>
-          Sorry, the page you're looking for doesn't exist.
+    <div className='flex flex-col items-center justify-center min-h-screen bg-cream'>
+      <div className='text-center px-4'>
+        <p className='font-cormorant italic text-8xl text-caramel/60 font-light leading-none mb-2'>
+          404
+        </p>
+        <h1 className='font-cormorant italic text-3xl sm:text-4xl text-mocha font-light mb-3'>
+          Сторінку не знайдено
+        </h1>
+        <p className='font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/70 mb-10'>
+          На жаль, ця сторінка не існує або була переміщена
         </p>
         <Link
           href='/'
-          className='inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition'
+          className='font-jost text-[11px] tracking-[0.2em] uppercase
+            text-caramel border border-caramel/40 hover:border-caramel
+            hover:bg-caramel/50 rounded-full px-8 py-3
+            transition-all duration-300'
         >
-          Back to Home
+          На головну
         </Link>
       </div>
     </div>
