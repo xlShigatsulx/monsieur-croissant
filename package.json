@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "graphql-codegen --config codegen.ts && next build --no-turbo",
+    "build": "graphql-codegen --config codegen.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "codegen": "graphql-codegen --config codegen.ts",
