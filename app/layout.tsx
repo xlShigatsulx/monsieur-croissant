@@ -35,6 +35,7 @@ export default function RootLayout({
     <html
       lang='ua'
       className={`${cormorant.variable} ${jost.variable}`}
+      data-scroll-behavior='smooth'
     >
       <body>
         <ApolloClientProvider>
