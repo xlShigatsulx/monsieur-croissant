@@ -27,7 +27,7 @@ const config: CodegenConfig = {
         withComponent: false,
         withHOC: false,
         apolloReactHooksImportFrom: '@apollo/client/react',
-        apolloReactCommonImportFrom: '@apollo/client/react',
+        apolloReactCommonImportFrom: '@apollo/client',
         scalars: {
           Decimal: 'string',
           URL: 'string',
