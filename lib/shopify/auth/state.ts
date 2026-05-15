@@ -1,15 +1,10 @@
-export async function generateState(): Promise<string> {
-  const timestamp = Date.now().toString()
-  const randomString = Math.random().toString(36).substring(2)
-  return timestamp + randomString
+export function generateState(): string {
+  const array = new Uint8Array(16)
+  crypto.getRandomValues(array)
+  return Array.from(array, (b) => b.toString(16).padStart(2, '0')).join('')
 }
-
-export async function generateNonce(length = 16): Promise<string> {
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  let nonce = ''
-  for (let i = 0; i < length; i++) {
-    nonce += characters.charAt(Math.floor(Math.random() * characters.length))
-  }
-  return nonce
+export function generateNonce(): string {
+  const array = new Uint8Array(16)
+  crypto.getRandomValues(array)
+  return Array.from(array, (b) => b.toString(16).padStart(2, '0')).join('')
 }

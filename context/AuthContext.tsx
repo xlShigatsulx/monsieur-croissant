@@ -15,7 +15,7 @@ import {
   generateCodeChallenge,
 } from '@/lib/shopify/auth/pkce'
 import { generateState, generateNonce } from '@/lib/shopify/auth/state'
-import { getAuthorizationUrl } from '@/lib/shopify/auth/customer'
+import { getAuthorizationUrl } from '@/lib/shopify/auth/customer.client'
 
 interface Customer {
   id: string
@@ -29,7 +29,7 @@ interface AuthContextType {
   isAuthenticated: boolean
   isLoading: boolean
   signIn: () => Promise<void>
-  logout: () => void
+  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -51,10 +51,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false)
   }, [])
 
-  const signIn = useCallback(async () => {
-    const state = await generateState()
-    const nonce = await generateNonce()
-    const codeVerifier = await generateCodeVerifier()
+  const signIn = useCallback(async (mode: 'login' | 'register' = 'login') => {
+    const state = generateState()
+    const nonce = generateNonce()
+    const codeVerifier = generateCodeVerifier()
     const codeChallenge = await generateCodeChallenge(codeVerifier)
 
     Cookies.set('oauth_state', state, { sameSite: 'lax', secure: true })
@@ -64,13 +64,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       secure: true,
     })
 
-    const authUrl = await getAuthorizationUrl(state, nonce, codeChallenge)
+    const authUrl = await getAuthorizationUrl(state, nonce, codeChallenge, mode)
     window.location.href = authUrl
   }, [])
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     setCustomer(null)
-    router.push('/auth/logout')
+    window.location.href = '/auth/logout'
   }, [router])
 
   return (

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 interface NavAuthProps {
   isAuthenticated: boolean
-  onSignIn: () => Promise<void>
+  onSignIn: (mode?: 'login' | 'register') => Promise<void>
   onLogout: () => void
   onCloseMobile?: () => void
 }
@@ -19,9 +19,9 @@ export function NavAuth({
     onCloseMobile?.()
   }
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (mode: 'login' | 'register' = 'login') => {
     onCloseMobile?.()
-    await onSignIn()
+    await onSignIn(mode)
   }
 
   if (isAuthenticated) {
@@ -52,14 +52,14 @@ export function NavAuth({
   return (
     <div className='flex items-center justify-center gap-4'>
       <button
-        onClick={handleSignIn}
+        onClick={() => handleSignIn('login')}
         className='font-jost text-[11px] tracking-[0.2em] uppercase
           text-mocha/70 hover:text-caramel transition-colors duration-300 cursor-pointer'
       >
         Вхід
       </button>
       <button
-        onClick={handleSignIn}
+        onClick={() => handleSignIn('register')}
         className='font-jost text-[11px] tracking-[0.2em] uppercase
           text-caramel border border-caramel/40 hover:border-caramel
           hover:bg-caramel/10 rounded-full px-4 py-1.5

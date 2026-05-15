@@ -1,8 +1,7 @@
-export async function generateCodeVerifier(): Promise<string> {
+export function generateCodeVerifier(): string {
   const array = new Uint8Array(32)
   crypto.getRandomValues(array)
-  const randomCode = String.fromCharCode.apply(null, Array.from(array))
-  return base64UrlEncode(randomCode)
+  return base64UrlEncode(String.fromCharCode(...Array.from(array)))
 }
 
 export async function generateCodeChallenge(
