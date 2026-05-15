@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { exchangeCodeForToken, getCustomer } from '@/lib/shopify/auth/customer'
 import { getNonce } from '@/lib/shopify/auth/jwt'
+import {
+  exchangeCodeForToken,
+  getCustomer,
+} from '@/lib/shopify/auth/customer.server'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
