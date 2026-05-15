@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { getLogoutUrl } from '@/lib/shopify/auth/customer'
+import { getLogoutUrl } from '@/lib/shopify/auth/customer.server'
 
 export async function GET(request: NextRequest) {
   const cookieStore = await cookies()
