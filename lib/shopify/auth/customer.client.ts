@@ -1,3 +1,5 @@
+import { getOpenIDConfig } from './discovery'
+
 const CLIENT_ID = process.env.NEXT_PUBLIC_SHOPIFY_CUSTOMER_CLIENT_ID!
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL!
 
@@ -9,11 +11,7 @@ export async function getAuthorizationUrl(
   codeChallenge: string,
   mode: 'login' | 'register' = 'login'
 ): Promise<string> {
-  const SHOP_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!
-  const res = await fetch(
-    `https://${SHOP_DOMAIN}/.well-known/openid-configuration`
-  )
-  const { authorization_endpoint } = await res.json()
+  const { authorization_endpoint } = await getOpenIDConfig()
 
   const params = new URLSearchParams({
     client_id: CLIENT_ID,
@@ -24,8 +22,11 @@ export async function getAuthorizationUrl(
     nonce,
     code_challenge: codeChallenge,
     code_challenge_method: 'S256',
-    ...(mode === 'register' && { prompt: 'create' }),
   })
 
-  return `${authorization_endpoint}?${params}`
+  if (mode === 'register') {
+    params.append('screen_hint', 'signup')
+  }
+
+  return `${authorization_endpoint}?${params.toString()}`
 }
