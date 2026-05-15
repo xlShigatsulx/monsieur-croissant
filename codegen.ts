@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' })
 
-const domain = process.env.SHOPIFY_STORE_DOMAIN
+const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
 
 const config: CodegenConfig = {
