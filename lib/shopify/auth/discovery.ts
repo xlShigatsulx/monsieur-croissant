@@ -9,7 +9,7 @@ let cachedConfig: OpenIDConfig | null = null
 export async function getOpenIDConfig(): Promise<OpenIDConfig> {
   if (cachedConfig) return cachedConfig
 
-  const SHOP_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN!
+  const SHOP_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!
   const res = await fetch(
     `https://${SHOP_DOMAIN}/.well-known/openid-configuration`
   )
