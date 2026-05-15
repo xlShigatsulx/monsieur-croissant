@@ -2,7 +2,7 @@ import { getOpenIDConfig } from './discovery'
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SHOPIFY_CUSTOMER_CLIENT_ID!
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL!
-const SHOP_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN!
+const SHOP_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!
 
 export const REDIRECT_URI = `${APP_URL}/auth/callback`
 
