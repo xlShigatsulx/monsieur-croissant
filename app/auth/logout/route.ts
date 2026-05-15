@@ -6,15 +6,31 @@ export async function GET(request: NextRequest) {
   const cookieStore = await cookies()
   const idToken = cookieStore.get('customer_id_token')?.value
 
-  cookieStore.delete('customer_access_token')
-  cookieStore.delete('customer_refresh_token')
-  cookieStore.delete('customer_id_token')
-  cookieStore.delete('customer')
+  let redirectUrl = new URL('/', request.url).toString()
 
-  if (idToken) {
-    const logoutUrl = await getLogoutUrl(idToken)
-    return NextResponse.redirect(logoutUrl)
+  try {
+    if (idToken) {
+      redirectUrl = await getLogoutUrl(idToken)
+    }
+  } catch (error) {
+    console.error('Failed to get logout URL:', error)
   }
 
-  return NextResponse.redirect(new URL('/', request.url))
+  const response = NextResponse.redirect(redirectUrl)
+
+  const cookiesToDelete = [
+    'customer_access_token',
+    'customer_refresh_token',
+    'customer_id_token',
+    'customer',
+  ]
+
+  cookiesToDelete.forEach((cookieName) => {
+    response.cookies.set(cookieName, '', {
+      maxAge: 0,
+      path: '/',
+    })
+  })
+
+  return response
 }

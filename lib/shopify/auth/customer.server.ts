@@ -98,5 +98,5 @@ export async function getLogoutUrl(idToken: string): Promise<string> {
     post_logout_redirect_uri: APP_URL,
   })
 
-  return `${end_session_endpoint}?${params.toString()}`
+  return `${end_session_endpoint}?${params}`
 }
