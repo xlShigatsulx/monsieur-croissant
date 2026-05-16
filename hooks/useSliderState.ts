@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
 import type { NavigationDirection } from '@/types/slider'
-import { SLIDES, SLIDER_CONFIG } from '@/constants/slider'
+import { SLIDER_CONFIG } from '@/constants/slider'
 
 interface UseSliderStateReturn {
   current: number
@@ -11,9 +11,11 @@ interface UseSliderStateReturn {
   goTo: (index: number) => void
 }
 
-export function useSliderState(): UseSliderStateReturn {
-  const total = SLIDES.length
-
+export function useSliderState({
+  totalLength,
+}: {
+  totalLength: number
+}): UseSliderStateReturn {
   const currentRef = useRef(0)
   const trackIndexRef = useRef(1)
   const isJumping = useRef(false)
@@ -45,8 +47,8 @@ export function useSliderState(): UseSliderStateReturn {
 
       const nextCurrent =
         dir === 'next'
-          ? (currentRef.current + 1) % total
-          : (currentRef.current - 1 + total) % total
+          ? (currentRef.current + 1) % totalLength
+          : (currentRef.current - 1 + totalLength) % totalLength
 
       const nextTrackIndex =
         dir === 'next' ? trackIndexRef.current + 1 : trackIndexRef.current - 1
@@ -56,15 +58,15 @@ export function useSliderState(): UseSliderStateReturn {
       setCurrent(nextCurrent)
       setTrackIndex(nextTrackIndex)
 
-      if (nextTrackIndex === total + 1) {
+      if (nextTrackIndex === totalLength + 1) {
         isJumping.current = true
         jumpToReal(0, 1)
       } else if (nextTrackIndex === 0) {
         isJumping.current = true
-        jumpToReal(total - 1, total)
+        jumpToReal(totalLength - 1, totalLength)
       }
     },
-    [total, jumpToReal]
+    [totalLength, jumpToReal]
   )
 
   const stepRef = useRef(step)

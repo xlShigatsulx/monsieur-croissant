@@ -11,9 +11,13 @@ interface UseSliderReturn {
   resetAutoplay: () => void
 }
 
-export function useSlider(): UseSliderReturn {
+export function useSlider({
+  totalLength,
+}: {
+  totalLength: number
+}): UseSliderReturn {
   const { current, trackIndex, isAnimated, stepRef, navigate, goTo } =
-    useSliderState()
+    useSliderState({ totalLength })
   const { reset: resetAutoplay } = useAutoplay(stepRef)
 
   return { current, trackIndex, isAnimated, navigate, goTo, resetAutoplay }

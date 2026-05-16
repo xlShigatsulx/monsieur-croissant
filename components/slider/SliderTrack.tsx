@@ -35,8 +35,9 @@ export function SliderTrack({
           style={{ width: `${100 / total}%` }}
         >
           <Image
-            src={slide.url}
-            alt={slide.name}
+            src={slide.imageUrl}
+            alt={slide.altText}
+            loading='eager'
             fill
             draggable={false}
             className='object-cover'
@@ -53,9 +54,10 @@ export function SliderTrack({
           />
 
           <SliderCaption
-            name={slide.name}
+            title={slide.title}
             description={slide.description}
             price={slide.price}
+            currencyCode={slide.currencyCode}
           />
         </div>
       ))}
