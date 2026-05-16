@@ -35,17 +35,15 @@ export function MobileMenu({
       >
         <div className='flex items-center justify-between px-6 h-16 sm:h-20'>
           <NavLogo />
-          <div className='flex items-center gap-3'>
-            <CartIcon />
-            <button
-              onClick={onClose}
-              aria-label='Закрити меню'
-              className='w-8 h-8 flex items-center justify-center
+
+          <button
+            onClick={onClose}
+            aria-label='Закрити меню'
+            className='w-8 h-8 flex items-center justify-center
                 text-mocha/50 hover:text-caramel transition-colors duration-200 cursor-pointer'
-            >
-              <CloseIcon />
-            </button>
-          </div>
+          >
+            <CloseIcon />
+          </button>
         </div>
 
         <div className='h-px bg-caramel/15 mx-6' />

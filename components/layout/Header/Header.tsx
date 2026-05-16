@@ -40,14 +40,18 @@ export function Header() {
             />
           </div>
 
-          <button
-            onClick={openMobile}
-            aria-label='Відкрити меню'
-            className='md:hidden w-8 h-8 flex items-center justify-center
-              text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer'
-          >
-            <BurgerIcon />
-          </button>
+          <div className='flex md:hidden items-center gap-2'>
+            <CartIcon />
+
+            <button
+              onClick={openMobile}
+              aria-label='Відкрити меню'
+              className='w-8 h-8 flex items-center justify-center
+                text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer'
+            >
+              <BurgerIcon />
+            </button>
+          </div>
         </div>
       </header>
 
