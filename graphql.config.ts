@@ -8,7 +8,7 @@ const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
 
 const config: IGraphQLConfig = {
   schema: {
-    [`https://${domain}/api/2026-01/graphql.json`]: {
+    [`https://${domain}/api/2026-04/graphql.json`]: {
       headers: {
         'X-Shopify-Storefront-Access-Token': token!,
       },
