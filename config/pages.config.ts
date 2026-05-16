@@ -1,15 +1,18 @@
 class PageConfig {
   home = '/'
   about = '/about'
-  products = '/products'
-  product = (handle: string) => `/products/${handle}`
-  collections = '/collections'
-  collection = (handle: string) => `/collections/${handle}`
+  contact = '/contact'
   cart = '/cart'
-  search = '/search'
-  profile = '/profile'
+  products = '/products'
+  collections = '/collections'
+
   authCallback = '/auth/callback'
   authLogout = '/auth/logout'
+  profile = '/profile'
+
+  policies = (handle: string) => `/policies/${handle}`
+  product = (handle: string) => `/products/${handle}`
+  collection = (handle: string) => `/collections/${handle}`
 }
 
 export const pageConfig = new PageConfig()
