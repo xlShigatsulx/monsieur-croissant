@@ -1,7 +1,10 @@
 query GetShop {
   shop {
     name
+    description
     brand {
+      slogan
+      shortDescription
       logo {
         image {
           url
