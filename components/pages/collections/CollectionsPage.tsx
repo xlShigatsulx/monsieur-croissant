@@ -3,6 +3,7 @@
 import { useGetCollectionsQuery } from '@/graphql/generated/graphql'
 import { CollectionCard } from './CollectionCard'
 import { CollectionsSkeleton } from './CollectionsSkeleton'
+import { useMemo } from 'react'
 
 const COLLECTIONS_COUNT = 12
 
@@ -12,22 +13,28 @@ export function CollectionsPage() {
     fetchPolicy: 'cache-first',
   })
 
-  const collections = data?.collections?.edges?.map((edge) => edge.node) ?? []
+  const visibleCollections = useMemo(() => {
+    if (!data?.collections?.edges) return []
+
+    return data.collections.edges
+      .map((edge) => edge.node)
+      .filter((collection) => collection.metafield?.value !== 'true')
+  }, [data])
 
   if (loading) return <CollectionsSkeleton />
 
   return (
     <main className='min-h-screen bg-cream'>
-      <div className='max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24'>
-        <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-3'>
+      <div className='max-w-6xl mx-auto px-4 py-4'>
+        <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-2'>
           Асортимент
         </h1>
-        <p className='font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/40 mb-12'>
+        <p className='text-[11px] tracking-[0.2em] uppercase text-mocha/40 mb-5'>
           Оберіть категорію
         </p>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {collections.map((collection) => (
+          {visibleCollections.map((collection) => (
             <CollectionCard
               key={collection.id}
               handle={collection.handle}

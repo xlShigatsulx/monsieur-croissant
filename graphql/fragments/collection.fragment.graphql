@@ -3,6 +3,9 @@ fragment CollectionFields on Collection {
   title
   handle
   description
+  metafield(namespace: "custom", key: "hide_from_navigation") {
+    value
+  }
   image {
     url
     altText
