@@ -28,7 +28,7 @@ export function Header() {
           <NavLogo />
 
           <nav className='hidden md:flex items-center gap-8'>
-            <NavMenu />
+            <NavMenu className='flex gap-5' />
           </nav>
 
           <div className='hidden md:flex items-center gap-4'>
