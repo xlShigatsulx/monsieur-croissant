@@ -8,7 +8,7 @@ export function NavLogo() {
   const { data } = useGetShopQuery()
 
   const logo = data?.shop?.brand?.logo?.image
-  const shopName = data?.shop?.name ?? 'La Douceur'
+  const shopName = data?.shop?.name ?? 'Месьє Круасан'
 
   return (
     <Link
@@ -29,7 +29,7 @@ export function NavLogo() {
             className='font-cormorant italic text-mocha text-2xl sm:text-3xl font-light
             tracking-wide leading-none group-hover:text-caramel transition-colors duration-300'
           >
-            {'Месьє Круасан'}
+            {shopName}
           </span>
         </>
       )}
