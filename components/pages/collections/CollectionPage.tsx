@@ -48,6 +48,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
             alt={collection.image.altText ?? collection.title}
             fill
             className='object-cover'
+            loading='eager'
           />
         ) : (
           <div className='w-full h-full bg-caramel/10' />

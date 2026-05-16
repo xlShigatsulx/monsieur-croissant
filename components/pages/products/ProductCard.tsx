@@ -50,6 +50,7 @@ export function ProductCard({ product }: ProductCardProps) {
             height={533}
             className='w-full h-full object-cover
               group-hover:scale-105 transition-transform duration-700'
+            loading='eager'
           />
         ) : (
           <div

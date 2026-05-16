@@ -124,6 +124,7 @@ export const CartItem = memo(function CartItem({
               width={96}
               height={96}
               className='w-full h-full object-cover'
+              loading='eager'
             />
           )}
           {!image && <div className='w-full h-full bg-caramel/10' />}

@@ -22,6 +22,7 @@ export function NavLogo() {
           width={logo.width ?? 120}
           height={logo.height ?? 40}
           className='group-hover:opacity-80 transition-opacity duration-300'
+          loading='eager'
         />
       ) : (
         <>

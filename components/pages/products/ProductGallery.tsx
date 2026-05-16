@@ -32,6 +32,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
           width={selectedImage.width ?? 600}
           height={selectedImage.height ?? 600}
           className='w-full h-full object-cover'
+          loading='eager'
         />
       </div>
 
@@ -55,6 +56,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
                 width={64}
                 height={64}
                 className='w-full h-full object-cover'
+                loading='eager'
               />
             </button>
           ))}
