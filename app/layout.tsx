@@ -38,12 +38,14 @@ export default function RootLayout({
       className={`${cormorant.variable} ${jost.variable}`}
       data-scroll-behavior='smooth'
     >
-      <body>
+      <body className='min-h-screen flex flex-col bg-cream text-mocha'>
         <ApolloClientProvider>
           <AuthProvider>
             <CartProvider>
               <Header />
-              {children}
+
+              <main className='flex-1 flex flex-col'>{children}</main>
+
               <Footer />
             </CartProvider>
           </AuthProvider>
