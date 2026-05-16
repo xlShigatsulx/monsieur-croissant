@@ -10,8 +10,8 @@ export function Footer() {
 
   return (
     <footer className='w-full bg-cream border-t border-caramel/15'>
-      <div className='max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8'>
+      <div className='max-w-6xl mx-auto px-4 py-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
           <FooterBrand
             shopName={data?.shop?.name ?? 'Месьє Круасан'}
             description={data?.shop?.description ?? ''}

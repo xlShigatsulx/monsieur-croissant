@@ -58,7 +58,7 @@ export function FooterSocials() {
   const items = data?.menu?.items ?? []
 
   return (
-    <div className='flex items-center gap-3 mt-1'>
+    <div className='flex items-center gap-3'>
       {items.map((item) => {
         const platform = item.title.toLowerCase()
         const Icon = SOCIAL_ICONS[platform]

@@ -18,12 +18,12 @@ export function FooterBrand({ shopName, description, logo }: FooterBrandProps) {
       <NavLogo />
 
       {description && (
-        <p className='text-sm leading-relaxed text-mocha/55 max-w-[240px] font-jost'>
+        <p className='text-sm leading-relaxed text-mocha/55 max-w-[240px]'>
           {description}
         </p>
       )}
 
-      <div className='flex items-center gap-3 mt-1'>
+      <div className='flex items-center gap-3'>
         <FooterSocials />
       </div>
     </div>
