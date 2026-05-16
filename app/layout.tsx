@@ -5,6 +5,7 @@ import { ApolloClientProvider } from '@/lib/apollo/provider'
 import { AuthProvider } from '@/context/AuthContext'
 import { Header } from '@/components/layout/Header/Header'
 import { CartProvider } from '@/context/CartContext'
+import { Footer } from '@/components/layout/Footer/Footer'
 
 const cormorant = Cormorant({
   subsets: ['latin'],
@@ -43,6 +44,7 @@ export default function RootLayout({
             <CartProvider>
               <Header />
               {children}
+              <Footer />
             </CartProvider>
           </AuthProvider>
         </ApolloClientProvider>
