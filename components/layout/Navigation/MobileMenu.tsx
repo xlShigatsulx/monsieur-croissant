@@ -49,7 +49,10 @@ export function MobileMenu({
         <div className='h-px bg-caramel/15 mx-6' />
 
         <nav className='flex flex-col gap-6 px-6 py-4'>
-          <NavMenu onItemClick={onClose} />
+          <NavMenu
+            className='flex flex-col gap-3'
+            onItemClick={onClose}
+          />
         </nav>
 
         <div className='h-px bg-caramel/15 mx-6' />
