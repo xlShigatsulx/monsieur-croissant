@@ -54,7 +54,7 @@ const CartItemQuantity = memo(function CartItemQuantity({
   }, [lineId, removeItem])
 
   return (
-    <div className='flex items-center justify-between mt-3'>
+    <div className='flex items-center justify-between mt-3 gap-4'>
       <div className='flex items-center gap-3'>
         <button
           onClick={handleDecrement}
