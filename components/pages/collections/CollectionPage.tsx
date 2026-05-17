@@ -7,7 +7,7 @@ import { CollectionPageSkeleton } from './CollectionPageSkeleton'
 import { CollectionEmpty } from './CollectionEmpty'
 import { CollectionNotFound } from './CollectionNotFound'
 import { pageConfig } from '@/config/pages.config'
-import { ProductCard } from '../products/ProductCard'
+import { Card } from '@/components/ui/Card'
 
 const PRODUCTS_COUNT = 12
 
@@ -27,6 +27,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
 
   if (loading) return <CollectionPageSkeleton />
   if (!collection) return <CollectionNotFound />
+  if (products.length === 0) return <CollectionEmpty />
 
   const loadMore = () => {
     if (!pageInfo?.hasNextPage) return
@@ -38,6 +39,8 @@ export function CollectionPage({ handle }: CollectionPageProps) {
       },
     })
   }
+
+  const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)'
 
   return (
     <main className='min-h-screen bg-cream'>
@@ -55,7 +58,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
         )}
         <div className='absolute inset-0 bg-gradient-to-t from-mocha/50 to-transparent' />
         <div className='absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-4 sm:px-6 pb-8'>
-          <p className='font-jost text-[10px] tracking-[0.2em] uppercase text-cream/60 mb-1'>
+          <p className='font-jost textShadow text-[10px] tracking-[0.2em] uppercase text-cream/85 mb-1'>
             <Link
               href={pageConfig.collections}
               className='hover:text-cream transition-colors duration-300'
@@ -65,7 +68,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
             {' / '}
             {collection.title}
           </p>
-          <h1 className='font-cormorant italic text-3xl sm:text-5xl text-cream font-light'>
+          <h1 className='font-cormorant italic text-3xl sm:text-5xl text-cream font-light textShadow'>
             {collection.title}
           </h1>
         </div>
@@ -78,33 +81,34 @@ export function CollectionPage({ handle }: CollectionPageProps) {
           </p>
         )}
 
-        {products.length === 0 ? (
-          <CollectionEmpty />
-        ) : (
-          <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+          {products.map((product) => (
+            <Card
+              key={product.id}
+              aspectRatio='3/4'
+              caption={{
+                title: product.title,
+                price: product.variants.edges[0]?.node.price.amount,
+                availableForSale: product.availableForSale,
+              }}
+              image={product.images.edges[0]?.node}
+              href={pageConfig.product(product.handle)}
+            />
+          ))}
+        </div>
 
-            {pageInfo?.hasNextPage && (
-              <div className='flex justify-center mt-12'>
-                <button
-                  onClick={loadMore}
-                  className='font-jost text-[11px] tracking-[0.2em] uppercase
+        {pageInfo?.hasNextPage && (
+          <div className='flex justify-center mt-12'>
+            <button
+              onClick={loadMore}
+              className='font-jost text-[11px] tracking-[0.2em] uppercase
                     text-caramel border border-caramel/40 hover:border-caramel
                     hover:bg-caramel/10 rounded-full px-10 py-3
                     transition-all duration-300 cursor-pointer'
-                >
-                  Завантажити ще
-                </button>
-              </div>
-            )}
-          </>
+            >
+              Завантажити ще
+            </button>
+          </div>
         )}
       </div>
     </main>
