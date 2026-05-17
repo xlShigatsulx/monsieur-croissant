@@ -9,6 +9,7 @@ import { SliderDots } from './SliderDots'
 import type { NavigationDirection, Slide } from '@/types/slider'
 import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
 import { SliderCta } from './SliderCta'
+import { SliderSkeleton } from './SliderSkeleton'
 
 export function Slider() {
   const { data, loading, error } = useGetCollectionByHandleQuery({
@@ -53,13 +54,7 @@ export function Slider() {
     [goTo, resetAutoplay]
   )
 
-  if (loading) {
-    return (
-      <div className='w-full h-[60vh] bg-mocha/5 animate-pulse flex items-center justify-center text-mocha/30'>
-        Завантаження випічки...
-      </div>
-    )
-  }
+  if (loading) return <SliderSkeleton />
 
   if (error || slides.length === 0) return null
 
