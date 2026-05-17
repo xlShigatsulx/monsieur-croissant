@@ -4,7 +4,6 @@ export interface Slide {
   description: string
   imageUrl: string
   altText: string
-  currencyCode: string
   ctaUrl: string
   price: string
 }

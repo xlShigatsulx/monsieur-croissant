@@ -57,7 +57,6 @@ export function SliderTrack({
             title={slide.title}
             description={slide.description}
             price={slide.price}
-            currencyCode={slide.currencyCode}
           />
         </div>
       ))}

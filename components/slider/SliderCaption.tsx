@@ -2,14 +2,12 @@ interface SliderCaptionProps {
   title: string
   description: string
   price: string
-  currencyCode: string
 }
 
 export function SliderCaption({
   title,
   description,
   price,
-  currencyCode,
 }: SliderCaptionProps) {
   return (
     <div className='absolute bottom-0 left-0 right-0 px-5 pb-5 sm:px-8 sm:pb-7'>
