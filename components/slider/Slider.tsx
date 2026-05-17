@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { useSlider } from '@/hooks/useSlider'
 import { SliderTrack } from './SliderTrack'
 import { SliderCounter } from './SliderCounter'
@@ -10,6 +10,7 @@ import type { NavigationDirection, Slide } from '@/types/slider'
 import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
 import { SliderCta } from './SliderCta'
 import { SliderSkeleton } from './SliderSkeleton'
+import { useSwipe } from '@/hooks/useSwipe'
 
 export function Slider() {
   const { data, loading, error } = useGetCollectionByHandleQuery({
@@ -38,6 +39,8 @@ export function Slider() {
   const { current, trackIndex, isAnimated, navigate, goTo, resetAutoplay } =
     useSlider({ totalLength: slides.length })
 
+  const sliderRef = useRef<HTMLDivElement>(null)
+
   const handleNavigate = useCallback(
     (dir: NavigationDirection) => {
       navigate(dir)
@@ -54,6 +57,8 @@ export function Slider() {
     [goTo, resetAutoplay]
   )
 
+  useSwipe(sliderRef, handleNavigate)
+
   if (loading) return <SliderSkeleton />
 
   if (error || slides.length === 0) return null
@@ -61,6 +66,7 @@ export function Slider() {
   return (
     <div className='w-full max-w-3xl'>
       <div
+        ref={sliderRef}
         className='relative rounded-2xl overflow-hidden select-none'
         style={{
           boxShadow:

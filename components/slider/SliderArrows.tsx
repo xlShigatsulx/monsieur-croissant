@@ -15,7 +15,7 @@ export const SliderArrows = memo(function SliderArrows({
       <button
         aria-label='Попередній слайд'
         onClick={() => onNavigate('prev')}
-        className={`${buttonClassNames} left-3 sm:left-4`}
+        className={`${buttonClassNames} left-3 sm:left-4 hidden sm:flex`}
       >
         <ChevronIcon direction='left' />
       </button>
@@ -23,7 +23,7 @@ export const SliderArrows = memo(function SliderArrows({
       <button
         aria-label='Наступний слайд'
         onClick={() => onNavigate('next')}
-        className={`${buttonClassNames} right-3 sm:right-4`}
+        className={`${buttonClassNames} right-3 sm:right-4 hidden sm:flex`}
       >
         <ChevronIcon direction='right' />
       </button>
