@@ -11,35 +11,14 @@ import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
 import { SliderCta } from './SliderCta'
 import { SliderSkeleton } from './SliderSkeleton'
 import { useSwipe } from '@/hooks/useSwipe'
+import { useSliderData } from '@/hooks/useSliderData'
 
 export function Slider() {
-  const { data, loading, error } = useGetCollectionByHandleQuery({
-    variables: { handle: 'hero-slider', first: 5 },
-    fetchPolicy: 'cache-first',
-  })
-
-  const slides: Slide[] = useMemo(() => {
-    if (!data?.collection?.products?.edges) return []
-
-    return data.collection.products.edges.map((product) => ({
-      id: product.node.id,
-      title: product.node.title,
-      description: product.node.description
-        ? product.node.description.replace(/<[^>]*>/g, '')
-        : '',
-      imageUrl: product.node.images?.edges[0]?.node.url ?? '',
-      altText:
-        product.node.images?.edges[0]?.node.altText ?? product.node.title,
-      ctaUrl: `/products/${product.node.handle}`,
-      price: product.node.variants?.edges[0]?.node.price.amount,
-      currencyCode: product.node.variants?.edges[0]?.node.price.currencyCode,
-    }))
-  }, [data])
+  const { slides, loading, error } = useSliderData()
+  const sliderRef = useRef<HTMLDivElement>(null)
 
   const { current, trackIndex, isAnimated, navigate, goTo, resetAutoplay } =
     useSlider({ totalLength: slides.length })
-
-  const sliderRef = useRef<HTMLDivElement>(null)
 
   const handleNavigate = useCallback(
     (dir: NavigationDirection) => {
