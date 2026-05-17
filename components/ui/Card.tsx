@@ -42,7 +42,7 @@ export function Card({
   caption,
   aspectRatio = '4/3',
   gradient = true,
-  eager = false,
+  eager = true,
   className = '',
   children,
 }: CardProps) {
