@@ -1,13 +1,11 @@
 'use client'
 
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { useSlider } from '@/hooks/useSlider'
 import { SliderTrack } from './SliderTrack'
-import { SliderCounter } from './SliderCounter'
 import { SliderArrows } from './SliderArrows'
 import { SliderDots } from './SliderDots'
-import type { NavigationDirection, Slide } from '@/types/slider'
-import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
+import type { NavigationDirection } from '@/types/slider'
 import { SliderCta } from './SliderCta'
 import { SliderSkeleton } from './SliderSkeleton'
 import { useSwipe } from '@/hooks/useSwipe'
@@ -57,10 +55,6 @@ export function Slider() {
             slides={slides}
             trackIndex={trackIndex}
             isAnimated={isAnimated}
-          />
-          <SliderCounter
-            current={current}
-            total={slides.length}
           />
           <SliderArrows onNavigate={handleNavigate} />
         </div>
