@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
 import { CollectionPageSkeleton } from './CollectionPageSkeleton'
 import { CollectionEmpty } from './CollectionEmpty'
-import { CollectionNotFound } from './CollectionNotFound'
 import { pageConfig } from '@/config/pages.config'
 import { Card } from '@/components/ui/Card'
+import { NotFound } from '@/components/ui/NotFound'
 
 const PRODUCTS_COUNT = 12
 
@@ -26,7 +26,14 @@ export function CollectionPage({ handle }: CollectionPageProps) {
   const pageInfo = collection?.products?.pageInfo
 
   if (loading) return <CollectionPageSkeleton />
-  if (!collection) return <CollectionNotFound />
+  if (!collection)
+    return (
+      <NotFound
+        title='Категорію не знайдено'
+        backHref={pageConfig.collections}
+        backLabel='До асортименту'
+      />
+    )
   if (products.length === 0) return <CollectionEmpty />
 
   const loadMore = () => {
@@ -43,7 +50,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
   const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)'
 
   return (
-    <main className='min-h-screen bg-cream'>
+    <>
       <div className='relative h-48 sm:h-64 overflow-hidden'>
         {collection.image ? (
           <Image
@@ -111,6 +118,6 @@ export function CollectionPage({ handle }: CollectionPageProps) {
           </div>
         )}
       </div>
-    </main>
+    </>
   )
 }

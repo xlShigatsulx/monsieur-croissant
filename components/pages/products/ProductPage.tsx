@@ -5,8 +5,8 @@ import { useGetProductByHandleQuery } from '@/graphql/generated/graphql'
 import { ProductGallery } from './ProductGallery'
 import { ProductInfo } from './ProductInfo'
 import { ProductPageSkeleton } from './ProductPageSkeleton'
-import { ProductNotFound } from './ProductNotFound'
 import { pageConfig } from '@/config/pages.config'
+import { NotFound } from '@/components/ui/NotFound'
 
 interface ProductPageProps {
   handle: string
@@ -21,7 +21,14 @@ export function ProductPage({ handle }: ProductPageProps) {
   if (loading) return <ProductPageSkeleton />
 
   const product = data?.product
-  if (!product) return <ProductNotFound />
+  if (!product)
+    return (
+      <NotFound
+        title='Товар не знайдено'
+        backHref={pageConfig.products}
+        backLabel='До асортименту'
+      />
+    )
 
   const images = product.images.edges.map((edge) => edge.node)
   const variants = product.variants.edges.map((edge) => edge.node)
@@ -34,7 +41,7 @@ export function ProductPage({ handle }: ProductPageProps) {
             href={pageConfig.products}
             className='hover:text-caramel transition-colors duration-300'
           >
-            Меню
+            Всі вироби
           </Link>
           {' / '}
           {product.title}
