@@ -2,7 +2,7 @@
 
 A fully functional headless e-commerce storefront built with Next.js 16 and Shopify APIs.
 
-🔗 **Live Demo:** https://monsieur-croissant-f84h.vercel.app
+🔗 **Live Demo:** https://monsieur-croissant.vercel.app
 
 ## Tech Stack
 
