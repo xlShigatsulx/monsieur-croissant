@@ -1,7 +1,13 @@
-import { pageConfig } from '@/config/pages.config'
 import Link from 'next/link'
 
-export function SliderCta({ productLink }: { productLink: string }) {
+export function SliderCta({ productLink }: { productLink?: string }) {
+  if (!productLink)
+    return (
+      <div className='mt-6 flex justify-center'>
+        <div className='h-9 w-32 rounded-full bg-[#c4977a]/10 animate-pulse' />
+      </div>
+    )
+
   return (
     <div className='mt-6 text-center'>
       <Link
