@@ -8,8 +8,7 @@ export const REDIRECT_URI = `${APP_URL}/auth/callback`
 export async function getAuthorizationUrl(
   state: string,
   nonce: string,
-  codeChallenge: string,
-  mode: 'login' | 'register' = 'login'
+  codeChallenge: string
 ): Promise<string> {
   const { authorization_endpoint } = await getOpenIDConfig()
 
@@ -23,10 +22,6 @@ export async function getAuthorizationUrl(
     code_challenge: codeChallenge,
     code_challenge_method: 'S256',
   })
-
-  if (mode === 'register') {
-    params.append('screen_hint', 'signup')
-  }
 
   return `${authorization_endpoint}?${params.toString()}`
 }

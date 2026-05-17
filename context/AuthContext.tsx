@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false)
   }, [])
 
-  const signIn = useCallback(async (mode: 'login' | 'register' = 'login') => {
+  const signIn = useCallback(async () => {
     const state = generateState()
     const nonce = generateNonce()
     const codeVerifier = generateCodeVerifier()
@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       secure: true,
     })
 
-    const authUrl = await getAuthorizationUrl(state, nonce, codeChallenge, mode)
+    const authUrl = await getAuthorizationUrl(state, nonce, codeChallenge)
     window.location.href = authUrl
   }, [])
 
