@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import type { Slide } from '@/types/slider'
 import { SLIDER_CONFIG } from '@/constants/slider'
-import { SliderCaption } from './SliderCaption'
+import { ImgCaption } from '@/components/ui/ImgCaption'
 
 interface SliderTrackProps {
   slides: Slide[]
@@ -53,8 +53,9 @@ export function SliderTrack({
             }}
           />
 
-          <SliderCaption
+          <ImgCaption
             title={slide.title}
+            titleSize='text-2xl sm:text-4xl'
             description={slide.description}
             price={slide.price}
           />
