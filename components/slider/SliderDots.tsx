@@ -21,7 +21,7 @@ const Dot = memo(function Dot({ slide, index, isActive, onSelect }: DotProps) {
     <button
       role='tab'
       aria-selected={isActive}
-      aria-label={`Слайд ${index + 1}: ${slide.name}`}
+      aria-label={`Слайд ${index + 1}: ${slide.title}`}
       onClick={handleClick}
       className='rounded-full transition-all duration-300 ease-out cursor-pointer
         focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c4977a]
