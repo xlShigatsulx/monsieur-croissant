@@ -1,6 +1,6 @@
 export function ProductPageSkeleton() {
   return (
-    <main className='min-h-screen bg-cream'>
+    <div className='min-h-screen'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16'>
         <div className='flex flex-col lg:flex-row gap-12'>
           <div className='lg:w-1/2'>
@@ -18,6 +18,6 @@ export function ProductPageSkeleton() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

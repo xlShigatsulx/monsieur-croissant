@@ -1,6 +1,6 @@
 export function ProductsSkeleton() {
   return (
-    <main className='min-h-screen bg-cream'>
+    <div className='min-h-screen'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24'>
         <div className='h-10 w-48 bg-caramel/10 rounded animate-pulse mb-3' />
         <div className='h-3 w-32 bg-caramel/10 rounded animate-pulse mb-12' />
@@ -17,6 +17,6 @@ export function ProductsSkeleton() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   )
 }

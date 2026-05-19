@@ -50,7 +50,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
   const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)'
 
   return (
-    <>
+    <div className='min-h-screen'>
       <div className='relative h-48 sm:h-64 overflow-hidden'>
         {collection.image ? (
           <Image
@@ -118,6 +118,6 @@ export function CollectionPage({ handle }: CollectionPageProps) {
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }

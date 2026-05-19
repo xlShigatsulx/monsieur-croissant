@@ -34,7 +34,7 @@ export function ProductPage({ handle }: ProductPageProps) {
   const variants = product.variants.edges.map((edge) => edge.node)
 
   return (
-    <main className='min-h-screen bg-cream'>
+    <div className='min-h-screen'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16'>
         <p className='font-jost text-[10px] tracking-[0.2em] uppercase text-mocha/40 mb-8'>
           <Link
@@ -64,6 +64,6 @@ export function ProductPage({ handle }: ProductPageProps) {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

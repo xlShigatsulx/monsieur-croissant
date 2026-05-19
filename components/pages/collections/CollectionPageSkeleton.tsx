@@ -1,6 +1,6 @@
 export function CollectionPageSkeleton() {
   return (
-    <main className='min-h-screen bg-cream'>
+    <div className='min-h-screen'>
       <div className='h-48 sm:h-64 bg-caramel/10 animate-pulse' />
       <div className='max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
@@ -18,6 +18,6 @@ export function CollectionPageSkeleton() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   )
 }

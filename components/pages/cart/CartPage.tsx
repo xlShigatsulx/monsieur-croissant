@@ -56,38 +56,40 @@ export function CartPage() {
   if (!cartId || lines.length === 0) return <CartEmpty />
 
   return (
-    <div className='max-w-4xl mx-auto px-4 py-8'>
-      <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-6'>
-        Кошик
-      </h1>
+    <div className='min-h-screen'>
+      <div className='max-w-4xl mx-auto px-4 py-8'>
+        <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-6'>
+          Кошик
+        </h1>
 
-      <div className='flex flex-col lg:flex-row gap-12'>
-        <div className='flex-1 flex flex-col gap-6'>
-          {visibleLines.map((line) => {
-            const variant = line.merchandise
-            if (variant.__typename !== 'ProductVariant') return null
-            return (
-              <CartItem
-                key={line.id}
-                lineId={line.id}
-                title={variant.product.title}
-                variantTitle={variant.title}
-                price={variant.price.amount}
-                currencyCode={variant.price.currencyCode}
-                quantity={line.quantity}
-                image={variant.product.images.edges[0]?.node}
-                handle={variant.product.handle}
-              />
-            )
-          })}
-        </div>
+        <div className='flex flex-col lg:flex-row gap-12'>
+          <div className='flex-1 flex flex-col gap-6'>
+            {visibleLines.map((line) => {
+              const variant = line.merchandise
+              if (variant.__typename !== 'ProductVariant') return null
+              return (
+                <CartItem
+                  key={line.id}
+                  lineId={line.id}
+                  title={variant.product.title}
+                  variantTitle={variant.title}
+                  price={variant.price.amount}
+                  currencyCode={variant.price.currencyCode}
+                  quantity={line.quantity}
+                  image={variant.product.images.edges[0]?.node}
+                  handle={variant.product.handle}
+                />
+              )
+            })}
+          </div>
 
-        <div className='lg:w-72'>
-          <CartSummary
-            lines={summaryLines}
-            currencyCode={cart?.cost.totalAmount.currencyCode ?? 'UAH'}
-            checkoutUrl={cart?.checkoutUrl ?? ''}
-          />
+          <div className='lg:w-72'>
+            <CartSummary
+              lines={summaryLines}
+              currencyCode={cart?.cost.totalAmount.currencyCode ?? 'UAH'}
+              checkoutUrl={cart?.checkoutUrl ?? ''}
+            />
+          </div>
         </div>
       </div>
     </div>
