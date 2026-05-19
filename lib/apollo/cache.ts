@@ -2,6 +2,9 @@ import { InMemoryCache } from '@apollo/client'
 
 export const cache = new InMemoryCache({
   typePolicies: {
+    Shop: {
+      keyFields: [],
+    },
     Product: {
       keyFields: ['id'],
     },
