@@ -3,7 +3,6 @@
 import { ContactFormSection } from './ContactFormSection'
 import { ContactHeader } from './ContactHeader'
 import { ContactInfo } from './ContactInfo'
-import { ContactMap } from './ContactMap'
 
 export default function ContactPage() {
   return (
@@ -11,7 +10,7 @@ export default function ContactPage() {
       <div className='max-w-screen-lg mx-auto px-6 py-8'>
         <ContactHeader />
 
-        <div className='flex flex-row gap-6  justify-center'>
+        <div className='flex flex-col lg:flex-row gap-6'>
           <ContactInfo />
           <ContactFormSection />
         </div>
