@@ -1,4 +1,4 @@
-import { FooterSocials } from './FooterSocials'
+import { SocialIcons } from '../../ui/SocialIcons'
 import { NavLogo } from '../Navigation/NavLogo'
 
 interface FooterBrandProps {
@@ -24,7 +24,7 @@ export function FooterBrand({ shopName, description, logo }: FooterBrandProps) {
       )}
 
       <div className='flex items-center gap-3'>
-        <FooterSocials />
+        <SocialIcons />
       </div>
     </div>
   )
