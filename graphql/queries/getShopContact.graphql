@@ -1,0 +1,16 @@
+query GetShopContact {
+  shop {
+    metafields(
+      identifiers: [
+        { namespace: "contact", key: "phone" }
+        { namespace: "contact", key: "address" }
+        { namespace: "contact", key: "hours_weekdays" }
+        { namespace: "contact", key: "hours_weekends" }
+        { namespace: "contact", key: "maps_url" }
+      ]
+    ) {
+      key
+      value
+    }
+  }
+}
