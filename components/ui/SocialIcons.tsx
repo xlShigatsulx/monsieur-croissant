@@ -53,7 +53,7 @@ const SOCIAL_ICONS: Record<string, React.ComponentType<any>> = {
   facebook: FacebookIcon,
 }
 
-export function FooterSocials() {
+export function SocialIcons() {
   const { data } = useGetMenuQuery({ variables: { handle: 'social-menu' } })
   const items = data?.menu?.items ?? []
 
