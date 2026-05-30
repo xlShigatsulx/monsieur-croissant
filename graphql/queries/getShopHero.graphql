@@ -1,0 +1,15 @@
+query GetShopHero {
+  shop {
+    metafields(
+      identifiers: [
+        { namespace: "hero", key: "title" }
+        { namespace: "hero", key: "subtitle" }
+        { namespace: "hero", key: "button_label" }
+        { namespace: "hero", key: "button_url" }
+      ]
+    ) {
+      key
+      value
+    }
+  }
+}
