@@ -11,7 +11,7 @@ import { SliderSkeleton } from './SliderSkeleton'
 import { useSwipe } from '@/hooks/useSwipe'
 import { useSliderData } from '@/hooks/useSliderData'
 
-export function Slider() {
+function ProductSlider() {
   const { slides, loading, error } = useSliderData()
   const sliderRef = useRef<HTMLDivElement>(null)
 
@@ -71,4 +71,4 @@ export function Slider() {
   )
 }
 
-export default Slider
+export default ProductSlider
