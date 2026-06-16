@@ -105,6 +105,13 @@
     "dots": "Slide navigation",
     "cta": "Try now"
   },
+  "nav": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Sign in"
+  },
   "notFound": {
     "title": "Page not found",
     "subtitle": "Unfortunately, this page does not exist or has been moved",
