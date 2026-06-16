@@ -104,5 +104,16 @@
     "dot": "Slide {index}: {title}",
     "dots": "Slide navigation",
     "cta": "Try now"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "Unfortunately, this page does not exist or has been moved",
+    "home": "Go home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "subtitle": "Sorry for the inconvenience, please try again",
+    "reset": "Try again",
+    "home": "Go home"
   }
 }
