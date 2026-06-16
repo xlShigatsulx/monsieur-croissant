@@ -2,6 +2,7 @@ import { NavLogo } from './NavLogo'
 import { NavMenu } from './NavMenu'
 import { NavAuth } from './NavAuth'
 import { CartIcon } from '@/components/pages/cart/CartIcon'
+import { useTranslations } from 'next-intl'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -18,6 +19,7 @@ export function MobileMenu({
   onSignIn,
   onLogout,
 }: MobileMenuProps) {
+  const t = useTranslations('nav')
   return (
     <>
       <div
@@ -38,7 +40,7 @@ export function MobileMenu({
 
           <button
             onClick={onClose}
-            aria-label='Закрити меню'
+            aria-label={t('closeMenu')}
             className='w-8 h-8 flex items-center justify-center
                 text-mocha/50 hover:text-caramel transition-colors duration-200 cursor-pointer'
           >

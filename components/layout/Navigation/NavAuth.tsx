@@ -1,4 +1,5 @@
 import { pageConfig } from '@/config/pages.config'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 interface NavAuthProps {
@@ -14,6 +15,8 @@ export function NavAuth({
   onLogout,
   onCloseMobile,
 }: NavAuthProps) {
+  const t = useTranslations('nav')
+
   const handleLogout = () => {
     onLogout()
     onCloseMobile?.()
@@ -30,7 +33,7 @@ export function NavAuth({
         <Link
           href={pageConfig.profile}
           onClick={onCloseMobile}
-          aria-label='Профіль'
+          aria-label={t('profile')}
           className='w-8 h-8 rounded-full border border-caramel/70 hover:border-caramel
             flex items-center justify-center text-caramel
             hover:bg-caramel/70 transition-all duration-300'
@@ -43,7 +46,7 @@ export function NavAuth({
           className='font-jost text-[11px] tracking-[0.2em] uppercase
             text-mocha/60 hover:text-caramel transition-colors duration-300 cursor-pointer'
         >
-          Вихід
+          {t('logout')}
         </button>
       </div>
     )
@@ -58,7 +61,7 @@ export function NavAuth({
         hover:bg-caramel/10 rounded-full px-4 py-1.5
         transition-all duration-300 cursor-pointer'
       >
-        Увійти
+        {t('login')}
       </button>
     </div>
   )

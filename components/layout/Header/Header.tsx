@@ -7,8 +7,11 @@ import { NavAuth } from '../Navigation/NavAuth'
 import { NavLogo } from '../Navigation/NavLogo'
 import { NavMenu } from '../Navigation/NavMenu'
 import { CartIcon } from '@/components/pages/cart/CartIcon'
+import { useTranslations } from 'next-intl'
 
 export function Header() {
+  const t = useTranslations('nav')
+
   const { isAuthenticated, logout, signIn } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -45,7 +48,7 @@ export function Header() {
 
             <button
               onClick={openMobile}
-              aria-label='Відкрити меню'
+              aria-label={t('openMenu')}
               className='w-8 h-8 flex items-center justify-center
                 text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer'
             >
