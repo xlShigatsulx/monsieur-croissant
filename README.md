@@ -23,6 +23,13 @@ A fully functional headless e-commerce storefront built with Next.js 16 and Shop
 - ✅ Redirect to Shopify checkout
 - ✅ Customer registration & login (OAuth 2.0 PKCE)
 
+## Implementation Highlights
+
+- OAuth 2.0 + PKCE flow with state/nonce validation and httpOnly cookie session management
+- Optimistic UI cart with debounced mutations — instant quantity feedback, no redundant API calls on rapid clicks
+- Split React Context (Data / Actions / Optimistic) to minimize re-renders
+- Apollo InMemoryCache with custom merge strategies for paginated products and collections
+
 ## Getting Started
 
 1. Clone the repository:
