@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useCartOptimistic } from '@/context/CartContext'
 import { pageConfig } from '@/config/pages.config'
 import { formatPrice } from '@/lib/utils/format'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface CartLine {
   lineId: string
@@ -18,6 +19,27 @@ interface CartSummaryProps {
   checkoutUrl: string
 }
 
+export const CartSummary = memo(function CartSummary({
+  lines,
+  currencyCode,
+  checkoutUrl,
+}: CartSummaryProps) {
+  const t = useTranslations('cart.cartSummary')
+
+  return (
+    <div className='bg-white/60 rounded-2xl p-6 border border-caramel/10'>
+      <h2 className='font-cormorant italic text-2xl text-mocha font-light mb-6'>
+        {t('title')}
+      </h2>
+      <CartSummaryTotals
+        lines={lines}
+        currencyCode={currencyCode}
+      />
+      <CartSummaryActions checkoutUrl={checkoutUrl} />
+    </div>
+  )
+})
+
 const CartSummaryActions = memo(function CartSummaryActions({
   checkoutUrl,
 }: {
@@ -27,6 +49,8 @@ const CartSummaryActions = memo(function CartSummaryActions({
     window.location.href = `${checkoutUrl}?logged_in=true`
   }, [checkoutUrl])
 
+  const t = useTranslations('cart.cartSummary')
+
   return (
     <>
       <button
@@ -35,7 +59,7 @@ const CartSummaryActions = memo(function CartSummaryActions({
           bg-caramel text-cream hover:bg-caramel/90
           rounded-full py-3.5 transition-all duration-300 cursor-pointer'
       >
-        Оформити замовлення
+        {t('checkoutBtn')}
       </button>
       <Link
         href={pageConfig.products}
@@ -43,7 +67,7 @@ const CartSummaryActions = memo(function CartSummaryActions({
           uppercase text-mocha/40 hover:text-caramel mt-4
           transition-colors duration-300'
       >
-        Продовжити покупки
+        {t('continueShopping')}
       </Link>
     </>
   )
@@ -56,6 +80,9 @@ const CartSummaryTotals = memo(function CartSummaryTotals({
   lines: CartLine[]
   currencyCode: string
 }) {
+  const locale = useLocale()
+  const t = useTranslations('cart.cartSummary')
+
   const { optimisticLines } = useCartOptimistic()
 
   const subtotal = useMemo(
@@ -70,48 +97,21 @@ const CartSummaryTotals = memo(function CartSummaryTotals({
   )
 
   const formattedSubtotal = useMemo(
-    () => formatPrice(subtotal, currencyCode),
-    [subtotal, currencyCode]
+    () => formatPrice(subtotal, currencyCode, locale),
+    [subtotal, currencyCode, locale]
   )
 
   return (
     <div className='flex flex-col gap-3 mb-6'>
-      <div className='flex justify-between'>
-        <span className='font-jost text-[11px] tracking-[0.15em] uppercase text-mocha/50'>
-          Підсума
-        </span>
-        <span className='font-jost text-sm text-mocha'>
-          {formattedSubtotal}
-        </span>
-      </div>
-      <div className='h-px bg-caramel/10' />
-      <div className='flex justify-between'>
-        <span className='font-jost text-[11px] tracking-[0.15em] uppercase text-mocha/50'>
-          Разом
+      <div className='h-px bg-caramel/45' />
+      <div className='flex items-center justify-between'>
+        <span className='font-jost text-[11px] tracking-[0.15em] uppercase text-mocha/80'>
+          {t('total')}
         </span>
         <span className='font-cormorant italic text-xl text-mocha'>
           {formattedSubtotal}
         </span>
       </div>
-    </div>
-  )
-})
-
-export const CartSummary = memo(function CartSummary({
-  lines,
-  currencyCode,
-  checkoutUrl,
-}: CartSummaryProps) {
-  return (
-    <div className='bg-white/60 rounded-2xl p-6 border border-caramel/10'>
-      <h2 className='font-cormorant italic text-2xl text-mocha font-light mb-6'>
-        Підсумок
-      </h2>
-      <CartSummaryTotals
-        lines={lines}
-        currencyCode={currencyCode}
-      />
-      <CartSummaryActions checkoutUrl={checkoutUrl} />
     </div>
   )
 })

@@ -1,6 +1,9 @@
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 export function SliderCta({ productLink }: { productLink?: string }) {
+  const t = useTranslations('slider')
+
   if (!productLink)
     return (
       <div className='mt-6 flex justify-center'>
@@ -16,7 +19,7 @@ export function SliderCta({ productLink }: { productLink?: string }) {
           border border-[#c4977a]/40 hover:border-[#c4977a] hover:bg-[#c4977a]/10
           rounded-full px-6 py-2.5 transition-all duration-300 cursor-pointer'
       >
-        Спробувати
+        {t('cta')}
       </Link>
     </div>
   )

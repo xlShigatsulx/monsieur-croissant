@@ -8,6 +8,7 @@ import { CollectionEmpty } from './CollectionEmpty'
 import { pageConfig } from '@/config/pages.config'
 import { Card } from '@/components/ui/Card'
 import { NotFound } from '@/components/ui/NotFound'
+import { useTranslations } from 'next-intl'
 
 const PRODUCTS_COUNT = 12
 
@@ -16,6 +17,8 @@ interface CollectionPageProps {
 }
 
 export function CollectionPage({ handle }: CollectionPageProps) {
+  const t = useTranslations('collection')
+
   const { data, loading, fetchMore, error } = useGetCollectionByHandleQuery({
     variables: { handle, first: PRODUCTS_COUNT },
     fetchPolicy: 'cache-first',
@@ -29,9 +32,9 @@ export function CollectionPage({ handle }: CollectionPageProps) {
   if (!collection)
     return (
       <NotFound
-        title='Категорію не знайдено'
+        title={t('notFound.title')}
         backHref={pageConfig.collections}
-        backLabel='До асортименту'
+        backLabel={t('notFound.link')}
       />
     )
   if (products.length === 0) return <CollectionEmpty />
@@ -63,14 +66,14 @@ export function CollectionPage({ handle }: CollectionPageProps) {
         ) : (
           <div className='w-full h-full bg-caramel/10' />
         )}
-        <div className='absolute inset-0 bg-gradient-to-t from-mocha/50 to-transparent' />
+        <div className='absolute inset-0 bg-linear-to-t from-mocha/50 to-transparent' />
         <div className='absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-4 sm:px-6 pb-8'>
           <p className='font-jost textShadow text-[10px] tracking-[0.2em] uppercase text-cream/85 mb-1'>
             <Link
               href={pageConfig.collections}
               className='hover:text-cream transition-colors duration-300'
             >
-              Асортимент
+              {t('breadcrumb')}
             </Link>
             {' / '}
             {collection.title}
@@ -113,7 +116,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
                     hover:bg-caramel/10 rounded-full px-10 py-3
                     transition-all duration-300 cursor-pointer'
             >
-              Завантажити ще
+              {t('loadMore')}
             </button>
           </div>
         )}

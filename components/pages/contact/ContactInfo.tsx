@@ -2,6 +2,7 @@ import { SocialIcons } from '@/components/ui/SocialIcons'
 import { ContactData, useContactData } from '@/hooks/useContactData'
 import { ContactInfoSkeleton } from './ContactInfoSkeleton'
 import { ContactMap } from './ContactMap'
+import { useTranslations } from 'next-intl'
 
 export function ContactInfo() {
   const { data, loading } = useContactData()
@@ -55,9 +56,10 @@ function ContactInfoDivider() {
 }
 
 function AddressBlock({ address }: { address: string }) {
+  const t = useTranslations('contact.info')
   return (
     <ContactInfoCard>
-      <InfoBlock label='адреса'>
+      <InfoBlock label={t('address')}>
         <p className='text-mocha text-sm leading-relaxed whitespace-pre-line'>
           {address}
         </p>
@@ -70,9 +72,10 @@ export function HoursBlock({
   hoursWeekdays,
   hoursWeekends,
 }: Pick<ContactData, 'hoursWeekdays' | 'hoursWeekends'>) {
+  const t = useTranslations('contact.info')
   return (
     <ContactInfoCard>
-      <InfoBlock label='години роботи'>
+      <InfoBlock label={t('hours')}>
         <div className='text-mocha text-sm leading-relaxed space-y-0.5'>
           <p>{hoursWeekdays}</p>
           <p>{hoursWeekends}</p>
@@ -83,9 +86,10 @@ export function HoursBlock({
 }
 
 export function PhoneBlock({ phone }: { phone: string }) {
+  const t = useTranslations('contact.info')
   return (
     <ContactInfoCard>
-      <InfoBlock label='телефон'>
+      <InfoBlock label={t('phone')}>
         <a
           href={`tel:${phone}`}
           className='text-mocha text-sm hover:text-caramel transition-colors duration-200'
@@ -98,9 +102,10 @@ export function PhoneBlock({ phone }: { phone: string }) {
 }
 
 export function SocialsBlock() {
+  const t = useTranslations('contact.info')
   return (
     <ContactInfoCard>
-      <InfoBlock label='соцмережі'>
+      <InfoBlock label={t('socials')}>
         <SocialIcons />
       </InfoBlock>
     </ContactInfoCard>

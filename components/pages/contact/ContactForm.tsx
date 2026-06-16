@@ -1,8 +1,8 @@
 'use client'
 
-import { TOPICS } from '@/constants/contactForm'
 import { useForm } from 'react-hook-form'
 import { ContactSuccess } from './ContactSuccess'
+import { useTranslations } from 'next-intl'
 
 type ContactFormData = {
   name: string
@@ -10,6 +10,8 @@ type ContactFormData = {
   topic: 'order' | 'question' | 'cooperation' | 'other'
   message: string
 }
+
+const TOPIC_VALUES = ['order', 'question', 'cooperation', 'other'] as const
 
 const inputClassName = `w-full font-jost text-sm text-mocha bg-transparent
     border border-caramel/20 hover:border-caramel/85 focus:border-caramel
@@ -26,6 +28,8 @@ const submitButtonClassName = `w-full font-jost text-[11px] tracking-[0.2em] upp
 const errorClassName = 'font-jost text-[11px] text-red-400/80 mt-1.5 ml-1'
 
 export function ContactForm() {
+  const t = useTranslations('contact.contactForm')
+
   const {
     register,
     handleSubmit,
@@ -51,10 +55,10 @@ export function ContactForm() {
       <div>
         <input
           {...register('name', {
-            required: "Введіть ваше ім'я",
-            minLength: { value: 2, message: 'Мінімум 2 символи' },
+            required: t('name.required'),
+            minLength: { value: 2, message: t('name.minLength') },
           })}
-          placeholder="Ваше ім'я"
+          placeholder={t('name.placeholder')}
           className={inputClassName}
         />
         {errors.name && <p className={errorClassName}>{errors.name.message}</p>}
@@ -63,14 +67,14 @@ export function ContactForm() {
       <div>
         <input
           {...register('email', {
-            required: 'Введіть email',
+            required: t('email.required'),
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'Невірний формат email',
+              message: t('email.invalid'),
             },
           })}
           type='email'
-          placeholder='Email'
+          placeholder={t('email.placeholder')}
           className={inputClassName}
         />
         {errors.email && (
@@ -80,7 +84,7 @@ export function ContactForm() {
 
       <div>
         <select
-          {...register('topic', { required: 'Оберіть тему' })}
+          {...register('topic', { required: t('topic.required') })}
           className={`${inputClassName} cursor-pointer`}
           defaultValue=''
         >
@@ -88,14 +92,14 @@ export function ContactForm() {
             value=''
             disabled
           >
-            Тема звернення
+            {t('topic.placeholder')}
           </option>
-          {TOPICS.map(({ value, label }) => (
+          {TOPIC_VALUES.map((value) => (
             <option
               key={value}
               value={value}
             >
-              {label}
+              {t(`topic.options.${value}`)}
             </option>
           ))}
         </select>
@@ -107,10 +111,10 @@ export function ContactForm() {
       <div>
         <textarea
           {...register('message', {
-            required: 'Введіть повідомлення',
-            minLength: { value: 10, message: 'Мінімум 10 символів' },
+            required: t('message.required'),
+            minLength: { value: 10, message: t('message.minLength') },
           })}
-          placeholder='Ваше повідомлення'
+          placeholder={t('message.placeholder')}
           rows={5}
           className={`${inputClassName} resize-none`}
         />
@@ -124,7 +128,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         className={submitButtonClassName}
       >
-        {isSubmitting ? 'Надсилання...' : 'Надіслати'}
+        {isSubmitting ? t('submitting') : t('submit')}
       </button>
     </form>
   )

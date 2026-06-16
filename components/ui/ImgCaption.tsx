@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 interface ImgCaptionProps {
   title: string
   titleSize?: string
@@ -15,6 +17,8 @@ export function ImgCaption({
   price,
   availableForSale,
 }: ImgCaptionProps) {
+  const t = useTranslations('product')
+
   const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)'
 
   return (
@@ -38,7 +42,7 @@ export function ImgCaption({
           className='inline-block font-cormorant text-amber-200 text-base sm:text-lg tracking-wide'
           style={{ textShadow }}
         >
-          від {price} ₴
+          {t('priceFrom', { price })}
         </span>
       )}
       {!availableForSale && (
@@ -46,7 +50,7 @@ export function ImgCaption({
           className='font-jost text-[9px] tracking-[0.15em] uppercase
               text-mocha/30'
         >
-          Немає в наявності
+          {t('unavailable')}
         </span>
       )}
     </div>

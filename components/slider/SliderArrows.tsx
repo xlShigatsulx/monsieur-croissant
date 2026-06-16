@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { NavigationDirection } from '@/types/slider'
+import { useTranslations } from 'next-intl'
 
 interface SliderArrowsProps {
   onNavigate: (dir: NavigationDirection) => void
@@ -8,12 +9,15 @@ interface SliderArrowsProps {
 export const SliderArrows = memo(function SliderArrows({
   onNavigate,
 }: SliderArrowsProps) {
+  const t = useTranslations('slider')
+
   const buttonClassNames =
     'absolute top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-transform duration-200 hover:scale-110 active:scale-95 cursor-pointer'
+
   return (
     <>
       <button
-        aria-label='Попередній слайд'
+        aria-label={t('prev')}
         onClick={() => onNavigate('prev')}
         className={`${buttonClassNames} left-3 sm:left-4 hidden sm:flex`}
       >
@@ -21,7 +25,7 @@ export const SliderArrows = memo(function SliderArrows({
       </button>
 
       <button
-        aria-label='Наступний слайд'
+        aria-label={t('next')}
         onClick={() => onNavigate('next')}
         className={`${buttonClassNames} right-3 sm:right-4 hidden sm:flex`}
       >

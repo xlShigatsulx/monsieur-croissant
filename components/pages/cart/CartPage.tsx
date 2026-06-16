@@ -6,8 +6,11 @@ import { CartItem } from './CartItem'
 import { CartSummary } from './CartSummary'
 import { CartEmpty } from './CartEmpty'
 import { CartSkeleton } from './CartSkeleton'
+import { useTranslations } from 'next-intl'
 
 export function CartPage() {
+  const t = useTranslations('cart')
+
   const { cart, cartLoading, cartId } = useCartData()
   const { optimisticLines } = useCartOptimistic()
 
@@ -28,6 +31,7 @@ export function CartPage() {
   const summaryLinesRef = useRef<
     { lineId: string; quantity: number; unitPrice: number }[]
   >([])
+
   const summaryLines = useMemo(() => {
     const next = lines.map((line) => {
       const variant = line.merchandise
@@ -59,7 +63,7 @@ export function CartPage() {
     <div className='min-h-screen'>
       <div className='max-w-4xl mx-auto px-4 py-8'>
         <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-6'>
-          Кошик
+          {t('title')}
         </h1>
 
         <div className='flex flex-col lg:flex-row gap-12'>

@@ -3,15 +3,17 @@
 import Link from 'next/link'
 import { useCartData } from '@/context/CartContext'
 import { pageConfig } from '@/config/pages.config'
+import { useTranslations } from 'next-intl'
 
 export function CartIcon() {
+  const t = useTranslations('cart')
   const { cart } = useCartData()
   const totalQuantity = cart?.totalQuantity ?? 0
 
   return (
     <Link
       href={pageConfig.cart}
-      aria-label='Кошик'
+      aria-label={t('cartLinkLabel')}
       className='relative w-8 h-8 flex items-center justify-center
         text-mocha/70 hover:text-caramel transition-colors duration-300'
     >

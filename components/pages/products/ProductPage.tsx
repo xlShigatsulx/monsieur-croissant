@@ -7,12 +7,15 @@ import { ProductInfo } from './ProductInfo'
 import { ProductPageSkeleton } from './ProductPageSkeleton'
 import { pageConfig } from '@/config/pages.config'
 import { NotFound } from '@/components/ui/NotFound'
+import { useTranslations } from 'next-intl'
 
 interface ProductPageProps {
   handle: string
 }
 
 export function ProductPage({ handle }: ProductPageProps) {
+  const t = useTranslations('product')
+
   const { data, loading } = useGetProductByHandleQuery({
     variables: { handle },
     fetchPolicy: 'cache-first',
@@ -24,9 +27,9 @@ export function ProductPage({ handle }: ProductPageProps) {
   if (!product)
     return (
       <NotFound
-        title='Товар не знайдено'
+        title={t('notFound.title')}
         backHref={pageConfig.products}
-        backLabel='До асортименту'
+        backLabel={t('notFound.link')}
       />
     )
 
@@ -41,7 +44,7 @@ export function ProductPage({ handle }: ProductPageProps) {
             href={pageConfig.products}
             className='hover:text-caramel transition-colors duration-300'
           >
-            Всі вироби
+            {t('breadcrumb')}
           </Link>
           {' / '}
           {product.title}

@@ -4,10 +4,13 @@ import { useGetProductsQuery } from '@/graphql/generated/graphql'
 import { ProductsSkeleton } from './ProductsSkeleton'
 import { Card } from '@/components/ui/Card'
 import { pageConfig } from '@/config/pages.config'
+import { useTranslations } from 'next-intl'
 
 const PRODUCTS_COUNT = 12
 
 export function ProductsPage() {
+  const t = useTranslations('products')
+
   const { data, loading, fetchMore } = useGetProductsQuery({
     variables: { first: PRODUCTS_COUNT },
     fetchPolicy: 'cache-first',
@@ -32,7 +35,7 @@ export function ProductsPage() {
     return (
       <div className='text-center py-24'>
         <p className='font-cormorant italic text-3xl text-mocha/30 font-light'>
-          Товарів немає
+          {t('empty')}
         </p>
       </div>
     )
@@ -41,7 +44,7 @@ export function ProductsPage() {
     <div className='min-h-screen'>
       <div className='max-w-6xl mx-auto p-4 mb-16'>
         <h1 className='font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-12'>
-          Всі вироби
+          {t('title')}
         </h1>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
@@ -69,7 +72,7 @@ export function ProductsPage() {
                     hover:bg-caramel/10 rounded-full px-10 py-3
                     transition-all duration-300 cursor-pointer'
             >
-              Завантажити ще
+              {t('loadMore')}
             </button>
           </div>
         )}

@@ -4,6 +4,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { useCartActions, useCartData } from '@/context/CartContext'
 import { VariantSelector } from './VariantSelector'
 import { formatPrice } from '@/lib/utils/format'
+import { useTranslations } from 'next-intl'
 
 interface Variant {
   id: string
@@ -30,6 +31,8 @@ export function ProductInfo({
   description,
   variants,
 }: ProductInfoProps) {
+  const t = useTranslations('product')
+
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(
     variants[0]?.id ?? null
   )
@@ -67,11 +70,11 @@ export function ProductInfo({
   }, [selectedVariantId, quantity, addToCart])
 
   const buttonLabel = useMemo(() => {
-    if (added) return 'Додано ✓'
-    if (isLoading) return 'Додаємо...'
-    if (!selectedVariant?.availableForSale) return 'Немає в наявності'
-    return 'Додати в кошик'
-  }, [added, isLoading, selectedVariant?.availableForSale])
+    if (added) return t('cart.added')
+    if (isLoading) return t('cart.adding')
+    if (!selectedVariant?.availableForSale) return t('cart.unavailable')
+    return t('cart.add')
+  }, [added, isLoading, selectedVariant?.availableForSale, t])
 
   return (
     <div className='flex flex-col gap-6'>
