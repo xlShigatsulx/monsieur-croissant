@@ -6,9 +6,9 @@ const LOCALE_MAP: Record<string, string> = {
 export function formatPrice(
   amount: number,
   currencyCode: string,
-  locale: string = 'en'
+  locale: string = 'uk'
 ): string {
-  return new Intl.NumberFormat(LOCALE_MAP[locale], {
+  return new Intl.NumberFormat(LOCALE_MAP[locale] ?? 'uk-UA', {
     style: 'currency',
     currency: currencyCode,
   }).format(amount)
