@@ -1,0 +1,108 @@
+{
+  "collections": {
+    "title": "Catalog",
+    "subtitle": "Choose a category"
+  },
+  "collection": {
+    "breadcrumb": "Catalog",
+    "loadMore": "Load more",
+    "notFound": {
+      "title": "Collection not found",
+      "link": "Back to catalog"
+    },
+    "empty": {
+      "title": "No products",
+      "subtitle": "This category is currently empty"
+    }
+  },
+  "products": {
+    "title": "All products",
+    "empty": "No products",
+    "loadMore": "Load more"
+  },
+  "product": {
+    "notFound": {
+      "title": "Product not found",
+      "link": "Back to catalog"
+    },
+    "breadcrumb": "All products",
+    "cart": {
+      "added": "Added ✓",
+      "adding": "Adding...",
+      "unavailable": "Out of stock",
+      "add": "Add to cart"
+    },
+    "priceFrom": "from {price} uah",
+    "unavailable": "Out of stock"
+  },
+  "cart": {
+    "title": "Cart",
+    "cartLinkLabel": "Cart",
+    "cartItem": {
+      "removeBtn": "Remove"
+    },
+    "cartEmpty": {
+      "title": "Your cart is empty",
+      "subtitle": "Add something delicious to your cart",
+      "link": "To Collections"
+    },
+    "cartSummary": {
+      "title": "Order Summary",
+      "total": "Total",
+      "checkoutBtn": "Proceed to Checkout",
+      "continueShopping": "Continue Shopping"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us",
+    "info": {
+      "address": "address",
+      "phone": "phone",
+      "hours": "working hours",
+      "socials": "social media"
+    },
+    "contactForm": {
+      "title": "Leave a message",
+      "name": {
+        "placeholder": "Your name",
+        "required": "Enter your name",
+        "minLength": "Minimum 2 characters"
+      },
+      "email": {
+        "placeholder": "Email",
+        "required": "Enter email",
+        "invalid": "Invalid email format"
+      },
+      "topic": {
+        "placeholder": "Subject",
+        "required": "Select a topic",
+        "options": {
+          "order": "Bakery order",
+          "question": "Question",
+          "cooperation": "Cooperation",
+          "other": "Other"
+        }
+      },
+      "message": {
+        "placeholder": "Your message",
+        "required": "Enter a message",
+        "minLength": "Minimum 10 characters"
+      },
+      "submit": "Send",
+      "submitting": "Sending..."
+    },
+    "success": {
+      "title": "Thank you for reaching out",
+      "subtitle": "We will get back to you shortly",
+      "reset": "Send another message"
+    }
+  },
+  "slider": {
+    "prev": "Previous slide",
+    "next": "Next slide",
+    "dot": "Slide {index}: {title}",
+    "dots": "Slide navigation",
+    "cta": "Try now"
+  }
+}

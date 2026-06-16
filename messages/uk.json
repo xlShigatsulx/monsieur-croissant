@@ -1,0 +1,108 @@
+{
+  "collections": {
+    "title": "Асортимент",
+    "subtitle": "Оберіть категорію"
+  },
+  "collection": {
+    "breadcrumb": "Асортимент",
+    "loadMore": "Завантажити ще",
+    "notFound": {
+      "title": "Категорію не знайдено",
+      "link": "Повернутися до асортименту"
+    },
+    "empty": {
+      "title": "Товарів немає",
+      "subtitle": "Ця категорія поки що порожня"
+    }
+  },
+  "products": {
+    "title": "Всі вироби",
+    "empty": "Товарів немає",
+    "loadMore": "Завантажити ще"
+  },
+  "product": {
+    "notFound": {
+      "title": "Товар не знайдено",
+      "link": "До асортименту"
+    },
+    "breadcrumb": "Всі вироби",
+    "cart": {
+      "added": "Додано ✓",
+      "adding": "Додаємо...",
+      "unavailable": "Немає в наявності",
+      "add": "Додати в кошик"
+    },
+    "priceFrom": "від {price} ₴",
+    "unavailable": "Немає в наявності"
+  },
+  "cart": {
+    "title": "Кошик",
+    "cartLinkLabel": "Кошик",
+    "cartItem": {
+      "removeBtn": "Видалити"
+    },
+    "cartEmpty": {
+      "title": "Ваш кошик порожній",
+      "subtitle": "Додайте щось смачне до кошика",
+      "link": "До асортименту"
+    },
+    "cartSummary": {
+      "title": "Підсумок замовлення",
+      "total": "Всього",
+      "checkoutBtn": "Оформити замовлення",
+      "continueShopping": "Продовжити покупки"
+    }
+  },
+  "contact": {
+    "title": "Контакти",
+    "subtitle": "зв'язатися з нами",
+    "info": {
+      "address": "адреса",
+      "phone": "телефон",
+      "hours": "години роботи",
+      "socials": "соцмережі"
+    },
+    "contactForm": {
+      "title": "Залишити повідомлення",
+      "name": {
+        "placeholder": "Ваше ім'я",
+        "required": "Введіть ваше ім'я",
+        "minLength": "Мінімум 2 символи"
+      },
+      "email": {
+        "placeholder": "Email",
+        "required": "Введіть email",
+        "invalid": "Невірний формат email"
+      },
+      "topic": {
+        "placeholder": "Тема звернення",
+        "required": "Оберіть тему",
+        "options": {
+          "order": "Замовлення випічки",
+          "question": "Питання",
+          "cooperation": "Співпраця",
+          "other": "Інше"
+        }
+      },
+      "message": {
+        "placeholder": "Ваше повідомлення",
+        "required": "Введіть повідомлення",
+        "minLength": "Мінімум 10 символів"
+      },
+      "submit": "Надіслати",
+      "submitting": "Надсилання..."
+    },
+    "success": {
+      "title": "Дякуємо за звернення",
+      "subtitle": "Ми зв'яжемося з вами найближчим часом",
+      "reset": "Надіслати ще одне"
+    }
+  },
+  "slider": {
+    "prev": "Попередній слайд",
+    "next": "Наступний слайд",
+    "dot": "Слайд {index}: {title}",
+    "dots": "Навігація по слайдах",
+    "cta": "Спробувати"
+  }
+}
