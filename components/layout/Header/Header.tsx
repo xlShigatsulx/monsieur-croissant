@@ -8,6 +8,7 @@ import { NavLogo } from '../Navigation/NavLogo'
 import { NavMenu } from '../Navigation/NavMenu'
 import { CartIcon } from '@/components/pages/cart/CartIcon'
 import { useTranslations } from 'next-intl'
+import { LocaleSwitcher } from './LocaleSwitcher'
 
 export function Header() {
   const t = useTranslations('nav')
@@ -35,6 +36,7 @@ export function Header() {
           </nav>
 
           <div className='hidden md:flex items-center gap-4'>
+            <LocaleSwitcher />
             <CartIcon />
             <NavAuth
               isAuthenticated={isAuthenticated}
@@ -44,6 +46,7 @@ export function Header() {
           </div>
 
           <div className='flex md:hidden items-center gap-2'>
+            <LocaleSwitcher />
             <CartIcon />
 
             <button

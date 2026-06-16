@@ -1,7 +1,6 @@
 import { NavLogo } from './NavLogo'
 import { NavMenu } from './NavMenu'
 import { NavAuth } from './NavAuth'
-import { CartIcon } from '@/components/pages/cart/CartIcon'
 import { useTranslations } from 'next-intl'
 
 interface MobileMenuProps {

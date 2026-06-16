@@ -4,7 +4,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { useCartActions, useCartData } from '@/context/CartContext'
 import { VariantSelector } from './VariantSelector'
 import { formatPrice } from '@/lib/utils/format'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface Variant {
   id: string
@@ -31,6 +31,7 @@ export function ProductInfo({
   description,
   variants,
 }: ProductInfoProps) {
+  const locale = useLocale()
   const t = useTranslations('product')
 
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(
@@ -50,9 +51,10 @@ export function ProductInfo({
     if (!selectedVariant) return null
     return formatPrice(
       Number(selectedVariant.price.amount),
-      selectedVariant.price.currencyCode
+      selectedVariant.price.currencyCode,
+      locale
     )
-  }, [selectedVariant])
+  }, [selectedVariant, locale])
 
   const handleDecrement = useCallback(() => {
     setQuantity((q) => Math.max(1, q - 1))
