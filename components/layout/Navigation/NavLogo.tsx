@@ -2,13 +2,10 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useGetShopQuery } from '@/graphql/generated/graphql'
+import { useShop } from '@/hooks/useShop'
 
 export function NavLogo() {
-  const { data } = useGetShopQuery()
-
-  const logo = data?.shop?.brand?.logo?.image
-  const shopName = data?.shop?.name ?? 'Месьє Круасан'
+  const { shopName, logo } = useShop()
 
   return (
     <Link
@@ -25,14 +22,12 @@ export function NavLogo() {
           loading='eager'
         />
       ) : (
-        <>
-          <span
-            className='font-cormorant italic text-mocha text-2xl sm:text-3xl font-light
-            tracking-wide leading-none group-hover:text-caramel transition-colors duration-300'
-          >
-            {shopName}
-          </span>
-        </>
+        <span
+          className='font-cormorant italic text-mocha text-2xl sm:text-3xl font-light
+          tracking-wide leading-none group-hover:text-caramel transition-colors duration-300'
+        >
+          {shopName}
+        </span>
       )}
     </Link>
   )

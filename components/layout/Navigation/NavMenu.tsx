@@ -2,6 +2,7 @@
 
 import { GetMenuQuery, useGetMenuQuery } from '@/graphql/generated/graphql'
 import { NavLink } from './NavLink'
+import { useMenu } from '@/hooks/useMenu'
 
 type MenuItem = NonNullable<GetMenuQuery['menu']>['items'][number]
 
@@ -16,13 +17,9 @@ export function NavMenu({
   onItemClick,
   className,
 }: NavMenuProps) {
-  const { data, loading } = useGetMenuQuery({
-    variables: { handle },
-  })
+  const { items, loading } = useMenu(handle)
 
   if (loading) return <NavMenuSkeleton />
-
-  const items = data?.menu?.items ?? []
 
   return (
     <nav className={className}>

@@ -3,28 +3,26 @@
 import { NavMenu } from '../Navigation/NavMenu'
 import { FooterBrand } from './FooterBrand'
 import { FooterBottom } from './FooterBottom'
-import { useGetShopQuery } from '@/graphql/generated/graphql'
+import { useShop } from '@/hooks/useShop'
 
 export function Footer() {
-  const { data } = useGetShopQuery()
+  const { shopName, description } = useShop()
 
   return (
     <footer className='w-full bg-cream border-t border-caramel/15'>
       <div className='max-w-6xl mx-auto px-4 py-4'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
           <FooterBrand
-            shopName={data?.shop?.name ?? 'Месьє Круасан'}
-            description={data?.shop?.description ?? ''}
+            shopName={shopName}
+            description={description}
           />
-
           <NavMenu
             handle='footer'
             className='flex flex-col gap-4 text-sm'
           />
         </div>
       </div>
-
-      <FooterBottom shopName={data?.shop?.name ?? 'Месьє Круасан'} />
+      <FooterBottom shopName={shopName} />
     </footer>
   )
 }
