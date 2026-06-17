@@ -1,4 +1,4 @@
-import { useGetMenuQuery } from '@/graphql/generated/graphql'
+import { useMenu } from '@/hooks/useMenu'
 import Link from 'next/link'
 
 const InstagramIcon = (props: any) => (
@@ -52,10 +52,8 @@ const SOCIAL_ICONS: Record<string, React.ComponentType<any>> = {
   instagram: InstagramIcon,
   facebook: FacebookIcon,
 }
-
 export function SocialIcons() {
-  const { data } = useGetMenuQuery({ variables: { handle: 'social-menu' } })
-  const items = data?.menu?.items ?? []
+  const { items } = useMenu('social-menu')
 
   return (
     <div className='flex items-center gap-3'>
