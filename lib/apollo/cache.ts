@@ -19,7 +19,7 @@ export const cache = new InMemoryCache({
       keyFields: ['id'],
       fields: {
         products: {
-          keyArgs: false,
+          keyArgs: ['language'],
           merge(existing, incoming) {
             if (!existing) return incoming
             return {
@@ -34,7 +34,7 @@ export const cache = new InMemoryCache({
     Query: {
       fields: {
         products: {
-          keyArgs: false,
+          keyArgs: ['language'],
           merge(existing, incoming) {
             if (!existing) return incoming
             return {
@@ -44,7 +44,7 @@ export const cache = new InMemoryCache({
           },
         },
         collections: {
-          keyArgs: false,
+          keyArgs: ['language'],
           merge(existing, incoming) {
             if (!existing) return incoming
             return {
@@ -54,7 +54,7 @@ export const cache = new InMemoryCache({
           },
         },
         search: {
-          keyArgs: ['query'],
+          keyArgs: ['query', 'language'],
           merge(existing, incoming) {
             if (!existing) return incoming
             return {
@@ -62,6 +62,15 @@ export const cache = new InMemoryCache({
               edges: [...existing.edges, ...incoming.edges],
             }
           },
+        },
+        menu: {
+          keyArgs: ['handle', 'language'],
+        },
+        product: {
+          keyArgs: ['handle', 'language'],
+        },
+        collection: {
+          keyArgs: ['handle', 'language'],
         },
       },
     },
