@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useGetProductByHandleQuery } from '@/graphql/generated/graphql'
+import { useProductByHandle } from '@/hooks/useProductByHandle'
 import { ProductGallery } from './ProductGallery'
 import { ProductInfo } from './ProductInfo'
 import { ProductPageSkeleton } from './ProductPageSkeleton'
@@ -16,14 +16,10 @@ interface ProductPageProps {
 export function ProductPage({ handle }: ProductPageProps) {
   const t = useTranslations('product')
 
-  const { data, loading } = useGetProductByHandleQuery({
-    variables: { handle },
-    fetchPolicy: 'cache-first',
-  })
+  const { product, images, variants, loading } = useProductByHandle(handle)
 
   if (loading) return <ProductPageSkeleton />
 
-  const product = data?.product
   if (!product)
     return (
       <NotFound
@@ -32,9 +28,6 @@ export function ProductPage({ handle }: ProductPageProps) {
         backLabel={t('notFound.link')}
       />
     )
-
-  const images = product.images.edges.map((edge) => edge.node)
-  const variants = product.variants.edges.map((edge) => edge.node)
 
   return (
     <div className='min-h-screen'>
@@ -57,7 +50,6 @@ export function ProductPage({ handle }: ProductPageProps) {
               title={product.title}
             />
           </div>
-
           <div className='lg:w-1/2'>
             <ProductInfo
               title={product.title}
