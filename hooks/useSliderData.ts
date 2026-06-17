@@ -1,29 +1,23 @@
 import { useMemo } from 'react'
-import { useGetCollectionByHandleQuery } from '@/graphql/generated/graphql'
 import type { Slide } from '@/types/slider'
+import { useCollectionByHandle } from './useCollectionByHandle'
 
 export function useSliderData() {
-  const { data, loading, error } = useGetCollectionByHandleQuery({
-    variables: { handle: 'hero-slider', first: 5 },
-    fetchPolicy: 'cache-first',
-  })
+  const { products, loading, error } = useCollectionByHandle('hero-slider', 5)
 
   const slides: Slide[] = useMemo(() => {
-    if (!data?.collection?.products?.edges) return []
-
-    return data.collection.products.edges.map((product) => ({
-      id: product.node.id,
-      title: product.node.title,
-      description: product.node.description
-        ? product.node.description.replace(/<[^>]*>/g, '')
+    return products.map((product) => ({
+      id: product.id,
+      title: product.title,
+      description: product.description
+        ? product.description.replace(/<[^>]*>/g, '')
         : '',
-      imageUrl: product.node.images?.edges[0]?.node.url ?? '',
-      altText:
-        product.node.images?.edges[0]?.node.altText ?? product.node.title,
-      ctaUrl: `/products/${product.node.handle}`,
-      price: product.node.variants?.edges[0]?.node.price.amount,
+      imageUrl: product.images?.edges[0]?.node.url ?? '',
+      altText: product.images?.edges[0]?.node.altText ?? product.title,
+      ctaUrl: `/products/${product.handle}`,
+      price: product.variants?.edges[0]?.node.price.amount,
     }))
-  }, [data])
+  }, [products])
 
   return { slides, loading, error }
 }
