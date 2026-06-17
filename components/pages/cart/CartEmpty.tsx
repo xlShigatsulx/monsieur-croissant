@@ -6,7 +6,7 @@ export function CartEmpty() {
   const t = useTranslations('cart.cartEmpty')
 
   return (
-    <div className='flex flex-col justify-center items-center text-center m-auto bg-cream'>
+    <div className='min-h-screen flex flex-col justify-center items-center text-center m-auto bg-cream'>
       <h1 className='font-cormorant italic text-3xl text-mocha font-light mb-3'>
         {t('title')}
       </h1>
