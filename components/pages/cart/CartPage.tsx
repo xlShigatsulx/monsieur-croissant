@@ -7,6 +7,7 @@ import { CartSummary } from './CartSummary'
 import { CartEmpty } from './CartEmpty'
 import { CartSkeleton } from './CartSkeleton'
 import { useTranslations } from 'next-intl'
+import { ClearCartButton } from './ClearCartButton'
 
 export function CartPage() {
   const t = useTranslations('cart')
@@ -88,11 +89,16 @@ export function CartPage() {
           </div>
 
           <div className='lg:w-72'>
-            <CartSummary
-              lines={summaryLines}
-              currencyCode={cart?.cost.totalAmount.currencyCode ?? 'UAH'}
-              checkoutUrl={cart?.checkoutUrl ?? ''}
-            />
+            <div className='lg:sticky lg:top-24'>
+              <CartSummary
+                lines={summaryLines}
+                currencyCode={cart?.cost.totalAmount.currencyCode ?? 'UAH'}
+                checkoutUrl={cart?.checkoutUrl ?? ''}
+              />
+              <div className='mt-4 flex justify-center'>
+                <ClearCartButton />
+              </div>
+            </div>
           </div>
         </div>
       </div>
