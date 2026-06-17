@@ -1,4 +1,5 @@
 import { useGetShopContactQuery } from '@/graphql/generated/graphql'
+import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery'
 
 export type ContactData = {
   address: string
@@ -12,7 +13,12 @@ export function useContactData(): {
   data: ContactData | null
   loading: boolean
 } {
-  const { data, loading } = useGetShopContactQuery()
+  const language = useShopifyLocale()
+
+  const { data, loading } = useGetShopContactQuery({
+    variables: { language },
+    fetchPolicy: 'cache-and-network',
+  })
 
   if (loading || !data) return { data: null, loading }
 
