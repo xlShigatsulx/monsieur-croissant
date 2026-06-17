@@ -39,6 +39,7 @@ interface CartActionsContextType {
   addToCart: (variantId: string, quantity?: number) => Promise<void>
   updateItem: (lineId: string, quantity: number, unitPrice: number) => void
   removeItem: (lineId: string) => Promise<void>
+  clearCart: () => Promise<void>
 }
 
 interface CartOptimisticContextType {
@@ -191,6 +192,38 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [cartId, removeLines, language]
   )
 
+  const clearCart = useCallback(async () => {
+    if (!cartId || !data?.cart) return
+
+    const lineIds = data.cart.lines.edges.map((edge) => edge.node.id)
+    if (lineIds.length === 0) return
+
+    Object.values(debounceTimers.current).forEach(clearTimeout)
+    debounceTimers.current = {}
+    pendingQuantities.current = {}
+
+    setOptimisticLines((prev) => {
+      const next = { ...prev }
+      lineIds.forEach((id) => {
+        next[id] = { lineId: id, quantity: 0, price: 0 }
+      })
+      return next
+    })
+
+    try {
+      await removeLines({ variables: { cartId, lineIds, language } })
+    } catch (err) {
+      console.error('Error clearing cart:', err)
+      throw err
+    } finally {
+      setOptimisticLines((prev) => {
+        const next = { ...prev }
+        lineIds.forEach((id) => delete next[id])
+        return next
+      })
+    }
+  }, [cartId, data?.cart, removeLines, language])
+
   useEffect(() => {
     return () => {
       Object.values(debounceTimers.current).forEach(clearTimeout)
@@ -212,8 +245,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       addToCart,
       updateItem,
       removeItem,
+      clearCart,
     }),
-    [addToCart, updateItem, removeItem]
+    [addToCart, updateItem, removeItem, clearCart]
   )
 
   const optimisticValue = useMemo<CartOptimisticContextType>(
