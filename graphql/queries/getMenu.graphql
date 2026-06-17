@@ -1,4 +1,5 @@
-query GetMenu($handle: String!) {
+query GetMenu($handle: String!, $language: LanguageCode!)
+@inContext(language: $language) {
   menu(handle: $handle) {
     id
     title

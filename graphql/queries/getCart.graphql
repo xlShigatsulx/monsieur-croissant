@@ -1,4 +1,5 @@
-query GetCart($cartId: ID!) {
+query GetCart($cartId: ID!, $language: LanguageCode!)
+@inContext(language: $language) {
   cart(id: $cartId) {
     ...CartFields
   }

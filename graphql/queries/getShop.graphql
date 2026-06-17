@@ -1,4 +1,4 @@
-query GetShop {
+query GetShop($language: LanguageCode!) @inContext(language: $language) {
   shop {
     name
     description

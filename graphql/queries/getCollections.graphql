@@ -1,4 +1,5 @@
-query GetCollections($first: Int!, $after: String) {
+query GetCollections($first: Int!, $after: String, $language: LanguageCode!)
+@inContext(language: $language) {
   collections(first: $first, after: $after) {
     edges {
       node {

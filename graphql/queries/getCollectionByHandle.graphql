@@ -1,4 +1,9 @@
-query GetCollectionByHandle($handle: String!, $first: Int!, $after: String) {
+query GetCollectionByHandle(
+  $handle: String!
+  $first: Int!
+  $after: String
+  $language: LanguageCode!
+) @inContext(language: $language) {
   collection(handle: $handle) {
     ...CollectionFields
     products(first: $first, after: $after) {
