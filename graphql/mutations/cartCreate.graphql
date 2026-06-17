@@ -1,4 +1,5 @@
-mutation CartCreate($input: CartInput!) {
+mutation CartCreate($input: CartInput!, $language: LanguageCode)
+@inContext(language: $language) {
   cartCreate(input: $input) {
     cart {
       ...CartFields

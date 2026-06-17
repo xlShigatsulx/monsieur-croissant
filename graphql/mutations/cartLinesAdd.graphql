@@ -1,4 +1,8 @@
-mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+mutation CartLinesAdd(
+  $cartId: ID!
+  $lines: [CartLineInput!]!
+  $language: LanguageCode
+) @inContext(language: $language) {
   cartLinesAdd(cartId: $cartId, lines: $lines) {
     cart {
       ...CartFields

@@ -1,4 +1,8 @@
-mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+mutation CartLinesRemove(
+  $cartId: ID!
+  $lineIds: [ID!]!
+  $language: LanguageCode
+) @inContext(language: $language) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
     cart {
       ...CartFields
