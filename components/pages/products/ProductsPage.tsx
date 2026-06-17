@@ -1,35 +1,20 @@
 'use client'
 
-import { useGetProductsQuery } from '@/graphql/generated/graphql'
 import { ProductsSkeleton } from './ProductsSkeleton'
 import { Card } from '@/components/ui/Card'
 import { pageConfig } from '@/config/pages.config'
 import { useTranslations } from 'next-intl'
+import { useProducts } from '@/hooks/useProducts'
 
 const PRODUCTS_COUNT = 12
 
 export function ProductsPage() {
   const t = useTranslations('products')
 
-  const { data, loading, fetchMore } = useGetProductsQuery({
-    variables: { first: PRODUCTS_COUNT },
-    fetchPolicy: 'cache-first',
-  })
-
-  const products = data?.products?.edges?.map((edge) => edge.node) ?? []
-  const pageInfo = data?.products?.pageInfo
+  const { products, loading, hasNextPage, loadMore } =
+    useProducts(PRODUCTS_COUNT)
 
   if (loading) return <ProductsSkeleton />
-
-  const loadMore = () => {
-    if (!pageInfo?.hasNextPage) return
-    fetchMore({
-      variables: {
-        first: PRODUCTS_COUNT,
-        after: pageInfo.endCursor,
-      },
-    })
-  }
 
   if (products.length === 0)
     return (
@@ -63,14 +48,11 @@ export function ProductsPage() {
           ))}
         </div>
 
-        {pageInfo?.hasNextPage && (
+        {hasNextPage && (
           <div className='flex justify-center mt-12'>
             <button
               onClick={loadMore}
-              className='font-jost text-[11px] tracking-[0.2em] uppercase
-                    text-caramel border border-caramel/40 hover:border-caramel
-                    hover:bg-caramel/10 rounded-full px-10 py-3
-                    transition-all duration-300 cursor-pointer'
+              className='...'
             >
               {t('loadMore')}
             </button>
