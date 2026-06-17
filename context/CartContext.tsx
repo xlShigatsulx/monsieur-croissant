@@ -18,6 +18,7 @@ import {
   useCartLinesRemoveMutation,
   useGetCartQuery,
 } from '@/graphql/generated/graphql'
+import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery'
 
 const DEBOUNCE_DELAY = 600
 
@@ -55,6 +56,7 @@ const CartOptimisticContext = createContext<
 >(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const language = useShopifyLocale()
   const [cartId, setCartId] = useState<string | null>(null)
   const [optimisticLines, setOptimisticLines] = useState<
     Record<string, OptimisticLine>
@@ -71,7 +73,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const { data, loading: cartLoading } = useGetCartQuery({
-    variables: { cartId: cartId! },
+    variables: { cartId: cartId!, language },
     skip: !cartId,
     fetchPolicy: 'cache-and-network',
   })
@@ -104,7 +106,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           })
         }
       } catch (err) {
-        console.error('Помилка при додаванні в кошик:', err)
+        console.error('Error adding to cart:', err)
         throw err
       }
     },
@@ -136,15 +138,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
             },
           })
         } catch (err) {
-          console.error('Помилка при оновленні кошика:', err)
+          console.error('Error updating the shopping cart:', err)
         } finally {
-          setOptimisticLines((prev) => {
-            const next = { ...prev }
-            delete next[lineId]
-            return next
-          })
-          delete debounceTimers.current[lineId]
-          delete pendingQuantities.current[lineId]
+          if (pendingQuantities.current[lineId] === finalQuantity) {
+            setOptimisticLines((prev) => {
+              const next = { ...prev }
+              delete next[lineId]
+              return next
+            })
+            delete debounceTimers.current[lineId]
+            delete pendingQuantities.current[lineId]
+          }
         }
       }, DEBOUNCE_DELAY)
     },
@@ -169,7 +173,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       try {
         await removeLines({ variables: { cartId, lineIds: [lineId] } })
       } catch (err) {
-        console.error('Помилка при видаленні з кошика:', err)
+        console.error('Error removing from cart:', err)
         throw err
       } finally {
         setOptimisticLines((prev) => {

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useCartActions, useCartOptimistic } from '@/context/CartContext'
 import { pageConfig } from '@/config/pages.config'
 import { formatPrice } from '@/lib/utils/format'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface CartItemProps {
   lineId: string
@@ -92,6 +92,7 @@ const CartItemQuantity = memo(function CartItemQuantity({
   currencyCode: string
 }) {
   const t = useTranslations('cart.cartItem')
+  const locale = useLocale()
 
   const { updateItem, removeItem } = useCartActions()
   const { optimisticLines } = useCartOptimistic()
@@ -101,8 +102,8 @@ const CartItemQuantity = memo(function CartItemQuantity({
     optimistic !== undefined ? optimistic.quantity : quantity
 
   const displayTotal = useMemo(
-    () => formatPrice(unitPrice * displayQuantity, currencyCode),
-    [unitPrice, displayQuantity, currencyCode]
+    () => formatPrice(unitPrice * displayQuantity, currencyCode, locale),
+    [unitPrice, displayQuantity, currencyCode, locale]
   )
 
   const handleDecrement = useCallback(() => {
