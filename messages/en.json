@@ -51,7 +51,13 @@
       "total": "Total",
       "checkoutBtn": "Proceed to Checkout",
       "continueShopping": "Continue Shopping"
-    }
+    },
+    "clearCart": "Clear cart",
+    "clearing": "Clearing...",
+    "clearConfirmTitle": "Clear cart?",
+    "clearConfirmDescription": "All items will be removed from your cart. This action cannot be undone.",
+    "clearConfirmAction": "Yes, clear it",
+    "cancel": "Cancel"
   },
   "contact": {
     "title": "Contact Us",

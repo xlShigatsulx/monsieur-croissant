@@ -51,7 +51,13 @@
       "total": "Всього",
       "checkoutBtn": "Оформити замовлення",
       "continueShopping": "Продовжити покупки"
-    }
+    },
+    "clearCart": "Очистити кошик",
+    "clearing": "Очищення...",
+    "clearConfirmTitle": "Очистити кошик?",
+    "clearConfirmDescription": "Усі товари будуть видалені з кошика. Цю дію неможливо скасувати.",
+    "clearConfirmAction": "Так, очистити",
+    "cancel": "Скасувати"
   },
   "contact": {
     "title": "Контакти",
