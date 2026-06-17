@@ -1,29 +1,14 @@
 'use client'
 
-import { useGetCollectionsQuery } from '@/graphql/generated/graphql'
 import { CollectionsSkeleton } from './CollectionsSkeleton'
-import { useMemo } from 'react'
 import { Card } from '@/components/ui/Card'
 import { pageConfig } from '@/config/pages.config'
 import { useTranslations } from 'next-intl'
-
-const COLLECTIONS_COUNT = 12
+import { useCollections } from '@/hooks/useCollections'
 
 export function CollectionsPage() {
   const t = useTranslations('collections')
-
-  const { data, loading } = useGetCollectionsQuery({
-    variables: { first: COLLECTIONS_COUNT },
-    fetchPolicy: 'cache-first',
-  })
-
-  const visibleCollections = useMemo(() => {
-    if (!data?.collections?.edges) return []
-
-    return data.collections.edges
-      .map((edge) => edge.node)
-      .filter((collection) => collection.metafield?.value !== 'true')
-  }, [data])
+  const { collections, loading } = useCollections()
 
   if (loading) return <CollectionsSkeleton />
 
@@ -36,9 +21,8 @@ export function CollectionsPage() {
         <p className='text-[11px] tracking-[0.2em] uppercase text-mocha/40 mb-5'>
           {t('subtitle')}
         </p>
-
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {visibleCollections.map((collection) => (
+          {collections.map((collection) => (
             <Card
               key={collection.id}
               href={pageConfig.collection(collection.handle)}
