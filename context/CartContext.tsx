@@ -90,6 +90,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           const { data } = await createCart({
             variables: {
               input: { lines: [{ merchandiseId: variantId, quantity }] },
+              language,
             },
           })
           const newCartId = data?.cartCreate?.cart?.id
@@ -102,6 +103,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             variables: {
               cartId,
               lines: [{ merchandiseId: variantId, quantity }],
+              language,
             },
           })
         }
@@ -110,7 +112,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         throw err
       }
     },
-    [cartId, createCart, addLines]
+    [cartId, createCart, addLines, language]
   )
 
   const updateItem = useCallback(
@@ -135,6 +137,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             variables: {
               cartId,
               lines: [{ id: lineId, quantity: finalQuantity }],
+              language,
             },
           })
         } catch (err) {
@@ -152,7 +155,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
       }, DEBOUNCE_DELAY)
     },
-    [cartId, updateLines]
+    [cartId, updateLines, language]
   )
 
   const removeItem = useCallback(
@@ -171,7 +174,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }))
 
       try {
-        await removeLines({ variables: { cartId, lineIds: [lineId] } })
+        await removeLines({
+          variables: { cartId, lineIds: [lineId], language },
+        })
       } catch (err) {
         console.error('Error removing from cart:', err)
         throw err
@@ -183,7 +188,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         })
       }
     },
-    [cartId, removeLines]
+    [cartId, removeLines, language]
   )
 
   useEffect(() => {
