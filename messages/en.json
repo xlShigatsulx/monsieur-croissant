@@ -112,6 +112,9 @@
     "logout": "Logout",
     "login": "Sign in"
   },
+  "footer": {
+    "rights": "© {year} {shopName}. All rights reserved."
+  },
   "notFound": {
     "title": "Page not found",
     "subtitle": "Unfortunately, this page does not exist or has been moved",
