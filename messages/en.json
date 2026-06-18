@@ -121,6 +121,13 @@
   "footer": {
     "rights": "© {year} {shopName}. All rights reserved."
   },
+  "search": {
+    "placeholder": "Search products...",
+    "loading": "Loading...",
+    "noResults": "No results found",
+    "ariaLabel": "Search products",
+    "clear": "Clear search"
+  },
   "notFound": {
     "title": "Page not found",
     "subtitle": "Unfortunately, this page does not exist or has been moved",
