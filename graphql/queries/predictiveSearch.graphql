@@ -1,0 +1,22 @@
+query PredictiveSearch($query: String!, $language: LanguageCode)
+@inContext(language: $language) {
+  predictiveSearch(query: $query, limit: 5, types: [PRODUCT]) {
+    products {
+      id
+      title
+      handle
+      featuredImage {
+        url
+        altText
+        width
+        height
+      }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+}
