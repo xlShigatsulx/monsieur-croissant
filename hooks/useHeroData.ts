@@ -1,19 +1,21 @@
-import { useGetShopHeroQuery } from '@/graphql/generated/graphql'
+import { useGetShopHeroQuery } from '@/graphql/generated/graphql';
+import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery';
 
 type HeroData = {
-  title: string
-  subtitle: string
-  buttonLabel: string
-  buttonUrl: string
-}
+  title: string;
+  subtitle: string;
+  buttonLabel: string;
+  buttonUrl: string;
+};
 
 export function useHeroData(): { data: HeroData | null; loading: boolean } {
-  const { data, loading } = useGetShopHeroQuery()
+  const language = useShopifyLocale();
+  const { data, loading } = useGetShopHeroQuery({ variables: { language } });
 
-  if (loading || !data) return { data: null, loading }
+  if (loading || !data) return { data: null, loading };
 
-  const fields = data.shop.metafields ?? []
-  const get = (key: string) => fields.find((f) => f?.key === key)?.value ?? ''
+  const fields = data.shop.metafields ?? [];
+  const get = (key: string) => fields.find((f) => f?.key === key)?.value ?? '';
 
   return {
     loading,
@@ -23,5 +25,5 @@ export function useHeroData(): { data: HeroData | null; loading: boolean } {
       buttonLabel: get('button_label'),
       buttonUrl: get('button_url'),
     },
-  }
+  };
 }
