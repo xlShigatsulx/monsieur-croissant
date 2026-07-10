@@ -1,14 +1,14 @@
-import { NavLogo } from './NavLogo'
-import { NavMenu } from './NavMenu'
-import { NavAuth } from './NavAuth'
-import { useTranslations } from 'next-intl'
+import { NavLogo } from './NavLogo';
+import { NavMenu } from './NavMenu';
+import { NavAuth } from './NavAuth';
+import { useTranslations } from 'next-intl';
 
 interface MobileMenuProps {
-  isOpen: boolean
-  isAuthenticated: boolean
-  onClose: () => void
-  onSignIn: () => Promise<void>
-  onLogout: () => void
+  isOpen: boolean;
+  isAuthenticated: boolean;
+  onClose: () => void;
+  onSignIn: () => Promise<void>;
+  onLogout: () => void;
 }
 
 export function MobileMenu({
@@ -18,7 +18,7 @@ export function MobileMenu({
   onSignIn,
   onLogout,
 }: MobileMenuProps) {
-  const t = useTranslations('nav')
+  const t = useTranslations('nav');
   return (
     <>
       <div
@@ -34,31 +34,28 @@ export function MobileMenu({
           transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <div className='flex items-center justify-between px-6 h-16 sm:h-20'>
+        <div className="flex items-center justify-between px-6 h-16 sm:h-20">
           <NavLogo />
 
           <button
             onClick={onClose}
             aria-label={t('closeMenu')}
-            className='w-8 h-8 flex items-center justify-center
-                text-mocha/50 hover:text-caramel transition-colors duration-200 cursor-pointer'
+            className="w-8 h-8 flex items-center justify-center
+                text-mocha/50 hover:text-caramel transition-colors duration-200 cursor-pointer"
           >
             <CloseIcon />
           </button>
         </div>
 
-        <div className='h-px bg-caramel/15 mx-6' />
+        <div className="h-px bg-caramel/15 mx-6" />
 
-        <nav className='flex flex-col gap-6 px-6 py-4'>
-          <NavMenu
-            className='flex flex-col gap-3'
-            onItemClick={onClose}
-          />
+        <nav className="flex flex-col gap-6 px-6 py-4">
+          <NavMenu className="flex flex-col gap-3" onItemClick={onClose} />
         </nav>
 
-        <div className='h-px bg-caramel/15 mx-6' />
+        <div className="h-px bg-caramel/15 mx-6" />
 
-        <div className='px-6 py-4'>
+        <div className="px-6 py-4">
           <NavAuth
             isAuthenticated={isAuthenticated}
             onSignIn={onSignIn}
@@ -68,23 +65,18 @@ export function MobileMenu({
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function CloseIcon() {
   return (
-    <svg
-      width='18'
-      height='18'
-      viewBox='0 0 18 18'
-      fill='none'
-    >
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path
-        d='M4 4L14 14M14 4L4 14'
-        stroke='currentColor'
-        strokeWidth='1.5'
-        strokeLinecap='round'
+        d="M4 4L14 14M14 4L4 14"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }

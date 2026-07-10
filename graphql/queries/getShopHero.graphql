@@ -1,4 +1,4 @@
-query GetShopHero {
+query GetShopHero($language: LanguageCode!) @inContext(language: $language) {
   shop {
     metafields(
       identifiers: [

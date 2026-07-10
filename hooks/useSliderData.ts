@@ -1,9 +1,9 @@
-import { useMemo } from 'react'
-import type { Slide } from '@/types/slider'
-import { useCollectionByHandle } from './useCollectionByHandle'
+import { useMemo } from 'react';
+import type { Slide } from '@/types/slider';
+import { useCollectionByHandle } from './useCollectionByHandle';
 
 export function useSliderData() {
-  const { products, loading, error } = useCollectionByHandle('hero-slider', 5)
+  const { products, loading, error } = useCollectionByHandle('hero-slider', 5);
 
   const slides: Slide[] = useMemo(() => {
     return products.map((product) => ({
@@ -16,8 +16,8 @@ export function useSliderData() {
       altText: product.images?.edges[0]?.node.altText ?? product.title,
       ctaUrl: `/products/${product.handle}`,
       price: product.variants?.edges[0]?.node.price.amount,
-    }))
-  }, [products])
+    }));
+  }, [products]);
 
-  return { slides, loading, error }
+  return { slides, loading, error };
 }

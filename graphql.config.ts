@@ -1,10 +1,10 @@
-import type { IGraphQLConfig } from 'graphql-config'
-import * as dotenv from 'dotenv'
+import type { IGraphQLConfig } from 'graphql-config';
+import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' })
+dotenv.config({ path: '.env.local' });
 
-const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
+const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
+const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN;
 
 const config: IGraphQLConfig = {
   schema: {
@@ -15,6 +15,6 @@ const config: IGraphQLConfig = {
     },
   },
   documents: 'graphql/**/*.graphql',
-}
+};
 
-export default config
+export default config;

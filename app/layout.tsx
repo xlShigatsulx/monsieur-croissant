@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from 'react';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return children as React.ReactElement
+  return children as React.ReactElement;
 }

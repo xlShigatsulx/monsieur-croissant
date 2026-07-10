@@ -1,42 +1,42 @@
-'use client'
+'use client';
 
-import { useAuth } from '@/context/AuthContext'
-import { useState, useCallback } from 'react'
-import { MobileMenu } from '../Navigation/MobileMenu'
-import { NavAuth } from '../Navigation/NavAuth'
-import { NavLogo } from '../Navigation/NavLogo'
-import { NavMenu } from '../Navigation/NavMenu'
-import { CartIcon } from '@/components/pages/cart/CartIcon'
-import { useTranslations } from 'next-intl'
-import { LocaleSwitcher } from './LocaleSwitcher'
-import { SearchOverlay } from '@/components/ui/Search/SearchOverlay'
+import { useAuth } from '@/context/AuthContext';
+import { useState, useCallback } from 'react';
+import { MobileMenu } from '../Navigation/MobileMenu';
+import { NavAuth } from '../Navigation/NavAuth';
+import { NavLogo } from '../Navigation/NavLogo';
+import { NavMenu } from '../Navigation/NavMenu';
+import { CartIcon } from '@/components/pages/cart/CartIcon';
+import { useTranslations } from 'next-intl';
+import { LocaleSwitcher } from './LocaleSwitcher';
+import { SearchOverlay } from '@/components/ui/Search/SearchOverlay';
 
 export function Header() {
-  const t = useTranslations('nav')
+  const t = useTranslations('nav');
 
-  const { isAuthenticated, logout, signIn } = useAuth()
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const { isAuthenticated, logout, signIn } = useAuth();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const openMobile = useCallback(() => setMobileOpen(true), [])
-  const closeMobile = useCallback(() => setMobileOpen(false), [])
+  const openMobile = useCallback(() => setMobileOpen(true), []);
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
     <>
       <header
-        className='sticky top-0 z-30 w-full bg-cream/90 backdrop-blur-md
-        border-b border-caramel/15'
+        className="sticky top-0 z-30 w-full bg-cream/90 backdrop-blur-md
+        border-b border-caramel/15"
       >
         <div
-          className='max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20
-          flex items-center justify-between gap-6'
+          className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20
+          flex items-center justify-between gap-6"
         >
           <NavLogo />
 
-          <nav className='hidden md:flex items-center gap-8'>
-            <NavMenu className='flex gap-5' />
+          <nav className="hidden md:flex items-center gap-8">
+            <NavMenu className="flex gap-5" />
           </nav>
 
-          <div className='hidden md:flex items-center gap-4'>
+          <div className="hidden md:flex items-center gap-4">
             <LocaleSwitcher />
             <CartIcon />
             <SearchOverlay />
@@ -48,7 +48,7 @@ export function Header() {
             />
           </div>
 
-          <div className='flex md:hidden items-center gap-2'>
+          <div className="flex md:hidden items-center gap-2">
             <LocaleSwitcher />
             <CartIcon />
             <SearchOverlay />
@@ -56,8 +56,8 @@ export function Header() {
             <button
               onClick={openMobile}
               aria-label={t('openMenu')}
-              className='w-8 h-8 flex items-center justify-center
-                text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer'
+              className="w-8 h-8 flex items-center justify-center
+                text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer"
             >
               <BurgerIcon />
             </button>
@@ -73,23 +73,18 @@ export function Header() {
         onLogout={logout}
       />
     </>
-  )
+  );
 }
 
 function BurgerIcon() {
   return (
-    <svg
-      width='22'
-      height='22'
-      viewBox='0 0 22 22'
-      fill='none'
-    >
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
       <path
-        d='M3 6h16M3 11h16M3 16h16'
-        stroke='currentColor'
-        strokeWidth='1.5'
-        strokeLinecap='round'
+        d="M3 6h16M3 11h16M3 16h16"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }

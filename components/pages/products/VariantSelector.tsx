@@ -1,21 +1,21 @@
 interface Variant {
-  id: string
-  title: string
-  availableForSale: boolean
+  id: string;
+  title: string;
+  availableForSale: boolean;
   price: {
-    amount: string
-    currencyCode: string
-  }
+    amount: string;
+    currencyCode: string;
+  };
   selectedOptions: {
-    name: string
-    value: string
-  }[]
+    name: string;
+    value: string;
+  }[];
 }
 
 interface VariantSelectorProps {
-  variants: Variant[]
-  selectedVariantId: string | null
-  onSelect: (variantId: string) => void
+  variants: Variant[];
+  selectedVariantId: string | null;
+  onSelect: (variantId: string) => void;
 }
 
 export function VariantSelector({
@@ -24,15 +24,15 @@ export function VariantSelector({
   onSelect,
 }: VariantSelectorProps) {
   if (variants.length <= 1 && variants[0]?.title === 'Default Title') {
-    return null
+    return null;
   }
 
   return (
-    <div className='flex flex-col gap-3'>
-      <p className='font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50'>
+    <div className="flex flex-col gap-3">
+      <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50">
         Варіант
       </p>
-      <div className='flex flex-wrap gap-2'>
+      <div className="flex flex-wrap gap-2">
         {variants.map((variant) => (
           <button
             key={variant.id}
@@ -56,5 +56,5 @@ export function VariantSelector({
         ))}
       </div>
     </div>
-  )
+  );
 }

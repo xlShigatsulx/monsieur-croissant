@@ -1,57 +1,53 @@
-'use client'
+'use client';
 
-import { useForm } from 'react-hook-form'
-import { ContactSuccess } from './ContactSuccess'
-import { useTranslations } from 'next-intl'
+import { useForm } from 'react-hook-form';
+import { ContactSuccess } from './ContactSuccess';
+import { useTranslations } from 'next-intl';
 
 type ContactFormData = {
-  name: string
-  email: string
-  topic: 'order' | 'question' | 'cooperation' | 'other'
-  message: string
-}
+  name: string;
+  email: string;
+  topic: 'order' | 'question' | 'cooperation' | 'other';
+  message: string;
+};
 
-const TOPIC_VALUES = ['order', 'question', 'cooperation', 'other'] as const
+const TOPIC_VALUES = ['order', 'question', 'cooperation', 'other'] as const;
 
 const inputClassName = `w-full font-jost text-sm text-mocha bg-transparent
     border border-caramel/20 hover:border-caramel/85 focus:border-caramel
     rounded-xl px-4 py-3 outline-none
     placeholder:text-mocha/30
-    transition-colors duration-300`
+    transition-colors duration-300`;
 
 const submitButtonClassName = `w-full font-jost text-[11px] tracking-[0.2em] uppercase
     text-caramel border border-caramel/40 hover:border-caramel
     hover:bg-caramel/10 rounded-full px-8 py-3
     transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed
-    cursor-pointer mt-5`
+    cursor-pointer mt-5`;
 
-const errorClassName = 'font-jost text-[11px] text-red-400/80 mt-1.5 ml-1'
+const errorClassName = 'font-jost text-[11px] text-red-400/80 mt-1.5 ml-1';
 
 export function ContactForm() {
-  const t = useTranslations('contact.contactForm')
+  const t = useTranslations('contact.contactForm');
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
-  } = useForm<ContactFormData>()
+  } = useForm<ContactFormData>();
 
   const onSubmit = (data: ContactFormData) => {
     //data can be sent to backend here
-    reset()
-  }
+    reset();
+  };
 
   if (isSubmitSuccessful) {
-    return <ContactSuccess onReset={reset} />
+    return <ContactSuccess onReset={reset} />;
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      className='space-y-4'
-    >
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
       <div>
         <input
           {...register('name', {
@@ -73,7 +69,7 @@ export function ContactForm() {
               message: t('email.invalid'),
             },
           })}
-          type='email'
+          type="email"
           placeholder={t('email.placeholder')}
           className={inputClassName}
         />
@@ -86,19 +82,13 @@ export function ContactForm() {
         <select
           {...register('topic', { required: t('topic.required') })}
           className={`${inputClassName} cursor-pointer`}
-          defaultValue=''
+          defaultValue=""
         >
-          <option
-            value=''
-            disabled
-          >
+          <option value="" disabled>
             {t('topic.placeholder')}
           </option>
           {TOPIC_VALUES.map((value) => (
-            <option
-              key={value}
-              value={value}
-            >
+            <option key={value} value={value}>
               {t(`topic.options.${value}`)}
             </option>
           ))}
@@ -124,12 +114,12 @@ export function ContactForm() {
       </div>
 
       <button
-        type='submit'
+        type="submit"
         disabled={isSubmitting}
         className={submitButtonClassName}
       >
         {isSubmitting ? t('submitting') : t('submit')}
       </button>
     </form>
-  )
+  );
 }

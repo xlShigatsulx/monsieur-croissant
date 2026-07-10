@@ -1,12 +1,12 @@
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl';
 
 interface ImgCaptionProps {
-  title: string
-  titleSize?: string
-  description?: string | null
-  descriptionSize?: string
-  price?: string
-  availableForSale?: boolean
+  title: string;
+  titleSize?: string;
+  description?: string | null;
+  descriptionSize?: string;
+  price?: string;
+  availableForSale?: boolean;
 }
 
 export function ImgCaption({
@@ -17,12 +17,12 @@ export function ImgCaption({
   price,
   availableForSale,
 }: ImgCaptionProps) {
-  const t = useTranslations('product')
+  const t = useTranslations('product');
 
-  const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)'
+  const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)';
 
   return (
-    <div className='absolute bottom-0 left-0 right-0 px-5 pb-5 sm:px-8 sm:pb-7'>
+    <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 sm:px-8 sm:pb-7">
       <h2
         className={`font-cormorant text-white ${titleSize} font-light italic leading-tight mb-1`}
         style={{ textShadow }}
@@ -39,7 +39,7 @@ export function ImgCaption({
       )}
       {price && (
         <span
-          className='inline-block font-cormorant text-amber-200 text-base sm:text-lg tracking-wide'
+          className="inline-block font-cormorant text-amber-200 text-base sm:text-lg tracking-wide"
           style={{ textShadow }}
         >
           {t('priceFrom', { price })}
@@ -47,12 +47,12 @@ export function ImgCaption({
       )}
       {!availableForSale && (
         <span
-          className='font-jost text-[9px] tracking-[0.15em] uppercase
-              text-mocha/30'
+          className="font-jost text-[9px] tracking-[0.15em] uppercase
+              text-mocha/30"
         >
           {t('unavailable')}
         </span>
       )}
     </div>
-  )
+  );
 }

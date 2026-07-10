@@ -1,16 +1,16 @@
-import { useGetShopQuery } from '@/graphql/generated/graphql'
-import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery'
+import { useGetShopQuery } from '@/graphql/generated/graphql';
+import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery';
 
 export function useShop() {
-  const language = useShopifyLocale()
+  const language = useShopifyLocale();
 
   const { data, loading, error } = useGetShopQuery({
     variables: { language },
     fetchPolicy: 'cache-and-network',
-  })
+  });
 
-  const shop = data?.shop
-  const brand = shop?.brand
+  const shop = data?.shop;
+  const brand = shop?.brand;
 
   return {
     shopName: shop?.name ?? 'Monsieur Croissant',
@@ -22,5 +22,5 @@ export function useShop() {
     colors: brand?.colors ?? null,
     loading,
     error,
-  }
+  };
 }

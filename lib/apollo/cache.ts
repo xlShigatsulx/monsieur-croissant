@@ -1,4 +1,4 @@
-import { InMemoryCache } from '@apollo/client'
+import { InMemoryCache } from '@apollo/client';
 
 export const cache = new InMemoryCache({
   typePolicies: {
@@ -21,11 +21,11 @@ export const cache = new InMemoryCache({
         products: {
           keyArgs: ['language'],
           merge(existing, incoming) {
-            if (!existing) return incoming
+            if (!existing) return incoming;
             return {
               ...incoming,
               edges: [...existing.edges, ...incoming.edges],
-            }
+            };
           },
         },
       },
@@ -36,31 +36,31 @@ export const cache = new InMemoryCache({
         products: {
           keyArgs: ['language'],
           merge(existing, incoming) {
-            if (!existing) return incoming
+            if (!existing) return incoming;
             return {
               ...incoming,
               edges: [...existing.edges, ...incoming.edges],
-            }
+            };
           },
         },
         collections: {
           keyArgs: ['language'],
           merge(existing, incoming) {
-            if (!existing) return incoming
+            if (!existing) return incoming;
             return {
               ...incoming,
               edges: [...existing.edges, ...incoming.edges],
-            }
+            };
           },
         },
         search: {
           keyArgs: ['query', 'language'],
           merge(existing, incoming) {
-            if (!existing) return incoming
+            if (!existing) return incoming;
             return {
               ...incoming,
               edges: [...existing.edges, ...incoming.edges],
-            }
+            };
           },
         },
         menu: {
@@ -75,4 +75,4 @@ export const cache = new InMemoryCache({
       },
     },
   },
-})
+});

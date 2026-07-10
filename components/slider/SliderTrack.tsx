@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import type { Slide } from '@/types/slider'
-import { SLIDER_CONFIG } from '@/constants/slider'
-import { ImgCaption } from '@/components/ui/ImgCaption'
+import Image from 'next/image';
+import type { Slide } from '@/types/slider';
+import { SLIDER_CONFIG } from '@/constants/slider';
+import { ImgCaption } from '@/components/ui/ImgCaption';
 
 interface SliderTrackProps {
-  slides: Slide[]
-  trackIndex: number
-  isAnimated: boolean
+  slides: Slide[];
+  trackIndex: number;
+  isAnimated: boolean;
 }
 
 export function SliderTrack({
@@ -14,12 +14,12 @@ export function SliderTrack({
   trackIndex,
   isAnimated,
 }: SliderTrackProps) {
-  const track = [slides[slides.length - 1], ...slides, slides[0]]
-  const total = track.length
+  const track = [slides[slides.length - 1], ...slides, slides[0]];
+  const total = track.length;
 
   return (
     <div
-      className='flex h-full'
+      className="flex h-full"
       style={{
         width: `${total * 100}%`,
         transform: `translateX(-${(trackIndex * 100) / total}%)`,
@@ -31,22 +31,22 @@ export function SliderTrack({
       {track.map((slide, i) => (
         <div
           key={i}
-          className='relative h-full'
+          className="relative h-full"
           style={{ width: `${100 / total}%` }}
         >
           <Image
             src={slide.imageUrl}
             alt={slide.altText}
-            loading='eager'
+            loading="eager"
             fill
             draggable={false}
-            className='object-cover'
-            sizes='(max-width: 768px) 100vw, 768px'
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
             priority={i === 1}
           />
 
           <div
-            className='absolute inset-0 pointer-events-none'
+            className="absolute inset-0 pointer-events-none"
             style={{
               background:
                 'linear-gradient(to top, rgba(30,14,8,0.72) 0%, rgba(30,14,8,0.18) 45%, transparent 75%)',
@@ -55,12 +55,12 @@ export function SliderTrack({
 
           <ImgCaption
             title={slide.title}
-            titleSize='text-2xl sm:text-4xl'
+            titleSize="text-2xl sm:text-4xl"
             description={slide.description}
             price={slide.price}
           />
         </div>
       ))}
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import type { CodegenConfig } from '@graphql-codegen/cli'
-import * as dotenv from 'dotenv'
+import type { CodegenConfig } from '@graphql-codegen/cli';
+import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' })
+dotenv.config({ path: '.env.local' });
 
-const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
+const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
+const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN;
 
 const config: CodegenConfig = {
   schema: {
@@ -37,6 +37,6 @@ const config: CodegenConfig = {
       },
     },
   },
-}
+};
 
-export default config
+export default config;

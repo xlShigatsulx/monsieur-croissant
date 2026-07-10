@@ -1,5 +1,5 @@
-import { CollectionsPage } from '@/components/pages/collections/CollectionsPage'
+import { CollectionsPage } from '@/components/pages/collections/CollectionsPage';
 
 export default function Page() {
-  return <CollectionsPage />
+  return <CollectionsPage />;
 }

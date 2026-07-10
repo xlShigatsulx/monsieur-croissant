@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { GetMenuQuery, useGetMenuQuery } from '@/graphql/generated/graphql'
-import { NavLink } from './NavLink'
-import { useMenu } from '@/hooks/useMenu'
+import { GetMenuQuery, useGetMenuQuery } from '@/graphql/generated/graphql';
+import { NavLink } from './NavLink';
+import { useMenu } from '@/hooks/useMenu';
 
-type MenuItem = NonNullable<GetMenuQuery['menu']>['items'][number]
+type MenuItem = NonNullable<GetMenuQuery['menu']>['items'][number];
 
 interface NavMenuProps {
-  handle?: string
-  onItemClick?: () => void
-  className?: string
+  handle?: string;
+  onItemClick?: () => void;
+  className?: string;
 }
 
 export function NavMenu({
@@ -17,9 +17,9 @@ export function NavMenu({
   onItemClick,
   className,
 }: NavMenuProps) {
-  const { items, loading } = useMenu(handle)
+  const { items, loading } = useMenu(handle);
 
-  if (loading) return <NavMenuSkeleton />
+  if (loading) return <NavMenuSkeleton />;
 
   return (
     <nav className={className}>
@@ -33,28 +33,25 @@ export function NavMenu({
         </NavLink>
       ))}
     </nav>
-  )
+  );
 }
 
 function NavMenuSkeleton() {
   return (
     <>
       {[1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className='h-3 w-16 bg-caramel/20 rounded animate-pulse'
-        />
+        <div key={i} className="h-3 w-16 bg-caramel/20 rounded animate-pulse" />
       ))}
     </>
-  )
+  );
 }
 
 function resolveUrl(url: string | null | undefined): string {
-  if (!url) return '/'
+  if (!url) return '/';
   try {
-    const { pathname } = new URL(url)
-    return pathname
+    const { pathname } = new URL(url);
+    return pathname;
   } catch {
-    return url
+    return url;
   }
 }

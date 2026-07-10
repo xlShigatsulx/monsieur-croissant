@@ -1,91 +1,93 @@
-import { useState, useRef, useCallback } from 'react'
-import type { NavigationDirection } from '@/types/slider'
-import { SLIDER_CONFIG } from '@/constants/slider'
+import { useState, useRef, useCallback, useEffect } from 'react';
+import type { NavigationDirection } from '@/types/slider';
+import { SLIDER_CONFIG } from '@/constants/slider';
 
 interface UseSliderStateReturn {
-  current: number
-  trackIndex: number
-  isAnimated: boolean
-  stepRef: React.RefObject<(dir: NavigationDirection) => void>
-  navigate: (dir: NavigationDirection) => void
-  goTo: (index: number) => void
+  current: number;
+  trackIndex: number;
+  isAnimated: boolean;
+  stepRef: React.RefObject<(dir: NavigationDirection) => void>;
+  navigate: (dir: NavigationDirection) => void;
+  goTo: (index: number) => void;
 }
 
 export function useSliderState({
   totalLength,
 }: {
-  totalLength: number
+  totalLength: number;
 }): UseSliderStateReturn {
-  const currentRef = useRef(0)
-  const trackIndexRef = useRef(1)
-  const isJumping = useRef(false)
+  const currentRef = useRef(0);
+  const trackIndexRef = useRef(1);
+  const isJumping = useRef(false);
 
-  const [current, setCurrent] = useState(0)
-  const [trackIndex, setTrackIndex] = useState(1)
-  const [isAnimated, setIsAnimated] = useState(true)
+  const [current, setCurrent] = useState(0);
+  const [trackIndex, setTrackIndex] = useState(1);
+  const [isAnimated, setIsAnimated] = useState(true);
 
   const jumpToReal = useCallback(
     (realCurrent: number, realTrackIndex: number) => {
       setTimeout(() => {
-        currentRef.current = realCurrent
-        trackIndexRef.current = realTrackIndex
-        isJumping.current = false
-        setIsAnimated(false)
-        setCurrent(realCurrent)
-        setTrackIndex(realTrackIndex)
+        currentRef.current = realCurrent;
+        trackIndexRef.current = realTrackIndex;
+        isJumping.current = false;
+        setIsAnimated(false);
+        setCurrent(realCurrent);
+        setTrackIndex(realTrackIndex);
         requestAnimationFrame(() =>
-          requestAnimationFrame(() => setIsAnimated(true))
-        )
-      }, SLIDER_CONFIG.transitionMs)
+          requestAnimationFrame(() => setIsAnimated(true)),
+        );
+      }, SLIDER_CONFIG.transitionMs);
     },
-    []
-  )
+    [],
+  );
 
   const step = useCallback(
     (dir: NavigationDirection) => {
-      if (isJumping.current) return
+      if (isJumping.current) return;
 
       const nextCurrent =
         dir === 'next'
           ? (currentRef.current + 1) % totalLength
-          : (currentRef.current - 1 + totalLength) % totalLength
+          : (currentRef.current - 1 + totalLength) % totalLength;
 
       const nextTrackIndex =
-        dir === 'next' ? trackIndexRef.current + 1 : trackIndexRef.current - 1
+        dir === 'next' ? trackIndexRef.current + 1 : trackIndexRef.current - 1;
 
-      currentRef.current = nextCurrent
-      trackIndexRef.current = nextTrackIndex
-      setCurrent(nextCurrent)
-      setTrackIndex(nextTrackIndex)
+      currentRef.current = nextCurrent;
+      trackIndexRef.current = nextTrackIndex;
+      setCurrent(nextCurrent);
+      setTrackIndex(nextTrackIndex);
 
       if (nextTrackIndex === totalLength + 1) {
-        isJumping.current = true
-        jumpToReal(0, 1)
+        isJumping.current = true;
+        jumpToReal(0, 1);
       } else if (nextTrackIndex === 0) {
-        isJumping.current = true
-        jumpToReal(totalLength - 1, totalLength)
+        isJumping.current = true;
+        jumpToReal(totalLength - 1, totalLength);
       }
     },
-    [totalLength, jumpToReal]
-  )
+    [totalLength, jumpToReal],
+  );
 
-  const stepRef = useRef(step)
-  stepRef.current = step
+  const stepRef = useRef(step);
+  useEffect(() => {
+    stepRef.current = step;
+  }, [step]);
 
   const navigate = useCallback(
     (dir: NavigationDirection) => {
-      step(dir)
+      step(dir);
     },
-    [step]
-  )
+    [step],
+  );
 
   const goTo = useCallback((index: number) => {
-    if (isJumping.current) return
-    currentRef.current = index
-    trackIndexRef.current = index + 1
-    setCurrent(index)
-    setTrackIndex(index + 1)
-  }, [])
+    if (isJumping.current) return;
+    currentRef.current = index;
+    trackIndexRef.current = index + 1;
+    setCurrent(index);
+    setTrackIndex(index + 1);
+  }, []);
 
-  return { current, trackIndex, isAnimated, stepRef, navigate, goTo }
+  return { current, trackIndex, isAnimated, stepRef, navigate, goTo };
 }

@@ -33,12 +33,14 @@ A fully functional headless e-commerce storefront built with Next.js 16 and Shop
 ## Getting Started
 
 1. Clone the repository:
+
 ```bash
    git clone https://github.com/xlShigatsulx/monsieur-croissant.git
    cd monsieur-croissant
 ```
 
 2. Install dependencies:
+
 ```bash
    yarn install
    # or
@@ -46,12 +48,14 @@ A fully functional headless e-commerce storefront built with Next.js 16 and Shop
 ```
 
 3. Create `.env.local` and fill in your Shopify credentials:
+
 - NEXT_PUBLIC_APP_URL=...
 - NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=...
 - NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN=...
 - NEXT_PUBLIC_SHOPIFY_CUSTOMER_CLIENT_ID=...
 
 4. Run codegen:
+
 ```bash
    yarn codegen
    # or
@@ -59,6 +63,7 @@ A fully functional headless e-commerce storefront built with Next.js 16 and Shop
 ```
 
 5. Start the development server:
+
 ```bash
    yarn dev
    # or
