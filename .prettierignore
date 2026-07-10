@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+build
+.yarn
+graphql/generated
+*.lock
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
