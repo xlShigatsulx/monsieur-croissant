@@ -1,4 +1,49 @@
 {
+  "home": {
+    "hero": {
+      "kicker": "a delicious bakery",
+      "ctaFallback": "Our treats"
+    },
+    "categories": {
+      "eyebrow": "our range",
+      "title": "Shop by Category",
+      "viewAll": "All categories"
+    },
+    "bestsellers": {
+      "eyebrow": "customer favorites",
+      "title": "Bestsellers",
+      "viewAll": "All products"
+    },
+    "usp": {
+      "fresh": {
+        "title": "Baked fresh daily",
+        "description": "No freezing, no long shelf storage — baked every morning"
+      },
+      "handmade": {
+        "title": "Handcrafted",
+        "description": "Every croissant is hand-laminated, layer by layer"
+      },
+      "ingredients": {
+        "title": "French butter",
+        "description": "Only natural, top-quality ingredients"
+      },
+      "delivery": {
+        "title": "City delivery",
+        "description": "Warm pastries brought straight to your door"
+      }
+    },
+    "about": {
+      "eyebrow": "our story",
+      "title": "About Monsieur Croissant",
+      "fallback": "A small French bakery with a big love for detail — from choosing the flour to the very last layer of dough.",
+      "cta": "Learn more"
+    },
+    "contact": {
+      "eyebrow": "come say hello",
+      "title": "Find Us",
+      "cta": "Contact & address"
+    }
+  },
   "collections": {
     "title": "Catalog",
     "subtitle": "Choose a category"
