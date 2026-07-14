@@ -1,18 +1,29 @@
 {
   "home": {
+    "explore": "explore",
     "hero": {
       "kicker": "a delicious bakery",
-      "ctaFallback": "Our treats"
+      "ctaFallback": "Our treats",
+      "badge": "Tradition & Quality",
+      "imageAlt": "Fresh pastries displayed on the counter at Monsieur Croissant"
+    },
+    "seasonal": {
+      "eyebrow": "seasonal edit",
+      "title": "Seasonal Creations",
+      "subtitle": "Handpicked for the current season"
     },
     "categories": {
       "eyebrow": "our range",
       "title": "Shop by Category",
+      "subtitle": "Explore our range of handcrafted delights",
       "viewAll": "All categories"
     },
     "bestsellers": {
       "eyebrow": "customer favorites",
       "title": "Bestsellers",
-      "viewAll": "All products"
+      "viewAll": "All products",
+      "soldOut": "Sold out",
+      "quickAdd": "Quick add to cart"
     },
     "usp": {
       "fresh": {
@@ -41,6 +52,10 @@
     "contact": {
       "eyebrow": "come say hello",
       "title": "Find Us",
+      "visitTitle": "Visit us",
+      "touchTitle": "Stay in touch",
+      "orderTitle": "Orders for events",
+      "orderDescription": "Planning an event or a breakfast meeting? Let us bring the bakery to you.",
       "cta": "Contact & address"
     }
   },
