@@ -1,20 +1,16 @@
-import ProductSlider from '@/components/slider/ProductSlider';
 import { ContactTeaser } from './ContactTeaser';
 import { AboutTeaser } from './AboutTeaser';
-import { BestsellersSection } from './BestsellersSection';
+import { BestsellersSection } from './BestsellersSection/BestsellersSection';
 import { CategoriesSection } from './CategoriesSection';
-import { HeroSection } from './HeroSection/HeroSection';
+import { HeroSection } from './HeroSection';
 import { USPStrip } from './USPStrip';
+import { SeasonalSlider } from '@/components/slider/SeasonalSlider';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       <HeroSection />
-
-      <div className="flex flex-col items-center px-4">
-        <ProductSlider />
-      </div>
-
+      <SeasonalSlider />
       <USPStrip />
       <CategoriesSection />
       <BestsellersSection />
