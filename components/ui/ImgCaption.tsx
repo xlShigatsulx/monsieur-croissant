@@ -15,7 +15,6 @@ export function ImgCaption({
   description,
   descriptionSize = 'text-xs sm:text-sm',
   price,
-  availableForSale,
 }: ImgCaptionProps) {
   const t = useTranslations('product');
 
@@ -31,7 +30,7 @@ export function ImgCaption({
       </h2>
       {description && (
         <p
-          className={`font-jost text-white/75 ${descriptionSize} font-light leading-relaxed max-w-sm`}
+          className={`font-jost text-white/75 italic ${descriptionSize} font-light leading-relaxed max-w-sm`}
           style={{ textShadow }}
         >
           {description}
@@ -43,14 +42,6 @@ export function ImgCaption({
           style={{ textShadow }}
         >
           {t('priceFrom', { price })}
-        </span>
-      )}
-      {!availableForSale && (
-        <span
-          className="font-jost text-[9px] tracking-[0.15em] uppercase
-              text-mocha/30"
-        >
-          {t('unavailable')}
         </span>
       )}
     </div>
