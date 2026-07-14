@@ -52,7 +52,7 @@ function ProductSlider() {
             '0 32px 64px -12px rgba(58,35,24,0.25), 0 0 0 1px rgba(196,151,122,0.12)',
         }}
       >
-        <div className="relative aspect-4/3 sm:aspect-video overflow-hidden bg-sand">
+        <div className="relative aspect-[4/3] sm:aspect-video overflow-hidden bg-sand">
           <SliderTrack
             slides={slides}
             trackIndex={trackIndex}
