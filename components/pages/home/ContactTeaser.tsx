@@ -16,43 +16,47 @@ export function ContactTeaser() {
   if (!data) return null;
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-14 sm:py-20">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
       <SectionHeading eyebrow={t('eyebrow')} title={t('title')} />
 
-      <div
-        className="bg-white/60 backdrop-blur-sm border border-caramel/15 rounded-2xl
-          px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center
-          justify-between gap-8"
-      >
-        <div className="grid grid-cols-2 gap-6 sm:gap-10">
-          <div>
-            <p className="font-cormorant italic text-caramel text-lg mb-1">
-              {tInfo('address')}
-            </p>
-            <p className="text-mocha text-sm leading-relaxed whitespace-pre-line">
-              {data.address}
-            </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
+        <div>
+          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+            {t('visitTitle')}
+          </h3>
+          <div className="text-mocha/70 text-sm leading-relaxed space-y-1">
+            <p className="whitespace-pre-line">{data.address}</p>
+            <p className="pt-2 text-mocha font-medium">{tInfo('hours')}</p>
+            <p>{data.hoursWeekdays}</p>
+            <p>{data.hoursWeekends}</p>
           </div>
+        </div>
 
-          <div>
-            <p className="font-cormorant italic text-caramel text-lg mb-1">
-              {tInfo('hours')}
-            </p>
-            <div className="text-mocha text-sm leading-relaxed space-y-0.5">
-              <p>{data.hoursWeekdays}</p>
-              <p>{data.hoursWeekends}</p>
+        <div>
+          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+            {t('touchTitle')}
+          </h3>
+          <div className="text-mocha/70 text-sm leading-relaxed space-y-1">
+            {data.phone && <p>{data.phone}</p>}
+            <div className="pt-3">
+              <SocialIcons />
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-start sm:items-end gap-4">
-          <SocialIcons />
+        <div>
+          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+            {t('orderTitle')}
+          </h3>
+          <p className="text-mocha/70 text-sm leading-relaxed mb-5">
+            {t('orderDescription')}
+          </p>
           <Link
             href={pageConfig.contact}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
-              border border-caramel/40 text-mocha text-sm tracking-wide
-              hover:bg-caramel/8 hover:border-caramel
-              transition-all duration-200 whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
+              bg-mocha text-cream text-xs sm:text-sm font-medium uppercase tracking-widest
+              hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(58,35,24,0.2)]
+              transition-all duration-300 whitespace-nowrap"
           >
             {t('cta')}
           </Link>
@@ -64,9 +68,16 @@ export function ContactTeaser() {
 
 function ContactTeaserSkeleton() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-14 sm:py-20">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
       <div className="h-8 w-56 bg-caramel/10 rounded animate-pulse mb-10" />
-      <div className="h-40 bg-caramel/10 rounded-2xl animate-pulse" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="h-32 bg-caramel/10 rounded-xl animate-pulse"
+          />
+        ))}
+      </div>
     </section>
   );
 }
