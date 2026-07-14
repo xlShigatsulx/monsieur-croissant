@@ -1,7 +1,7 @@
 class PageConfig {
   home = '/';
-  about = '/about';
-  contact = '/contact';
+  about = '/pages/about';
+  contact = '/pages/contact';
   cart = '/cart';
   products = '/products';
   collections = '/collections';
