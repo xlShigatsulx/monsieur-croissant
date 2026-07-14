@@ -10,7 +10,10 @@ type HeroData = {
 
 export function useHeroData(): { data: HeroData | null; loading: boolean } {
   const language = useShopifyLocale();
-  const { data, loading } = useGetShopHeroQuery({ variables: { language } });
+  const { data, loading } = useGetShopHeroQuery({
+    variables: { language },
+    fetchPolicy: 'cache-and-network',
+  });
 
   if (loading || !data) return { data: null, loading };
 
