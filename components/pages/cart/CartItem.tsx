@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useMemo, useCallback } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useCartActions, useCartOptimistic } from '@/context/CartContext';
 import { pageConfig } from '@/config/pages.config';
@@ -42,7 +42,7 @@ export const CartItem = memo(function CartItem({
               width={96}
               height={96}
               className="w-full h-full object-cover"
-              loading="eager"
+              loading="lazy"
             />
           )}
           {!image && <div className="w-full h-full bg-caramel/10" />}
@@ -119,8 +119,10 @@ const CartItemQuantity = memo(function CartItemQuantity({
     <div className="flex items-center justify-between mt-3 gap-4">
       <div className="flex items-center gap-3">
         <button
+          type="button"
           onClick={handleDecrement}
           disabled={displayQuantity <= 1}
+          aria-label={t('decrease')}
           className="w-7 h-7 flex items-center justify-center
             border border-caramel/30 rounded-full text-mocha/60
             hover:border-caramel hover:text-caramel
@@ -133,7 +135,9 @@ const CartItemQuantity = memo(function CartItemQuantity({
           {displayQuantity}
         </span>
         <button
+          type="button"
           onClick={handleIncrement}
+          aria-label={t('increase')}
           className="w-7 h-7 flex items-center justify-center
             border border-caramel/30 rounded-full text-mocha/60
             hover:border-caramel hover:text-caramel
@@ -148,6 +152,7 @@ const CartItemQuantity = memo(function CartItemQuantity({
           {displayTotal}
         </span>
         <button
+          type="button"
           onClick={handleRemove}
           aria-label={t('removeBtn')}
           className="text-mocha/35 hover:text-caramel transition-colors duration-300

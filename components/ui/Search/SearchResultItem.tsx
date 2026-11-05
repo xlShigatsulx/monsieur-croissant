@@ -1,5 +1,6 @@
 import { PredictiveSearchQuery } from '@/graphql/generated/graphql';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 
 type Product = NonNullable<
   PredictiveSearchQuery['predictiveSearch']
@@ -18,10 +19,12 @@ export function SearchResultItem({ product, onSelect }: SearchResultItemProps) {
       className="flex items-center gap-3 px-5 py-3 hover:bg-mocha/5 transition-colors"
     >
       {product.featuredImage && (
-        <img
+        <Image
           src={product.featuredImage.url}
           alt={product.featuredImage.altText ?? product.title}
-          className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+          width={40}
+          height={40}
+          className="w-10 h-10 rounded-lg object-cover shrink-0"
         />
       )}
       <div className="flex-1 min-w-0">

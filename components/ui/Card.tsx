@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ImgCaption } from './ImgCaption';
-import { pageConfig } from '@/config/pages.config';
 
 interface CardImage {
   url: string;
@@ -42,7 +41,7 @@ export function Card({
   caption,
   aspectRatio = '4/3',
   gradient = true,
-  eager = true,
+  eager = false,
   className = '',
   children,
 }: CardProps) {

@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useHeroData } from '@/hooks/useHeroData';
@@ -62,7 +62,7 @@ export function HeroSection() {
         <div className="relative max-w-sm mx-auto md:max-w-none">
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/hero-bakery.png"
+              src="/images/hero-bakery.webp"
               alt={t('imageAlt')}
               width={1376}
               height={768}

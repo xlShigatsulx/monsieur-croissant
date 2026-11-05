@@ -106,8 +106,10 @@ export function ProductInfo({
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-3 border border-caramel/30 rounded-full px-4 py-2">
           <button
+            type="button"
             onClick={handleDecrement}
             disabled={quantity <= 1}
+            aria-label={t('decrease')}
             className="w-5 h-5 flex items-center justify-center
               text-mocha/60 hover:text-caramel
               disabled:opacity-30 disabled:cursor-not-allowed
@@ -119,7 +121,9 @@ export function ProductInfo({
             {quantity}
           </span>
           <button
+            type="button"
             onClick={handleIncrement}
+            aria-label={t('increase')}
             className="w-5 h-5 flex items-center justify-center
               text-mocha/60 hover:text-caramel
               transition-colors duration-200 cursor-pointer"
@@ -129,6 +133,7 @@ export function ProductInfo({
         </div>
 
         <button
+          type="button"
           onClick={handleAddToCart}
           disabled={isLoading || !selectedVariant?.availableForSale}
           className={`flex-1 font-jost text-[11px] tracking-[0.2em] uppercase
