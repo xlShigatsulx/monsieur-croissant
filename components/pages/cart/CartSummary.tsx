@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useMemo, useCallback } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useCartOptimistic } from '@/context/CartContext';
 import { pageConfig } from '@/config/pages.config';
 import { formatPrice } from '@/lib/utils/format';
@@ -43,7 +43,13 @@ const CartSummaryActions = memo(function CartSummaryActions({
   checkoutUrl: string;
 }) {
   const handleCheckout = useCallback(() => {
-    window.location.href = `${checkoutUrl}?logged_in=true`;
+    if (!checkoutUrl) return;
+    try {
+      const url = new URL(checkoutUrl);
+      window.location.href = url.toString();
+    } catch {
+      window.location.href = checkoutUrl;
+    }
   }, [checkoutUrl]);
 
   const t = useTranslations('cart.cartSummary');
@@ -51,10 +57,12 @@ const CartSummaryActions = memo(function CartSummaryActions({
   return (
     <>
       <button
+        type="button"
         onClick={handleCheckout}
+        disabled={!checkoutUrl}
         className="w-full font-jost text-[11px] tracking-[0.2em] uppercase
           bg-caramel text-cream hover:bg-caramel/90
-          rounded-full py-3.5 transition-all duration-300 cursor-pointer"
+          rounded-full py-3.5 transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {t('checkoutBtn')}
       </button>

@@ -1,3 +1,7 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
 interface Variant {
   id: string;
   title: string;
@@ -23,6 +27,8 @@ export function VariantSelector({
   selectedVariantId,
   onSelect,
 }: VariantSelectorProps) {
+  const t = useTranslations('product');
+
   if (variants.length <= 1 && variants[0]?.title === 'Default Title') {
     return null;
   }
@@ -30,7 +36,7 @@ export function VariantSelector({
   return (
     <div className="flex flex-col gap-3">
       <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50">
-        Варіант
+        {t('variant')}
       </p>
       <div className="flex flex-wrap gap-2">
         {variants.map((variant) => (

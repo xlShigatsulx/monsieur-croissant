@@ -93,13 +93,18 @@
       "add": "Add to cart"
     },
     "priceFrom": "from {price} uah",
-    "unavailable": "Out of stock"
+    "unavailable": "Out of stock",
+    "variant": "Variant",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity"
   },
   "cart": {
     "title": "Cart",
     "cartLinkLabel": "Cart",
     "cartItem": {
-      "removeBtn": "Remove"
+      "removeBtn": "Remove",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity"
     },
     "cartEmpty": {
       "title": "Your cart is empty",
@@ -198,5 +203,37 @@
     "subtitle": "Sorry for the inconvenience, please try again",
     "reset": "Try again",
     "home": "Go home"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "Monsieur Croissant Bakery",
+    "subtitle": "The art of French pastry and natural sourdough baking",
+    "storyTitle": "Our Philosophy",
+    "storyP1": "Monsieur Croissant is an artisanal craft bakery founded with a passion for traditional French baking. We never use artificial additives, preservatives, or frozen dough.",
+    "storyP2": "Every product is the result of long cold fermentation, living sourdough culture, and 82.5% farm butter. From the golden crust of a baguette to the delicate layers of a croissant, we strive for perfection in every bite.",
+    "values": {
+      "craft": "Artisanal Craft",
+      "craftDesc": "Handcrafted daily using authentic slow proofing and laminating techniques.",
+      "natural": "100% Pure & Natural",
+      "naturalDesc": "Only selected flour, water, sea salt, living sourdough, and pure butter.",
+      "fresh": "Baked Fresh Every Morning",
+      "freshDesc": "Baking starts at 5 AM so that warm and fragrant pastries are ready for breakfast."
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "welcome": "Welcome back, {name}!",
+    "email": "Email address",
+    "id": "Customer ID",
+    "notAuthenticated": "You are not logged in yet.",
+    "signInPrompt": "Sign in with your Shopify account to view your order history and manage your settings.",
+    "signInBtn": "Sign In",
+    "logoutBtn": "Sign Out"
+  },
+  "policies": {
+    "title": "Policies & Terms",
+    "description": "Official policies, delivery terms, and privacy protection of Monsieur Croissant Bakery.",
+    "notFound": "This policy section is currently being updated or was not found.",
+    "backHome": "Back to Home"
   }
 }
