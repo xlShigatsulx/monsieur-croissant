@@ -32,7 +32,7 @@ export function ProductPage({ handle }: ProductPageProps) {
   return (
     <div className="min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <p className="font-jost text-[10px] tracking-[0.2em] uppercase text-mocha/40 mb-8">
+        <p className="font-jost text-xs tracking-[0.15em] uppercase text-mocha/70 font-medium mb-8">
           <Link
             href={pageConfig.products}
             className="hover:text-caramel transition-colors duration-300"

@@ -16,7 +16,7 @@ export function AboutPage() {
           <p className="font-jost text-caramel text-xs sm:text-sm font-medium uppercase tracking-[0.25em] mb-3">
             {t('eyebrow')}
           </p>
-          <h1 className="font-cormorant italic text-4xl sm:text-5xl md:text-6xl text-mocha font-light mb-6">
+          <h1 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-mocha font-semibold mb-6">
             {t('title')}
           </h1>
           <div className="w-16 h-px bg-caramel/40 mx-auto mb-6" />
@@ -38,7 +38,7 @@ export function AboutPage() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="font-cormorant italic text-3xl sm:text-4xl text-mocha font-light">
+            <h2 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold">
               {t('storyTitle')}
             </h2>
             <p className="font-jost text-sm sm:text-base text-mocha/75 leading-relaxed">
@@ -66,8 +66,8 @@ export function AboutPage() {
         <div className="border-t border-caramel/15 pt-16 sm:pt-20">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="bg-white/60 rounded-2xl p-6 sm:p-8 border border-caramel/10 flex flex-col gap-3">
-              <span className="font-cormorant italic text-3xl text-caramel">01</span>
-              <h3 className="font-cormorant italic text-2xl text-mocha">
+              <span className="font-serif italic text-3xl text-caramel font-semibold">01</span>
+              <h3 className="font-serif italic text-2xl text-mocha font-semibold">
                 {t('values.craft')}
               </h3>
               <p className="font-jost text-sm text-mocha/70 leading-relaxed">
@@ -76,8 +76,8 @@ export function AboutPage() {
             </div>
 
             <div className="bg-white/60 rounded-2xl p-6 sm:p-8 border border-caramel/10 flex flex-col gap-3">
-              <span className="font-cormorant italic text-3xl text-caramel">02</span>
-              <h3 className="font-cormorant italic text-2xl text-mocha">
+              <span className="font-serif italic text-3xl text-caramel font-semibold">02</span>
+              <h3 className="font-serif italic text-2xl text-mocha font-semibold">
                 {t('values.natural')}
               </h3>
               <p className="font-jost text-sm text-mocha/70 leading-relaxed">
@@ -86,8 +86,8 @@ export function AboutPage() {
             </div>
 
             <div className="bg-white/60 rounded-2xl p-6 sm:p-8 border border-caramel/10 flex flex-col gap-3">
-              <span className="font-cormorant italic text-3xl text-caramel">03</span>
-              <h3 className="font-cormorant italic text-2xl text-mocha">
+              <span className="font-serif italic text-3xl text-caramel font-semibold">03</span>
+              <h3 className="font-serif italic text-2xl text-mocha font-semibold">
                 {t('values.fresh')}
               </h3>
               <p className="font-jost text-sm text-mocha/70 leading-relaxed">

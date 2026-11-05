@@ -7,8 +7,10 @@
   --color-caramel-light: #ddc5b5;
   --color-sand: #efe0d5;
 
-  --font-cormorant: var(--font-cormorant), serif;
-  --font-jost: var(--font-jost), sans-serif;
+  --font-serif: var(--font-serif), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-sans), 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-cormorant: var(--font-serif);
+  --font-jost: var(--font-sans);
 
   --animate-caption-up: captionUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-progress: progressFill 4.5s linear forwards;
@@ -44,17 +46,23 @@
   body {
     background-color: var(--color-cream);
     color: var(--color-mocha);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-serif);
     color: var(--color-mocha);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   :focus-visible {
@@ -87,10 +95,11 @@
 @layer components {
   .btn-outline {
     font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-caramel);
-    border: 1px solid color-mix(in srgb, var(--color-caramel) 40%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-caramel) 60%, transparent);
     border-radius: 999px;
     padding: 10px 24px;
     cursor: pointer;
@@ -123,10 +132,11 @@
   .badge {
     display: inline-block;
     font-size: 10px;
+    font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-caramel);
-    border: 1px solid color-mix(in srgb, var(--color-caramel) 30%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-caramel) 50%, transparent);
     border-radius: 999px;
     padding: 4px 12px;
   }
@@ -134,7 +144,7 @@
   .divider {
     width: 48px;
     height: 1px;
-    background-color: color-mix(in srgb, var(--color-caramel) 40%, transparent);
+    background-color: color-mix(in srgb, var(--color-caramel) 50%, transparent);
     margin: 24px auto;
   }
 }

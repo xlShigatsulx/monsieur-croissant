@@ -35,7 +35,7 @@ export function LocaleSwitcher() {
         onClick={() => setIsOpen((v) => !v)}
         className="font-jost text-[11px] tracking-[0.2em] uppercase
           flex items-center gap-1.5
-          text-mocha/50 hover:text-caramel transition-colors duration-200
+          text-mocha/70 hover:text-caramel transition-colors duration-200
           cursor-pointer"
       >
         {current.label}
@@ -60,7 +60,7 @@ export function LocaleSwitcher() {
                   ${
                     code === locale
                       ? 'text-caramel bg-caramel/5'
-                      : 'text-mocha/50 hover:text-caramel hover:bg-caramel/5'
+                      : 'text-mocha/70 hover:text-caramel hover:bg-caramel/5'
                   }`}
               >
                 {label}

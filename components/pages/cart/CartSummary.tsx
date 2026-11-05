@@ -28,7 +28,7 @@ export const CartSummary = memo(function CartSummary({
 
   return (
     <div className="bg-white/60 rounded-2xl p-6 border border-caramel/10">
-      <h2 className="font-cormorant italic text-2xl text-mocha font-light mb-6">
+      <h2 className="font-serif italic text-2xl text-mocha font-semibold mb-6">
         {t('title')}
       </h2>
       <CartSummaryTotals lines={lines} currencyCode={currencyCode} />
@@ -68,8 +68,8 @@ const CartSummaryActions = memo(function CartSummaryActions({
       </button>
       <Link
         href={pageConfig.products}
-        className="block text-center font-jost text-[10px] tracking-[0.15em]
-          uppercase text-mocha/40 hover:text-caramel mt-4
+        className="block text-center font-jost text-xs tracking-[0.15em]
+          uppercase text-mocha/70 hover:text-caramel mt-4 font-medium
           transition-colors duration-300"
       >
         {t('continueShopping')}
@@ -113,7 +113,7 @@ const CartSummaryTotals = memo(function CartSummaryTotals({
         <span className="font-jost text-[11px] tracking-[0.15em] uppercase text-mocha/80">
           {t('total')}
         </span>
-        <span className="font-cormorant italic text-xl text-mocha">
+        <span className="font-serif italic text-xl text-mocha font-semibold">
           {formattedSubtotal}
         </span>
       </div>

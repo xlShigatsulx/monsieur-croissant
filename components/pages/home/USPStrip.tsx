@@ -89,7 +89,7 @@ export function USPStrip() {
                 <p className="text-mocha text-xs sm:text-sm font-medium uppercase tracking-wide leading-tight">
                   {t(`${key}.title`)}
                 </p>
-                <p className="text-mocha/50 text-xs leading-snug mt-0.5">
+                <p className="text-mocha/70 text-xs leading-snug mt-0.5">
                   {t(`${key}.description`)}
                 </p>
               </div>

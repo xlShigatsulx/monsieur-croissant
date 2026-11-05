@@ -9,10 +9,10 @@ interface NotFoundProps {
 export function NotFound({ title, backHref, backLabel }: NotFoundProps) {
   return (
     <div className="flex flex-col bg-cream items-center justify-center text-center m-auto">
-      <p className="font-cormorant italic text-7xl text-caramel/20 font-light mb-4">
+      <p className="font-serif italic text-7xl text-caramel/50 font-semibold mb-4">
         404
       </p>
-      <h1 className="font-cormorant italic text-3xl text-mocha font-light mb-3">
+      <h1 className="font-serif italic text-3xl text-mocha font-semibold mb-3">
         {title}
       </h1>
       <Link

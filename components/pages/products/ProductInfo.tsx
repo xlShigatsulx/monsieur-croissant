@@ -81,18 +81,18 @@ export function ProductInfo({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-2">
+        <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold mb-2">
           {title}
         </h1>
         {formattedPrice && (
-          <p className="font-cormorant italic text-2xl text-caramel">
+          <p className="font-serif italic text-2xl text-caramel font-semibold">
             {formattedPrice}
           </p>
         )}
       </div>
 
       {description && (
-        <p className="font-jost text-sm text-mocha/60 leading-relaxed">
+        <p className="font-jost text-sm text-mocha/80 leading-relaxed">
           {description}
         </p>
       )}

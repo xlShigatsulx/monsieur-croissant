@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant, Jost } from 'next/font/google';
+import { Playfair_Display, Manrope } from 'next/font/google';
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -10,18 +10,18 @@ import { CartProvider } from '@/context/CartContext';
 import { Footer } from '@/components/layout/Footer/Footer';
 import { CartDrawer } from '@/components/pages/cart/CartDrawer';
 
-const cormorant = Cormorant({
+const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '600'],
+  weight: ['400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-serif',
   display: 'swap',
 });
 
-const jost = Jost({
+const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500'],
-  variable: '--font-jost',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -74,7 +74,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${cormorant.variable} ${jost.variable}`}
+      className={`${playfair.variable} ${manrope.variable}`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col bg-cream text-mocha">

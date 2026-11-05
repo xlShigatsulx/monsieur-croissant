@@ -14,10 +14,10 @@ export function NotFoundView({
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-cream">
       <div className="text-center px-4">
-        <p className="font-cormorant italic text-8xl text-caramel/60 font-light leading-none mb-2">
+        <p className="font-serif italic text-8xl text-caramel/70 font-semibold leading-none mb-2">
           404
         </p>
-        <h1 className="font-cormorant italic text-3xl sm:text-4xl text-mocha font-light mb-3">
+        <h1 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold mb-3">
           {title}
         </h1>
         <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/70 mb-10">

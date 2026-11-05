@@ -41,7 +41,7 @@ export function MobileMenu({
             onClick={onClose}
             aria-label={t('closeMenu')}
             className="w-8 h-8 flex items-center justify-center
-                text-mocha/50 hover:text-caramel transition-colors duration-200 cursor-pointer"
+                text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer"
           >
             <CloseIcon />
           </button>

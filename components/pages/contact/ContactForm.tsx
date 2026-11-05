@@ -16,7 +16,7 @@ const TOPIC_VALUES = ['order', 'question', 'cooperation', 'other'] as const;
 const inputClassName = `w-full font-jost text-sm text-mocha bg-transparent
     border border-caramel/20 hover:border-caramel/85 focus:border-caramel
     rounded-xl px-4 py-3 outline-none
-    placeholder:text-mocha/30
+    placeholder:text-mocha/50
     transition-colors duration-300`;
 
 const submitButtonClassName = `w-full font-jost text-[11px] tracking-[0.2em] uppercase
@@ -25,7 +25,7 @@ const submitButtonClassName = `w-full font-jost text-[11px] tracking-[0.2em] upp
     transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed
     cursor-pointer mt-5`;
 
-const errorClassName = 'font-jost text-[11px] text-red-400/80 mt-1.5 ml-1';
+const errorClassName = 'font-jost text-xs text-red-600 font-medium mt-1.5 ml-1';
 
 export function ContactForm() {
   const t = useTranslations('contact.contactForm');

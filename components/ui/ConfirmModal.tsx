@@ -69,7 +69,7 @@ export function ConfirmModal({
       >
         <h1
           id="confirm-modal-title"
-          className="font-cormorant text-4xl text-mocha font-light mb-2"
+          className="font-serif text-3xl text-mocha font-semibold mb-2"
         >
           {title}
         </h1>
@@ -77,7 +77,7 @@ export function ConfirmModal({
         {description && (
           <p
             id="confirm-modal-description"
-            className="font-jost text-sm text-mocha/60 mb-6"
+            className="font-jost text-sm text-mocha/80 mb-6"
           >
             {description}
           </p>

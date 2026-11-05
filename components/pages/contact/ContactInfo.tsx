@@ -39,7 +39,7 @@ function InfoBlock({
 }) {
   return (
     <div>
-      <p className="font-cormorant italic text-caramel text-lg mb-1">{label}</p>
+      <p className="font-serif italic text-caramel text-lg mb-1 font-semibold">{label}</p>
       {children}
     </div>
   );

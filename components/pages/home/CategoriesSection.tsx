@@ -51,7 +51,7 @@ export function CategoriesSection() {
               className="absolute inset-0 bg-mocha/25 group-hover:bg-mocha/45
                 transition-colors duration-300 flex flex-col items-center justify-center text-cream"
             >
-              <h3 className="font-cormorant text-cream font-semibold italic text-lg sm:text-2xl">
+              <h3 className="font-serif text-cream font-semibold italic text-lg sm:text-2xl">
                 {collection.title}
               </h3>
               <div className="w-8 h-px bg-cream/70 my-2" />

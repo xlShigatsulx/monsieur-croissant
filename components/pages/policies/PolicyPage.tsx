@@ -29,7 +29,7 @@ export function PolicyPage({ policy, title, body }: PolicyPageProps) {
           >
             ← {t('backHome')}
           </Link>
-          <h1 className="font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-4">
+          <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold mb-4">
             {displayTitle}
           </h1>
           <div className="w-12 h-px bg-caramel/40 mb-6" />

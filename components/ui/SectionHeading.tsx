@@ -29,11 +29,11 @@ export function SectionHeading({
             {eyebrow}
           </p>
         )}
-        <h2 className="font-cormorant italic text-3xl sm:text-4xl text-mocha font-semibold">
+        <h2 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-mocha/55 italic text-sm sm:text-base mt-2">
+          <p className="text-mocha/75 italic text-sm sm:text-base mt-2">
             {subtitle}
           </p>
         )}
@@ -43,8 +43,8 @@ export function SectionHeading({
         <Link
           href={viewAllHref}
           className="hidden sm:inline-flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase
-            text-mocha/50 hover:text-caramel transition-colors duration-200 whitespace-nowrap pb-1.5
-            border-b border-mocha/30 hover:border-caramel"
+            text-mocha/70 hover:text-caramel transition-colors duration-200 whitespace-nowrap pb-1.5
+            border-b border-mocha/40 hover:border-caramel"
         >
           {viewAllLabel}
         </Link>

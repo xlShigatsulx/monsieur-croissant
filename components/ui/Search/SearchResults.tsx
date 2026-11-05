@@ -25,13 +25,13 @@ export function SearchResults({
         shadow-xl border border-mocha/10 overflow-hidden z-50"
     >
       {loading && (
-        <div className="px-5 py-4 text-sm text-mocha/50 font-jost">
+        <div className="px-5 py-4 text-sm text-mocha/70 font-jost font-medium">
           {t('loading')}
         </div>
       )}
 
       {!loading && products.length === 0 && (
-        <div className="px-5 py-4 text-sm text-mocha/50 font-jost">
+        <div className="px-5 py-4 text-sm text-mocha/70 font-jost font-medium">
           {t('noResults')}
         </div>
       )}

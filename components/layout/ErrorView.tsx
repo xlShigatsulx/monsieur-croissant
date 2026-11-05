@@ -22,13 +22,13 @@ export function ErrorView({
   return (
     <div className="min-h-screen flex items-center justify-center bg-cream">
       <div className="text-center px-4">
-        <p className="font-cormorant italic text-8xl text-caramel/30 font-light leading-none mb-2">
+        <p className="font-serif italic text-8xl text-caramel/50 font-medium leading-none mb-2">
           500
         </p>
-        <h1 className="font-cormorant italic text-3xl text-mocha font-light mb-3">
+        <h1 className="font-serif italic text-3xl text-mocha font-semibold mb-3">
           {title}
         </h1>
-        <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50 mb-10">
+        <p className="font-sans text-xs tracking-[0.15em] uppercase text-mocha/70 mb-10 font-medium">
           {subtitle}
         </p>
         <div className="flex items-center justify-center gap-6">

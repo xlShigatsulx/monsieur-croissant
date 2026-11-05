@@ -46,7 +46,7 @@ export function CartPage() {
   return (
     <div className="min-h-screen">
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-6">
+        <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold mb-6">
           {t('title')}
         </h1>
 

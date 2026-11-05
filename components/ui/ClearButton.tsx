@@ -10,7 +10,7 @@ export function ClearButton({ onClick, label }: ClearButtonProps) {
       onClick={onClick}
       aria-label={label}
       className="absolute right-3 top-1/2 -translate-y-1/2 p-1
-        text-mocha/40 hover:text-mocha transition-colors duration-200"
+        text-mocha/60 hover:text-mocha transition-colors duration-200"
     >
       <svg
         width="16"

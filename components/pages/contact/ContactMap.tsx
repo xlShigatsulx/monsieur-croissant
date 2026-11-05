@@ -1,7 +1,7 @@
 export function ContactMap({ mapsUrl }: { mapsUrl?: string }) {
   if (!mapsUrl) {
     return (
-      <div className="overflow-hidden sm:col-span-2 rounded-2xl border border-caramel/15 bg-caramel/5 shadow-sm h-full min-h-[250px] flex items-center justify-center p-6 text-center text-mocha/50 font-jost text-sm">
+      <div className="overflow-hidden sm:col-span-2 rounded-2xl border border-caramel/15 bg-caramel/5 shadow-sm h-full min-h-[250px] flex items-center justify-center p-6 text-center text-mocha/70 font-jost text-sm font-medium">
         Карта розташування пекарні
       </div>
     );

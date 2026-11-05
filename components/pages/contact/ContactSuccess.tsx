@@ -9,13 +9,13 @@ export function ContactSuccess({ onReset }: ContactSuccessProps) {
 
   return (
     <div className="flex flex-col items-center justify-center text-center py-12">
-      <p className="font-cormorant italic text-5xl text-caramel/70 font-light mb-4">
+      <p className="font-serif italic text-5xl text-caramel/90 font-semibold mb-4">
         ✓
       </p>
-      <h3 className="font-cormorant italic text-2xl text-mocha font-light mb-2">
+      <h3 className="font-serif italic text-2xl text-mocha font-semibold mb-2">
         {t('title')}
       </h3>
-      <p className="font-jost text-sm text-mocha/80 font-light">
+      <p className="font-jost text-sm text-mocha/80 font-normal">
         {t('subtitle')}
       </p>
       <button

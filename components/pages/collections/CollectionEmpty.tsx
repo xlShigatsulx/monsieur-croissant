@@ -5,10 +5,10 @@ export function CollectionEmpty() {
 
   return (
     <div className="text-center py-24">
-      <p className="font-cormorant italic text-3xl text-mocha/30 font-light mb-3">
+      <p className="font-serif italic text-3xl text-mocha/70 font-semibold mb-3">
         {t('title')}
       </p>
-      <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/30">
+      <p className="font-jost text-xs tracking-[0.15em] uppercase text-mocha/60 font-medium">
         {t('subtitle')}
       </p>
     </div>

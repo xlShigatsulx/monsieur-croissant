@@ -32,7 +32,7 @@ export function HeroSection() {
           </p>
 
           <h1
-            className="font-cormorant italic text-mocha font-semibold leading-[1.05] text-balance mb-5
+            className="font-serif italic text-mocha font-semibold leading-[1.05] text-balance mb-5
             text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
           >
             {data.title}

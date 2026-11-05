@@ -35,7 +35,7 @@ export function VariantSelector({
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/50">
+      <p className="font-jost text-xs tracking-[0.15em] uppercase text-mocha/75 font-medium">
         {t('variant')}
       </p>
       <div className="flex flex-wrap gap-2">
@@ -49,7 +49,7 @@ export function VariantSelector({
               ${
                 selectedVariantId === variant.id
                   ? 'border-caramel bg-caramel/10 text-caramel'
-                  : 'border-caramel/30 text-mocha/60 hover:border-caramel hover:text-caramel'
+                  : 'border-caramel/30 text-mocha/80 hover:border-caramel hover:text-caramel'
               }
               ${
                 !variant.availableForSale

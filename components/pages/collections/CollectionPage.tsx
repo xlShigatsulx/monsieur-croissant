@@ -61,7 +61,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
             {collection.title}
           </p>
           <h1
-            className="font-cormorant italic text-3xl sm:text-5xl text-cream font-light"
+            className="font-serif italic text-3xl sm:text-5xl text-cream font-semibold"
             style={{ textShadow }}
           >
             {collection.title}
@@ -71,7 +71,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         {collection.description && (
-          <p className="font-jost text-sm text-mocha/60 mb-12 max-w-xl leading-relaxed">
+          <p className="font-jost text-base text-mocha/75 mb-12 max-w-xl leading-relaxed">
             {collection.description}
           </p>
         )}

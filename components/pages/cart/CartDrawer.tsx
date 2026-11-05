@@ -112,7 +112,7 @@ export function CartDrawer() {
         {/* Header */}
         <div className="px-6 py-5 border-b border-caramel/15 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h2 className="font-cormorant italic text-2xl sm:text-3xl text-mocha font-light">
+            <h2 className="font-serif italic text-2xl sm:text-3xl text-mocha font-semibold">
               {t('drawer.title')}
             </h2>
             {visibleLines.length > 0 && (
@@ -165,7 +165,7 @@ export function CartDrawer() {
               <div className="w-20 h-20 rounded-full bg-caramel/10 text-caramel flex items-center justify-center mb-5">
                 <EmptyCartIcon />
               </div>
-              <h3 className="font-cormorant italic text-2xl text-mocha font-light mb-2">
+              <h3 className="font-serif italic text-2xl text-mocha font-semibold mb-2">
                 {t('drawer.emptyTitle')}
               </h3>
               <p className="font-jost text-xs text-mocha/60 max-w-xs mb-8 leading-relaxed">
@@ -218,7 +218,7 @@ export function CartDrawer() {
                     <Link
                       href={pageConfig.product(variant.product.handle)}
                       onClick={closeDrawer}
-                      className="font-cormorant italic text-lg text-mocha hover:text-caramel transition-colors truncate block"
+                      className="font-serif italic text-lg text-mocha hover:text-caramel transition-colors truncate block font-medium"
                     >
                       {variant.product.title}
                     </Link>
@@ -227,14 +227,14 @@ export function CartDrawer() {
                       type="button"
                       onClick={() => removeItem(line.id)}
                       aria-label={t('cartItem.removeBtn')}
-                      className="text-mocha/30 hover:text-red-500 transition-colors p-1 -m-1 cursor-pointer"
+                      className="text-mocha/50 hover:text-red-500 transition-colors p-1 -m-1 cursor-pointer"
                     >
                       <TrashIcon />
                     </button>
                   </div>
 
                   {variant.title !== 'Default Title' && (
-                    <p className="font-jost text-[10px] uppercase tracking-[0.15em] text-mocha/45">
+                    <p className="font-jost text-[10px] uppercase tracking-[0.15em] text-mocha/70 font-medium">
                       {variant.title}
                     </p>
                   )}
@@ -263,7 +263,7 @@ export function CartDrawer() {
                       </button>
                     </div>
 
-                    <span className="font-cormorant italic text-base text-mocha font-medium">
+                    <span className="font-serif italic text-base text-mocha font-semibold">
                       {lineTotal}
                     </span>
                   </div>
@@ -280,7 +280,7 @@ export function CartDrawer() {
               <span className="font-jost text-xs uppercase tracking-[0.2em] text-mocha/70">
                 {t('drawer.subtotal')}
               </span>
-              <span className="font-cormorant italic text-2xl text-mocha font-medium">
+              <span className="font-serif italic text-2xl text-mocha font-semibold">
                 {formattedSubtotal}
               </span>
             </div>
@@ -308,13 +308,13 @@ export function CartDrawer() {
               <button
                 type="button"
                 onClick={clearCart}
-                className="font-jost text-[11px] uppercase tracking-[0.15em] text-mocha/40 hover:text-red-500 transition-colors cursor-pointer"
+                className="font-jost text-[11px] uppercase tracking-[0.15em] text-mocha/60 hover:text-red-500 transition-colors cursor-pointer"
               >
                 {t('clearCart')}
               </button>
             </div>
 
-            <div className="pt-2 border-t border-caramel/10 flex items-center justify-around text-[10px] font-jost text-mocha/50 uppercase tracking-[0.1em]">
+            <div className="pt-2 border-t border-caramel/10 flex items-center justify-around text-[10px] font-jost text-mocha/70 uppercase tracking-[0.1em]">
               <span className="flex items-center gap-1.5">
                 <CheckCircleIcon />
                 {t('drawer.freshBadge')}

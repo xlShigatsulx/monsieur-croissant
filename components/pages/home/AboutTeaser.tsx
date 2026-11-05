@@ -18,7 +18,7 @@ export function AboutTeaser() {
       <p className="text-caramel text-xs sm:text-sm font-medium uppercase tracking-[0.25em] mb-3">
         {t('eyebrow')}
       </p>
-      <h2 className="font-cormorant italic text-3xl sm:text-4xl md:text-5xl text-mocha font-light mb-5">
+      <h2 className="font-serif italic text-3xl sm:text-4xl md:text-5xl text-mocha font-semibold mb-5">
         {t('title')}
       </h2>
       <div className="w-12 h-px bg-caramel/50 mx-auto mb-6" />

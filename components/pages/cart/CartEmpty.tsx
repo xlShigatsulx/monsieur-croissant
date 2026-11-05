@@ -7,10 +7,10 @@ export function CartEmpty() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-center m-auto bg-cream">
-      <h1 className="font-cormorant italic text-3xl text-mocha font-light mb-3">
+      <h1 className="font-serif italic text-3xl text-mocha font-semibold mb-3">
         {t('title')}
       </h1>
-      <p className="font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/60 mb-10">
+      <p className="font-jost text-xs tracking-[0.15em] uppercase text-mocha/70 mb-10 font-medium">
         {t('subtitle')}
       </p>
       <Link

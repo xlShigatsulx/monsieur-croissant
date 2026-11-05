@@ -29,7 +29,7 @@ export function SearchResultItem({ product, onSelect }: SearchResultItemProps) {
       )}
       <div className="flex-1 min-w-0">
         <p className="font-jost text-sm text-mocha truncate">{product.title}</p>
-        <p className="font-jost text-xs text-mocha/50">
+        <p className="font-jost text-xs text-caramel font-medium">
           {product.priceRange.minVariantPrice.amount}{' '}
           {product.priceRange.minVariantPrice.currencyCode}
         </p>

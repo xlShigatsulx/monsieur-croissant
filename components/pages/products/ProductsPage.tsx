@@ -19,7 +19,7 @@ export function ProductsPage() {
   if (products.length === 0)
     return (
       <div className="text-center py-24">
-        <p className="font-cormorant italic text-3xl text-mocha/30 font-light">
+        <p className="font-serif italic text-3xl text-mocha/70 font-semibold">
           {t('empty')}
         </p>
       </div>
@@ -28,7 +28,7 @@ export function ProductsPage() {
   return (
     <div className="min-h-screen">
       <div className="max-w-6xl mx-auto p-4 mb-16">
-        <h1 className="font-cormorant italic text-4xl sm:text-5xl text-mocha font-light mb-12">
+        <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold mb-12">
           {t('title')}
         </h1>
 

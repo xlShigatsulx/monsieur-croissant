@@ -20,7 +20,7 @@ export function NavLogo() {
         />
       ) : (
         <span
-          className="font-cormorant italic text-mocha text-2xl sm:text-3xl font-light
+          className="font-serif italic text-mocha text-2xl sm:text-3xl font-semibold
           tracking-wide leading-none group-hover:text-caramel transition-colors duration-300"
         >
           {shopName}

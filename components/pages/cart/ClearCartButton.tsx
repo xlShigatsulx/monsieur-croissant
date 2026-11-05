@@ -29,10 +29,10 @@ export function ClearCartButton() {
         onClick={() => setIsModalOpen(true)}
         disabled={isLoading}
         className="font-jost text-[11px] tracking-[0.2em] uppercase
-          text-mocha/50 border border-mocha/20
+          text-mocha/70 border border-mocha/30
           hover:border-red-400/60 hover:text-red-500 hover:bg-red-50/40
           rounded-full px-8 py-3 transition-all duration-300 inline-block
-          disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-mocha/20 disabled:hover:text-mocha/50 disabled:hover:bg-transparent"
+          disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-mocha/30 disabled:hover:text-mocha/70 disabled:hover:bg-transparent"
       >
         {t('clearCart')}
       </button>

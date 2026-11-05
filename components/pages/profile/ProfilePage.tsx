@@ -28,11 +28,11 @@ export function ProfilePage() {
             </svg>
           </div>
 
-          <h1 className="font-cormorant italic text-3xl sm:text-4xl text-mocha font-light mb-3">
+          <h1 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold mb-3">
             {t('title')}
           </h1>
 
-          <p className="font-jost text-sm text-mocha/65 mb-8 leading-relaxed">
+          <p className="font-jost text-sm text-mocha/80 mb-8 leading-relaxed">
             {t('signInPrompt')}
           </p>
 
@@ -60,7 +60,7 @@ export function ProfilePage() {
               <span className="inline-block text-[10px] uppercase tracking-[0.2em] font-medium text-caramel bg-caramel/10 px-3 py-1 rounded-full mb-3">
                 Shopify Customer
               </span>
-              <h1 className="font-cormorant italic text-3xl sm:text-4xl text-mocha font-light">
+              <h1 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold">
                 {t('welcome', { name: fullName })}
               </h1>
             </div>
@@ -79,7 +79,7 @@ export function ProfilePage() {
           <div className="py-8 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="bg-sand/40 rounded-2xl p-5">
-                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/45 mb-1">
+                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mb-1">
                   {t('email')}
                 </span>
                 <span className="font-jost text-sm sm:text-base text-mocha font-medium">
@@ -88,7 +88,7 @@ export function ProfilePage() {
               </div>
 
               <div className="bg-sand/40 rounded-2xl p-5">
-                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/45 mb-1">
+                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mb-1">
                   {t('id')}
                 </span>
                 <span className="font-jost text-xs sm:text-sm text-mocha/80 font-mono truncate block">

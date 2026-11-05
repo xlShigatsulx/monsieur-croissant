@@ -53,14 +53,14 @@ export const CartItem = memo(function CartItem({
         <div>
           <Link href={pageConfig.product(handle)}>
             <h3
-              className="font-cormorant italic text-lg text-mocha
+              className="font-serif italic text-lg text-mocha font-medium
               hover:text-caramel transition-colors duration-300"
             >
               {title}
             </h3>
           </Link>
           {variantTitle !== 'Default Title' && (
-            <p className="font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/40 mt-0.5">
+            <p className="font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mt-0.5">
               {variantTitle}
             </p>
           )}
@@ -148,14 +148,14 @@ const CartItemQuantity = memo(function CartItemQuantity({
       </div>
 
       <div className="flex items-center gap-4">
-        <span className="font-cormorant italic text-xl text-mocha">
+        <span className="font-serif italic text-xl text-mocha font-semibold">
           {displayTotal}
         </span>
         <button
           type="button"
           onClick={handleRemove}
           aria-label={t('removeBtn')}
-          className="text-mocha/35 hover:text-caramel transition-colors duration-300
+          className="text-mocha/50 hover:text-caramel transition-colors duration-300
     cursor-pointer"
         >
           <svg width="16" height="16" viewBox="0 0 14 14" fill="none">

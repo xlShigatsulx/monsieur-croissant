@@ -21,7 +21,7 @@ export function ContactTeaser() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
         <div>
-          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+          <h3 className="font-serif italic text-mocha text-xl sm:text-2xl mb-4 font-semibold">
             {t('visitTitle')}
           </h3>
           <div className="text-mocha/70 text-sm leading-relaxed space-y-1">
@@ -33,7 +33,7 @@ export function ContactTeaser() {
         </div>
 
         <div>
-          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+          <h3 className="font-serif italic text-mocha text-xl sm:text-2xl mb-4 font-semibold">
             {t('touchTitle')}
           </h3>
           <div className="text-mocha/70 text-sm leading-relaxed space-y-1">
@@ -45,7 +45,7 @@ export function ContactTeaser() {
         </div>
 
         <div>
-          <h3 className="font-cormorant italic text-mocha text-xl sm:text-2xl mb-4">
+          <h3 className="font-serif italic text-mocha text-xl sm:text-2xl mb-4 font-semibold">
             {t('orderTitle')}
           </h3>
           <p className="text-mocha/70 text-sm leading-relaxed mb-5">
