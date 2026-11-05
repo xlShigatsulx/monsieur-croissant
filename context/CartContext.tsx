@@ -54,13 +54,21 @@ interface CartDataContextType {
   cart: GetCartQuery['cart'] | undefined;
   cartLoading: boolean;
   isLoading: boolean;
+  isDrawerOpen: boolean;
 }
 
 interface CartActionsContextType {
-  addToCart: (variantId: string, quantity?: number) => Promise<void>;
+  addToCart: (
+    variantId: string,
+    quantity?: number,
+    openDrawerAfter?: boolean,
+  ) => Promise<void>;
   updateItem: (lineId: string, quantity: number, unitPrice: number) => void;
   removeItem: (lineId: string) => Promise<void>;
   clearCart: () => Promise<void>;
+  openDrawer: () => void;
+  closeDrawer: () => void;
+  toggleDrawer: () => void;
 }
 
 interface CartOptimisticContextType {
@@ -85,6 +93,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [optimisticLines, setOptimisticLines] = useState<
     Record<string, OptimisticLine>
   >({});
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const openDrawer = useCallback(() => setIsDrawerOpen(true), []);
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+  const toggleDrawer = useCallback(() => setIsDrawerOpen((v) => !v), []);
 
   const debounceTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>(
     {},
@@ -103,7 +116,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [removeLines] = useCartLinesRemoveMutation();
 
   const addToCart = useCallback(
-    async (variantId: string, quantity = 1) => {
+    async (variantId: string, quantity = 1, openDrawerAfter = true) => {
       try {
         if (!cartId) {
           const { data } = await createCart({
@@ -125,6 +138,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
               language,
             },
           });
+        }
+        if (openDrawerAfter) {
+          setIsDrawerOpen(true);
         }
       } catch (err) {
         console.error('Error adding to cart:', err);
@@ -254,8 +270,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       cart: data?.cart,
       cartLoading,
       isLoading: creating || adding,
+      isDrawerOpen,
     }),
-    [cartId, data, cartLoading, creating, adding],
+    [cartId, data, cartLoading, creating, adding, isDrawerOpen],
   );
 
   const actionsValue = useMemo<CartActionsContextType>(
@@ -264,8 +281,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
       updateItem,
       removeItem,
       clearCart,
+      openDrawer,
+      closeDrawer,
+      toggleDrawer,
     }),
-    [addToCart, updateItem, removeItem, clearCart],
+    [
+      addToCart,
+      updateItem,
+      removeItem,
+      clearCart,
+      openDrawer,
+      closeDrawer,
+      toggleDrawer,
+    ],
   );
 
   const optimisticValue = useMemo<CartOptimisticContextType>(

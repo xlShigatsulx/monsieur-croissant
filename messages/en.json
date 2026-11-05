@@ -122,7 +122,23 @@
     "clearConfirmTitle": "Clear cart?",
     "clearConfirmDescription": "All items will be removed from your cart. This action cannot be undone.",
     "clearConfirmAction": "Yes, clear it",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "drawer": {
+      "title": "Your Cart",
+      "closeLabel": "Close cart",
+      "itemsCount": "{count} {count, plural, one {item} other {items}}",
+      "emptyTitle": "Your cart is empty",
+      "emptySubtitle": "Choose some warm fragrant croissants or sourdough bread",
+      "shopNow": "Browse Bakery",
+      "viewFullCart": "View full cart",
+      "subtotal": "Subtotal",
+      "checkout": "Proceed to Checkout",
+      "freeShippingTitle": "Free delivery from {amount} ₴",
+      "freeShippingRemaining": "Add {amount} ₴ more for free delivery",
+      "freeShippingUnlocked": "You unlocked free delivery! 🎉",
+      "freshBadge": "Baked fresh every morning",
+      "pickupBadge": "Free store pickup"
+    }
   },
   "contact": {
     "title": "Contact Us",

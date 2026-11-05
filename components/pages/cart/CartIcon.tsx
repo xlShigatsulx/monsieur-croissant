@@ -1,32 +1,32 @@
 'use client';
 
-import { Link } from '@/i18n/navigation';
-import { useCartData } from '@/context/CartContext';
-import { pageConfig } from '@/config/pages.config';
+import { useCartActions, useCartData } from '@/context/CartContext';
 import { useTranslations } from 'next-intl';
 
 export function CartIcon() {
   const t = useTranslations('cart');
   const { cart } = useCartData();
+  const { openDrawer } = useCartActions();
   const totalQuantity = cart?.totalQuantity ?? 0;
 
   return (
-    <Link
-      href={pageConfig.cart}
+    <button
+      type="button"
+      onClick={openDrawer}
       aria-label={t('cartLinkLabel')}
       className="relative w-8 h-8 flex items-center justify-center
-        text-mocha/70 hover:text-caramel transition-colors duration-300"
+        text-mocha/70 hover:text-caramel transition-colors duration-300 cursor-pointer"
     >
       <BagIcon />
       {totalQuantity > 0 && (
         <span
           className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center
-          bg-caramel text-cream rounded-full font-jost text-[9px] leading-none"
+          bg-caramel text-cream rounded-full font-jost text-[9px] leading-none font-medium animate-in zoom-in-75 duration-200"
         >
           {totalQuantity > 99 ? '99+' : totalQuantity}
         </span>
       )}
-    </Link>
+    </button>
   );
 }
 

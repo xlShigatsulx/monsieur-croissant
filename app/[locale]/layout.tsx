@@ -8,6 +8,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { Header } from '@/components/layout/Header/Header';
 import { CartProvider } from '@/context/CartContext';
 import { Footer } from '@/components/layout/Footer/Footer';
+import { CartDrawer } from '@/components/pages/cart/CartDrawer';
 
 const cormorant = Cormorant({
   subsets: ['latin', 'cyrillic'],
@@ -84,6 +85,7 @@ export default async function LocaleLayout({
                 <Header />
                 <main className="flex-1 flex flex-col">{children}</main>
                 <Footer />
+                <CartDrawer />
               </CartProvider>
             </AuthProvider>
           </ApolloClientProvider>
