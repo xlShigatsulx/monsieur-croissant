@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 import { useSlider } from '@/hooks/useSlider';
 import { SliderTrack } from './SliderTrack';
 import { SliderArrows } from './SliderArrows';
@@ -36,6 +36,22 @@ function ProductSlider() {
     [goTo, resetAutoplay],
   );
 
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        handleNavigate('prev');
+      } else if (e.key === 'ArrowRight') {
+        handleNavigate('next');
+      }
+    };
+
+    el.addEventListener('keydown', onKeyDown);
+    return () => el.removeEventListener('keydown', onKeyDown);
+  }, [handleNavigate]);
+
   useSwipe(sliderRef, handleNavigate);
 
   if (loading) return <SliderSkeleton />;
@@ -46,7 +62,11 @@ function ProductSlider() {
     <div className="w-full max-w-3xl">
       <div
         ref={sliderRef}
-        className="relative rounded-2xl overflow-hidden select-none"
+        tabIndex={0}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Seasonal Special Offers"
+        className="relative rounded-2xl overflow-hidden select-none outline-none focus-visible:ring-2 focus-visible:ring-caramel"
         style={{
           boxShadow:
             '0 32px 64px -12px rgba(58,35,24,0.25), 0 0 0 1px rgba(196,151,122,0.12)',

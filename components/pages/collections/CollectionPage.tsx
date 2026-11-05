@@ -39,6 +39,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
             src={collection.image.url}
             alt={collection.image.altText ?? collection.title}
             fill
+            sizes="100vw"
             className="object-cover"
             loading="eager"
           />

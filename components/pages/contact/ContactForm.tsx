@@ -1,29 +1,37 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { ContactSuccess } from './ContactSuccess';
 import { useTranslations } from 'next-intl';
+import { ContactSuccess } from './ContactSuccess';
 
-type ContactFormData = {
+const TOPIC_VALUES = [
+  'catering',
+  'order',
+  'partnership',
+  'feedback',
+  'other',
+] as const;
+
+type Topic = (typeof TOPIC_VALUES)[number];
+
+interface ContactFormData {
   name: string;
   email: string;
-  topic: 'order' | 'question' | 'cooperation' | 'other';
+  topic: Topic;
   message: string;
-};
+}
 
-const TOPIC_VALUES = ['order', 'question', 'cooperation', 'other'] as const;
-
-const inputClassName = `w-full font-jost text-sm text-mocha bg-transparent
-    border border-caramel/20 hover:border-caramel/85 focus:border-caramel
+const inputClassName = `w-full font-jost text-sm text-mocha bg-white/40
+    border border-caramel/25 hover:border-caramel/85 focus:border-caramel
     rounded-xl px-4 py-3 outline-none
     placeholder:text-mocha/50
     transition-colors duration-300`;
 
-const submitButtonClassName = `w-full font-jost text-[11px] tracking-[0.2em] uppercase
-    text-caramel border border-caramel/40 hover:border-caramel
-    hover:bg-caramel/10 rounded-full px-8 py-3
+const submitButtonClassName = `w-full font-jost text-xs tracking-[0.2em] uppercase font-semibold
+    text-caramel border border-caramel/50 hover:border-caramel
+    hover:bg-caramel hover:text-cream rounded-full px-8 py-3.5
     transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed
-    cursor-pointer mt-5`;
+    cursor-pointer mt-5 shadow-sm`;
 
 const errorClassName = 'font-jost text-xs text-red-600 font-medium mt-1.5 ml-1';
 
@@ -38,7 +46,6 @@ export function ContactForm() {
   } = useForm<ContactFormData>();
 
   const onSubmit = () => {
-    // data can be sent to backend here
     reset();
   };
 
@@ -49,7 +56,14 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
       <div>
+        <label htmlFor="contact-name" className="sr-only">
+          {t('name.placeholder')}
+        </label>
         <input
+          id="contact-name"
+          aria-label={t('name.placeholder')}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'contact-name-error' : undefined}
           {...register('name', {
             required: t('name.required'),
             minLength: { value: 2, message: t('name.minLength') },
@@ -57,11 +71,23 @@ export function ContactForm() {
           placeholder={t('name.placeholder')}
           className={inputClassName}
         />
-        {errors.name && <p className={errorClassName}>{errors.name.message}</p>}
+        {errors.name && (
+          <p id="contact-name-error" className={errorClassName}>
+            {errors.name.message}
+          </p>
+        )}
       </div>
 
       <div>
+        <label htmlFor="contact-email" className="sr-only">
+          {t('email.placeholder')}
+        </label>
         <input
+          id="contact-email"
+          type="email"
+          aria-label={t('email.placeholder')}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'contact-email-error' : undefined}
           {...register('email', {
             required: t('email.required'),
             pattern: {
@@ -69,17 +95,25 @@ export function ContactForm() {
               message: t('email.invalid'),
             },
           })}
-          type="email"
           placeholder={t('email.placeholder')}
           className={inputClassName}
         />
         {errors.email && (
-          <p className={errorClassName}>{errors.email.message}</p>
+          <p id="contact-email-error" className={errorClassName}>
+            {errors.email.message}
+          </p>
         )}
       </div>
 
       <div>
+        <label htmlFor="contact-topic" className="sr-only">
+          {t('topic.placeholder')}
+        </label>
         <select
+          id="contact-topic"
+          aria-label={t('topic.placeholder')}
+          aria-invalid={!!errors.topic}
+          aria-describedby={errors.topic ? 'contact-topic-error' : undefined}
           {...register('topic', { required: t('topic.required') })}
           className={`${inputClassName} cursor-pointer`}
           defaultValue=""
@@ -94,12 +128,21 @@ export function ContactForm() {
           ))}
         </select>
         {errors.topic && (
-          <p className={errorClassName}>{errors.topic.message}</p>
+          <p id="contact-topic-error" className={errorClassName}>
+            {errors.topic.message}
+          </p>
         )}
       </div>
 
       <div>
+        <label htmlFor="contact-message" className="sr-only">
+          {t('message.placeholder')}
+        </label>
         <textarea
+          id="contact-message"
+          aria-label={t('message.placeholder')}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
           {...register('message', {
             required: t('message.required'),
             minLength: { value: 10, message: t('message.minLength') },
@@ -109,7 +152,9 @@ export function ContactForm() {
           className={`${inputClassName} resize-none`}
         />
         {errors.message && (
-          <p className={errorClassName}>{errors.message.message}</p>
+          <p id="contact-message-error" className={errorClassName}>
+            {errors.message.message}
+          </p>
         )}
       </div>
 

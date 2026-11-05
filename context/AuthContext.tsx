@@ -57,11 +57,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const codeVerifier = generateCodeVerifier();
     const codeChallenge = await generateCodeChallenge(codeVerifier);
 
-    Cookies.set('oauth_state', state, { sameSite: 'lax', secure: true });
-    Cookies.set('oauth_nonce', nonce, { sameSite: 'lax', secure: true });
+    const isSecure = typeof window !== 'undefined' && window.location.protocol === 'https:';
+    Cookies.set('oauth_state', state, { sameSite: 'lax', secure: isSecure });
+    Cookies.set('oauth_nonce', nonce, { sameSite: 'lax', secure: isSecure });
     Cookies.set('code_verifier', codeVerifier, {
       sameSite: 'lax',
-      secure: true,
+      secure: isSecure,
     });
 
     const authUrl = await getAuthorizationUrl(state, nonce, codeChallenge);

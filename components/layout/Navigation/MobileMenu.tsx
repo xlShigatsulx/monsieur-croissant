@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect } from 'react';
+import { usePathname } from '@/i18n/navigation';
 import { NavLogo } from './NavLogo';
 import { NavMenu } from './NavMenu';
 import { NavAuth } from './NavAuth';
@@ -19,16 +23,42 @@ export function MobileMenu({
   onLogout,
 }: MobileMenuProps) {
   const t = useTranslations('nav');
+  const pathname = usePathname();
+
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+
   return (
     <>
       <div
         onClick={onClose}
-        className={`fixed inset-0 bg-mocha/20 backdrop-blur-sm z-40
+        className={`fixed inset-0 bg-mocha/30 backdrop-blur-xs z-40
           transition-opacity duration-300
           ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden="true"
       />
 
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('menu')}
         className={`fixed top-0 right-0 h-full w-72 bg-cream z-50
           shadow-[-16px_0_48px_-8px_rgba(58,35,24,0.15)]
           transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
@@ -40,8 +70,8 @@ export function MobileMenu({
           <button
             onClick={onClose}
             aria-label={t('closeMenu')}
-            className="w-8 h-8 flex items-center justify-center
-                text-mocha/70 hover:text-caramel transition-colors duration-200 cursor-pointer"
+            className="w-9 h-9 rounded-full border border-caramel/20 flex items-center justify-center
+                text-mocha/70 hover:text-caramel hover:border-caramel hover:bg-caramel/10 transition-colors duration-200 cursor-pointer"
           >
             <CloseIcon />
           </button>
@@ -49,13 +79,13 @@ export function MobileMenu({
 
         <div className="h-px bg-caramel/15 mx-6" />
 
-        <nav className="flex flex-col gap-6 px-6 py-4">
-          <NavMenu className="flex flex-col gap-3" onItemClick={onClose} />
+        <nav className="flex flex-col gap-6 px-6 py-6" aria-label="Mobile Navigation">
+          <NavMenu className="flex flex-col gap-4" onItemClick={onClose} />
         </nav>
 
         <div className="h-px bg-caramel/15 mx-6" />
 
-        <div className="px-6 py-4">
+        <div className="px-6 py-6">
           <NavAuth
             isAuthenticated={isAuthenticated}
             onSignIn={onSignIn}

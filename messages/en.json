@@ -76,7 +76,9 @@
     }
   },
   "products": {
+    "eyebrow": "Product Catalog",
     "title": "All products",
+    "subtitle": "Freshly baked croissants, brioches, and artisan sourdough bread every morning",
     "empty": "No products",
     "loadMore": "Load more"
   },

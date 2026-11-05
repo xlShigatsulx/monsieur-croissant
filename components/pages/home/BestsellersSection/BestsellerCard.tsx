@@ -100,12 +100,11 @@ export function BestsellerCard({
       </div>
 
       <div className="flex items-baseline gap-2">
-        <Link
-          href={pageConfig.product(product.handle)}
-          className="text-mocha text-sm sm:text-base font-medium truncate hover:text-caramel transition-colors"
-        >
-          <h3>{product.title}</h3>
-        </Link>
+        <h3 className="text-mocha text-sm sm:text-base font-medium truncate hover:text-caramel transition-colors">
+          <Link href={pageConfig.product(product.handle)}>
+            {product.title}
+          </Link>
+        </h3>
         <span
           aria-hidden="true"
           className="flex-1 border-b border-dotted border-caramel/40 -translate-y-0.75"

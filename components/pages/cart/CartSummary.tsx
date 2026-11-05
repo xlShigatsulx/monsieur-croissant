@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { useCartOptimistic } from '@/context/CartContext';
 import { pageConfig } from '@/config/pages.config';
 import { formatPrice } from '@/lib/utils/format';
+import { safeRedirectToCheckout } from '@/lib/utils/checkout';
 import { useLocale, useTranslations } from 'next-intl';
 
 interface CartLine {
@@ -44,12 +45,7 @@ const CartSummaryActions = memo(function CartSummaryActions({
 }) {
   const handleCheckout = useCallback(() => {
     if (!checkoutUrl) return;
-    try {
-      const url = new URL(checkoutUrl);
-      window.location.href = url.toString();
-    } catch {
-      window.location.href = checkoutUrl;
-    }
+    safeRedirectToCheckout(checkoutUrl);
   }, [checkoutUrl]);
 
   const t = useTranslations('cart.cartSummary');

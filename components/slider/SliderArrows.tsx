@@ -12,14 +12,14 @@ export const SliderArrows = memo(function SliderArrows({
   const t = useTranslations('slider');
 
   const buttonClassNames =
-    'absolute top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-transform duration-200 hover:scale-110 active:scale-95 cursor-pointer';
+    'absolute top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-mocha/40 sm:bg-white/10 hover:bg-mocha/60 sm:hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white transition-transform duration-200 hover:scale-110 active:scale-95 cursor-pointer shadow-md';
 
   return (
     <>
       <button
         aria-label={t('prev')}
         onClick={() => onNavigate('prev')}
-        className={`${buttonClassNames} left-3 sm:left-4 hidden sm:flex`}
+        className={`${buttonClassNames} left-2 sm:left-4`}
       >
         <ChevronIcon direction="left" />
       </button>
@@ -27,7 +27,7 @@ export const SliderArrows = memo(function SliderArrows({
       <button
         aria-label={t('next')}
         onClick={() => onNavigate('next')}
-        className={`${buttonClassNames} right-3 sm:right-4 hidden sm:flex`}
+        className={`${buttonClassNames} right-2 sm:right-4`}
       >
         <ChevronIcon direction="right" />
       </button>
@@ -48,7 +48,7 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
         />
       ) : (
         <path
-          d="M6 3L11 8L6 13"
+          d="M6 13L11 8L6 3"
           stroke="white"
           strokeWidth="1.6"
           strokeLinecap="round"

@@ -4,20 +4,26 @@ import { useEffect, useMemo, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useCartActions, useCartData, useCartOptimistic } from '@/context/CartContext';
 import { formatPrice } from '@/lib/utils/format';
 import { pageConfig } from '@/config/pages.config';
+import { safeRedirectToCheckout } from '@/lib/utils/checkout';
 
 const FREE_SHIPPING_THRESHOLD = 500;
 
 export function CartDrawer() {
   const t = useTranslations('cart');
   const locale = useLocale();
+  const pathname = usePathname();
 
   const { isDrawerOpen, cart, cartLoading, cartId } = useCartData();
   const { closeDrawer, updateItem, removeItem, clearCart } = useCartActions();
   const { optimisticLines } = useCartOptimistic();
+
+  useEffect(() => {
+    closeDrawer();
+  }, [pathname, closeDrawer]);
 
   useEffect(() => {
     if (!isDrawerOpen) return;
@@ -79,12 +85,7 @@ export function CartDrawer() {
   const handleCheckout = useCallback(() => {
     const checkoutUrl = cart?.checkoutUrl;
     if (!checkoutUrl) return;
-    try {
-      const url = new URL(checkoutUrl);
-      window.location.href = url.toString();
-    } catch {
-      window.location.href = checkoutUrl;
-    }
+    safeRedirectToCheckout(checkoutUrl);
   }, [cart?.checkoutUrl]);
 
   if (!isDrawerOpen) return null;

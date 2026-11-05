@@ -26,12 +26,30 @@ export function ProductsPage() {
     );
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto p-4 mb-16">
-        <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold mb-12">
-          {t('title')}
-        </h1>
+    <div className="min-h-screen py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
+        {/* Page Header */}
+        <div className="mb-10 sm:mb-14">
+          <p className="font-jost text-xs uppercase tracking-[0.25em] text-caramel font-semibold mb-2">
+            {t('eyebrow')}
+          </p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h1 className="font-serif italic text-4xl sm:text-5xl text-mocha font-semibold">
+                {t('title')}
+              </h1>
+              <p className="font-jost text-sm sm:text-base text-mocha/75 mt-2 max-w-xl">
+                {t('subtitle')}
+              </p>
+            </div>
+            <span className="self-start sm:self-auto font-jost text-xs font-medium text-caramel bg-caramel/10 px-3.5 py-1.5 rounded-full whitespace-nowrap">
+              {products.length} {products.length === 1 ? 'item' : 'items'}
+            </span>
+          </div>
+          <div className="w-16 h-px bg-caramel/30 mt-6" />
+        </div>
 
+        {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <Card
@@ -49,8 +67,11 @@ export function ProductsPage() {
         </div>
 
         {hasNextPage && (
-          <div className="flex justify-center mt-12">
-            <button onClick={loadMore} className="...">
+          <div className="flex justify-center mt-12 sm:mt-16">
+            <button
+              onClick={loadMore}
+              className="btn-outline font-jost"
+            >
               {t('loadMore')}
             </button>
           </div>
