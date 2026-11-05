@@ -86,6 +86,11 @@
       "link": "Back to catalog"
     },
     "breadcrumb": "All products",
+    "eyebrow": "Artisan French Bakery",
+    "freshBadge": "Baked fresh today",
+    "ratingBadge": "4.9 · Fresh morning batch",
+    "freeShippingNote": "Free delivery on orders over 500 uah",
+    "inStock": "In stock",
     "cart": {
       "added": "Added ✓",
       "adding": "Adding...",
@@ -96,7 +101,46 @@
     "unavailable": "Out of stock",
     "variant": "Variant",
     "decrease": "Decrease quantity",
-    "increase": "Increase quantity"
+    "increase": "Increase quantity",
+    "perks": {
+      "freshTitle": "Baked fresh daily",
+      "freshDesc": "Fresh from the oven at 6:00 AM",
+      "butterTitle": "84% French butter",
+      "butterDesc": "Zero margarine or palm oil",
+      "fermentTitle": "Wild sourdough",
+      "fermentDesc": "36-hour cold fermentation",
+      "pickupTitle": "Fast pickup",
+      "pickupDesc": "Ready in 30 minutes"
+    },
+    "accordion": {
+      "ingredientsTitle": "Ingredients & Allergens",
+      "ingredientsContent": "French milled T55 flour, 84% fat farm butter, Levain live sourdough, spring water, cane sugar, sea salt.\n\nContains gluten and dairy. Free from preservatives, artificial additives, and palm oil.",
+      "servingTitle": "Serving & Storage Tips",
+      "servingContent": "For the crispest golden crust, warm in a preheated oven at 170°C (340°F) for 2-3 minutes. We advise against microwave reheating to preserve flaky pastry layers.\n\nStore in our kraft paper bag in a cool, dry place for up to 24 hours.",
+      "deliveryTitle": "Delivery & Pickup",
+      "deliveryContent": "• Free in-store bakery pickup daily from 8:00 AM to 8:00 PM.\n• Fast courier delivery within 45 minutes in insulated bags to keep items warm and crisp."
+    },
+    "craftsmanship": {
+      "eyebrow": "Quality Standards",
+      "title": "The Art of Artisan Baking",
+      "subtitle": "Each pastry is handcrafted according to authentic French baking tradition",
+      "card1Title": "84% French Cultured Butter",
+      "card1Desc": "Hand-laminated dough layered with high-fat butter produces delicate, airy, melt-in-the-mouth layers.",
+      "card2Title": "36-Hour Cold Fermentation",
+      "card2Desc": "Slow overnight dough development on living wild yeast delivers deep buttery nuance and easier digestion.",
+      "card3Title": "Never Yesterday's Pastry",
+      "card3Desc": "We bake in small artisanal batches throughout the morning so you always enjoy pastries at their peak."
+    },
+    "related": {
+      "eyebrow": "Baker's Recommendations",
+      "title": "You May Also Like",
+      "viewAll": "All products"
+    },
+    "banner": {
+      "title": "Authentic Parisian mornings in your city",
+      "subtitle": "Visit our cozy bakery café or order freshly baked pastries delivered to your breakfast table.",
+      "button": "Learn more about us"
+    }
   },
   "cart": {
     "title": "Cart",
