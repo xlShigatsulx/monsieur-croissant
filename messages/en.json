@@ -246,7 +246,24 @@
     "login": "Sign in"
   },
   "footer": {
-    "rights": "© {year} {shopName}. All rights reserved."
+    "rights": "© {year} {shopName}. All rights reserved.",
+    "tagline": "Fresh French pastries and traditional croissants in your city. Baked with love every morning.",
+    "craftBadge": "Baked fresh daily",
+    "navTitle": "Bakery Menu",
+    "bakeryTitle": "Bakery & Hours",
+    "defaultAddress": "15 Khreshchatyk St, Kyiv",
+    "defaultHoursWeekdays": "Mon – Fri: 08:00 – 20:00",
+    "defaultHoursWeekends": "Sat – Sun: 09:00 – 21:00",
+    "defaultPhone": "+380 (44) 234-56-78",
+    "viewOnMap": "View on Google Maps",
+    "newsletterTitle": "Croissant Club",
+    "newsletterSubtitle": "Subscribe for morning bakery updates and get an exclusive welcome discount.",
+    "newsletterPromo": "-10% first order",
+    "newsletterPlaceholder": "Your email...",
+    "newsletterButton": "OK",
+    "newsletterSuccess": "Thank you! Your discount code has been sent to your inbox 🎉",
+    "newsletterNote": "No spam. Only freshly baked news and sweet seasonal surprises.",
+    "securePayments": "Secure Payments"
   },
   "search": {
     "placeholder": "Search products...",

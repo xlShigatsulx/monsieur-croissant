@@ -246,7 +246,24 @@
     "login": "Увійти"
   },
   "footer": {
-    "rights": "© {year} {shopName}. Всі права захищені."
+    "rights": "© {year} {shopName}. Всі права захищені.",
+    "tagline": "Французька випічка та традиційні круасани у вашому місті. Печемо з любов'ю щоранку.",
+    "craftBadge": "Свіжоспечене щодня",
+    "navTitle": "Меню пекарні",
+    "bakeryTitle": "Пекарня & Графік",
+    "defaultAddress": "вул. Хрещатик, 15, Київ",
+    "defaultHoursWeekdays": "Пн – Пт: 08:00 – 20:00",
+    "defaultHoursWeekends": "Сб – Нд: 09:00 – 21:00",
+    "defaultPhone": "+380 (44) 234-56-78",
+    "viewOnMap": "Показати на мапі",
+    "newsletterTitle": "Клуб поціновувачів",
+    "newsletterSubtitle": "Отримуйте ранкові новини про свіжу випічку та ексклюзивні пропозиції.",
+    "newsletterPromo": "-10% на перше замовлення",
+    "newsletterPlaceholder": "Ваш email...",
+    "newsletterButton": "OK",
+    "newsletterSuccess": "Дякуємо! Промокод зі знижкою вже надіслано на вашу пошту 🎉",
+    "newsletterNote": "Без спаму. Лише свіжі новинки та персональні сюрпризи.",
+    "securePayments": "Безпечна оплата"
   },
   "search": {
     "placeholder": "Пошук товарів...",
