@@ -24,9 +24,40 @@ const jost = Jost({
   display: 'swap',
 });
 
+const appUrl =
+  process.env.NEXT_PUBLIC_APP_URL || 'https://monsieur-croissant.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Месьє Круасан',
-  description: 'Випічка на живій заквасці',
+  metadataBase: new URL(appUrl),
+  title: {
+    default: 'Monsieur Croissant — Французька пекарня на живій заквасці',
+    template: '%s',
+  },
+  description:
+    'Свіжа французька випічка, ремісничі круасани та хліб щоранку. Традиційні рецепти та натуральні інгредієнти.',
+  openGraph: {
+    type: 'website',
+    locale: 'uk_UA',
+    siteName: 'Monsieur Croissant',
+    title: 'Monsieur Croissant — Французька пекарня на живій заквасці',
+    description:
+      'Свіжа французька випічка, ремісничі круасани та хліб щоранку.',
+    images: [
+      {
+        url: '/images/hero-bakery.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Monsieur Croissant Bakery',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Monsieur Croissant — Французька пекарня',
+    description:
+      'Свіжа французька випічка, ремісничі круасани та хліб щоранку.',
+    images: ['/images/hero-bakery.webp'],
+  },
 };
 
 export default async function LocaleLayout({
