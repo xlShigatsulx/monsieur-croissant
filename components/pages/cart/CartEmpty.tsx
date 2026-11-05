@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { pageConfig } from '@/config/pages.config';
 import { useTranslations } from 'next-intl';
 

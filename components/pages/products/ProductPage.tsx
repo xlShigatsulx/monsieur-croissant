@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useProductByHandle } from '@/hooks/useProductByHandle';
 import { ProductGallery } from './ProductGallery';
 import { ProductInfo } from './ProductInfo';

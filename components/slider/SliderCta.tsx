@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
 export function SliderCta({ productLink }: { productLink?: string }) {
   const t = useTranslations('slider');

@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useCartData } from '@/context/CartContext';
 import { pageConfig } from '@/config/pages.config';
 import { useTranslations } from 'next-intl';

@@ -1,6 +1,6 @@
 import { pageConfig } from '@/config/pages.config';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
 interface NavAuthProps {
   isAuthenticated: boolean;
