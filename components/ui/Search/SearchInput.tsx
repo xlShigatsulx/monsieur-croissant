@@ -51,7 +51,7 @@ export function SearchInput({ onClose }: SearchInputProps) {
         onFocus={handleFocus}
         placeholder={t('placeholder')}
         autoFocus
-        className="w-full font-jost text-sm border border-mocha/20 rounded-full
+        className="w-full font-sans text-sm border border-mocha/20 rounded-full
           px-5 py-3 pr-11 outline-none focus:border-mocha/40 transition-colors
           bg-cream"
       />

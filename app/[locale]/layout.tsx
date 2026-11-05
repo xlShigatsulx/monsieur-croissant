@@ -14,14 +14,14 @@ const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
-  variable: '--font-serif',
+  variable: '--font-playfair',
   display: 'swap',
 });
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-sans',
+  variable: '--font-manrope',
   display: 'swap',
 });
 

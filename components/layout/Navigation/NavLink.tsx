@@ -11,10 +11,10 @@ export function NavLink({ href, children, onClick }: NavLinkProps) {
     <Link
       href={href}
       onClick={onClick}
-      className="relative font-jost text-[11px] tracking-[0.2em] uppercase text-mocha/70
-        hover:text-caramel transition-colors duration-300
-        after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-px
-        after:bg-caramel after:transition-all after:duration-300
+      className="relative font-sans text-xs sm:text-[13px] tracking-[0.14em] font-medium uppercase text-mocha/80
+        hover:text-caramel transition-colors duration-200
+        after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5
+        after:bg-caramel after:transition-all after:duration-200
         hover:after:w-full"
     >
       {children}

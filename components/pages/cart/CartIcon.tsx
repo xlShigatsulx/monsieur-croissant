@@ -21,7 +21,7 @@ export function CartIcon() {
       {totalQuantity > 0 && (
         <span
           className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center
-          bg-caramel text-cream rounded-full font-jost text-[9px] leading-none font-medium animate-in zoom-in-75 duration-200"
+          bg-caramel text-cream rounded-full font-sans text-[10px] leading-none font-bold animate-in zoom-in-75 duration-200"
         >
           {totalQuantity > 99 ? '99+' : totalQuantity}
         </span>

@@ -33,7 +33,7 @@ export function LocaleSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setIsOpen((v) => !v)}
-        className="font-jost text-[11px] tracking-[0.2em] uppercase
+        className="font-sans text-xs tracking-[0.14em] font-medium uppercase
           flex items-center gap-1.5
           text-mocha/70 hover:text-caramel transition-colors duration-200
           cursor-pointer"
@@ -55,7 +55,7 @@ export function LocaleSwitcher() {
                 href={pathname}
                 locale={code}
                 onClick={() => setIsOpen(false)}
-                className={`block w-full px-4 py-2.5 font-jost text-[11px] tracking-[0.2em] uppercase
+                className={`block w-full px-4 py-2.5 font-sans text-xs tracking-[0.14em] font-medium uppercase
                   transition-colors duration-200 text-center
                   ${
                     code === locale

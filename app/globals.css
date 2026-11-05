@@ -7,10 +7,10 @@
   --color-caramel-light: #ddc5b5;
   --color-sand: #efe0d5;
 
-  --font-serif: var(--font-serif), 'Playfair Display', Georgia, serif;
-  --font-sans: var(--font-sans), 'Manrope', system-ui, -apple-system, sans-serif;
-  --font-cormorant: var(--font-serif);
-  --font-jost: var(--font-sans);
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-manrope), 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-cormorant: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-jost: var(--font-manrope), 'Manrope', system-ui, -apple-system, sans-serif;
 
   --animate-caption-up: captionUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-progress: progressFill 4.5s linear forwards;

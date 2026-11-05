@@ -43,7 +43,7 @@ export function NavAuth({
 
         <button
           onClick={handleLogout}
-          className="font-jost text-[11px] tracking-[0.2em] uppercase
+          className="font-sans text-xs tracking-[0.14em] font-medium uppercase
             text-mocha/60 hover:text-caramel transition-colors duration-300 cursor-pointer"
         >
           {t('logout')}
@@ -56,7 +56,7 @@ export function NavAuth({
     <div className="flex items-center justify-center">
       <button
         onClick={handleSignIn}
-        className="font-jost text-[11px] tracking-[0.2em] uppercase
+        className="font-sans text-xs tracking-[0.14em] font-medium uppercase
         text-caramel border border-caramel/40 hover:border-caramel
         hover:bg-caramel/10 rounded-full px-4 py-1.5
         transition-all duration-300 cursor-pointer"
