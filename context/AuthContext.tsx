@@ -4,11 +4,9 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   ReactNode,
   useCallback,
 } from 'react';
-import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import {
   generateCodeVerifier,
@@ -34,24 +32,26 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [customer, setCustomer] = useState<Customer | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
+function readStoredCustomer(): Customer | null {
+  if (typeof window === 'undefined') return null;
+  const stored = Cookies.get('customer');
+  if (!stored) return null;
+  try {
+    return JSON.parse(stored);
+  } catch {
+    Cookies.remove('customer');
+    return null;
+  }
+}
 
-  useEffect(() => {
-    const stored = Cookies.get('customer');
-    if (stored) {
-      try {
-        setCustomer(JSON.parse(stored));
-      } catch {
-        Cookies.remove('customer');
-      }
-    }
-    setIsLoading(false);
-  }, []);
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [customer, setCustomer] = useState<Customer | null>(() =>
+    readStoredCustomer(),
+  );
+  const [isLoading, setIsLoading] = useState(false);
 
   const signIn = useCallback(async () => {
+    setIsLoading(true);
     const state = generateState();
     const nonce = generateNonce();
     const codeVerifier = generateCodeVerifier();
@@ -71,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     setCustomer(null);
     window.location.href = '/auth/logout';
-  }, [router]);
+  }, []);
 
   return (
     <AuthContext.Provider

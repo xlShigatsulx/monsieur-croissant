@@ -1,11 +1,12 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const FILE = 'graphql/generated/graphql.ts';
-const DIRECTIVE = "'use client'\n\n";
+const HEADER = "// @ts-nocheck\n'use client';\n/* eslint-disable */\n\n";
 
-const content = readFileSync(FILE, 'utf8');
+let content = readFileSync(FILE, 'utf8');
 
-if (!content.startsWith("'use client'")) {
-  writeFileSync(FILE, DIRECTIVE + content);
-  console.log(`[add-use-client] Prepended 'use client' to ${FILE}`);
-}
+// Strip any existing directives and comments from top
+content = content.replace(/^(\/\/ @ts-nocheck\s*|'use client';?\s*|"use client";?\s*|\/\* eslint-disable \*\/\s*)+/, '');
+
+writeFileSync(FILE, HEADER + content);
+console.log(`[add-use-client] Added ts-nocheck & client header to ${FILE}`);

@@ -37,8 +37,8 @@ export function ContactForm() {
     reset,
   } = useForm<ContactFormData>();
 
-  const onSubmit = (data: ContactFormData) => {
-    //data can be sent to backend here
+  const onSubmit = () => {
+    // data can be sent to backend here
     reset();
   };
 

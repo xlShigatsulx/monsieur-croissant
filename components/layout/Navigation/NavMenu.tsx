@@ -1,6 +1,6 @@
 'use client';
 
-import { GetMenuQuery, useGetMenuQuery } from '@/graphql/generated/graphql';
+import { GetMenuQuery } from '@/graphql/generated/graphql';
 import { NavLink } from './NavLink';
 import { useMenu } from '@/hooks/useMenu';
 
@@ -22,7 +22,7 @@ export function NavMenu({
   if (loading) return <NavMenuSkeleton />;
 
   return (
-    <nav className={className}>
+    <div className={className}>
       {items.map((item: MenuItem) => (
         <NavLink
           key={item.id}
@@ -32,7 +32,7 @@ export function NavMenu({
           {item.title}
         </NavLink>
       ))}
-    </nav>
+    </div>
   );
 }
 

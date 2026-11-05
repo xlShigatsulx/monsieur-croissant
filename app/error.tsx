@@ -13,11 +13,6 @@ export default function Error({
   useEffect(() => {
     console.error(error);
   }, [error]);
-  return (
-    <html>
-      <body>
-        <ErrorView onReset={reset} />
-      </body>
-    </html>
-  );
+
+  return <ErrorView onReset={reset} />;
 }

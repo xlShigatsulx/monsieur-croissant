@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils/format';
 import { pageConfig } from '@/config/pages.config';
@@ -42,29 +42,35 @@ export function BestsellerCard({
   );
 
   return (
-    <Link href={pageConfig.product(product.handle)} className="group">
+    <div className="group relative">
       <div
         className="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-cream mb-3
           shadow-[0_4px_20px_rgba(58,35,24,0.06)]
           group-hover:shadow-[0_12px_40px_rgba(58,35,24,0.1)]
           transition-shadow duration-300"
       >
-        {image ? (
-          <Image
-            src={image.url}
-            alt={image.altText ?? product.title}
-            fill
-            sizes="(max-width: 768px) 50vw, 25vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-caramel/10" />
-        )}
+        <Link
+          href={pageConfig.product(product.handle)}
+          className="absolute inset-0 z-0"
+          aria-label={product.title}
+        >
+          {image ? (
+            <Image
+              src={image.url}
+              alt={image.altText ?? product.title}
+              fill
+              sizes="(max-width: 768px) 50vw, 25vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-caramel/10" />
+          )}
+        </Link>
 
         {product.availableForSale === false && (
           <div
             className="absolute top-3 left-3 bg-mocha/90 text-cream text-[10px]
-              uppercase tracking-wide px-2.5 py-1 rounded-md"
+              uppercase tracking-wide px-2.5 py-1 rounded-md pointer-events-none z-10"
           >
             {t('soldOut')}
           </div>
@@ -76,11 +82,11 @@ export function BestsellerCard({
             onClick={handleQuickAdd}
             aria-label={t('quickAdd')}
             disabled={status === 'adding'}
-            className="absolute bottom-3 right-3 w-9 h-9 sm:w-10 sm:h-10 rounded-full
+            className="absolute bottom-3 right-3 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full
               bg-mocha text-cream flex items-center justify-center
               opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
               max-sm:opacity-100 max-sm:translate-y-0
-              transition-all duration-300 disabled:opacity-60"
+              transition-all duration-300 disabled:opacity-60 cursor-pointer"
           >
             {status === 'added' ? (
               <CheckIcon />
@@ -94,9 +100,12 @@ export function BestsellerCard({
       </div>
 
       <div className="flex items-baseline gap-2">
-        <h3 className="text-mocha text-sm sm:text-base font-medium truncate">
-          {product.title}
-        </h3>
+        <Link
+          href={pageConfig.product(product.handle)}
+          className="text-mocha text-sm sm:text-base font-medium truncate hover:text-caramel transition-colors"
+        >
+          <h3>{product.title}</h3>
+        </Link>
         <span
           aria-hidden="true"
           className="flex-1 border-b border-dotted border-caramel/40 -translate-y-0.75"
@@ -111,7 +120,7 @@ export function BestsellerCard({
           </span>
         )}
       </div>
-    </Link>
+    </div>
   );
 }
 

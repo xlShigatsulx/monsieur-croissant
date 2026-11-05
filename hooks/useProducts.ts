@@ -5,7 +5,7 @@ import {
   GetProductsQuery,
 } from '@/graphql/generated/graphql';
 import { useShopifyLocale } from '@/lib/apollo/useShopifyQuery';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 type ProductEdge = NonNullable<GetProductsQuery['products']['edges']>[number];
 

@@ -6,7 +6,7 @@ import { cache } from './cache';
 function makeClient() {
   const httpLink = new HttpLink({ uri: STOREFRONT_API_URL });
 
-  const authLink = new SetContextLink((prevContext, _) => ({
+  const authLink = new SetContextLink((prevContext) => ({
     headers: {
       ...prevContext.headers,
       'X-Shopify-Storefront-Access-Token': SHOPIFY_CONFIG.storefrontAccessToken,

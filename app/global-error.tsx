@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useTranslations } from 'next-intl';
 import { ErrorView } from '@/components/layout/ErrorView';
 
 export default function GlobalError({
@@ -11,18 +10,21 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const t = useTranslations('error');
   useEffect(() => {
     console.error(error);
   }, [error]);
 
   return (
-    <ErrorView
-      title={t('title')}
-      subtitle={t('subtitle')}
-      resetLabel={t('reset')}
-      homeLabel={t('home')}
-      onReset={reset}
-    />
+    <html lang="uk">
+      <body className="min-h-screen flex flex-col bg-cream text-mocha">
+        <ErrorView
+          title="Щось пішло не так"
+          subtitle="Вибачте за незручності, будь ласка, спробуйте ще раз"
+          resetLabel="Спробувати знову"
+          homeLabel="На головну"
+          onReset={reset}
+        />
+      </body>
+    </html>
   );
 }

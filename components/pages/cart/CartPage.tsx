@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { useCartData, useCartOptimistic } from '@/context/CartContext';
 import { CartItem } from './CartItem';
 import { CartSummary } from './CartSummary';
@@ -29,12 +29,8 @@ export function CartPage() {
     [lines, optimisticLines],
   );
 
-  const summaryLinesRef = useRef<
-    { lineId: string; quantity: number; unitPrice: number }[]
-  >([]);
-
   const summaryLines = useMemo(() => {
-    const next = lines.map((line) => {
+    return lines.map((line) => {
       const variant = line.merchandise;
       const unitPrice =
         variant.__typename === 'ProductVariant'
@@ -42,19 +38,6 @@ export function CartPage() {
           : 0;
       return { lineId: line.id, quantity: line.quantity, unitPrice };
     });
-
-    const prev = summaryLinesRef.current;
-    const changed =
-      next.length !== prev.length ||
-      next.some(
-        (item, i) =>
-          item.lineId !== prev[i]?.lineId ||
-          item.quantity !== prev[i]?.quantity ||
-          item.unitPrice !== prev[i]?.unitPrice,
-      );
-
-    if (changed) summaryLinesRef.current = next;
-    return summaryLinesRef.current;
   }, [lines]);
 
   if (cartLoading && !cart) return <CartSkeleton />;
