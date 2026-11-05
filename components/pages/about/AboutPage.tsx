@@ -30,7 +30,7 @@ export function AboutPage() {
           <div className="relative aspect-4/3 sm:aspect-square rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/images/hero-bakery.webp"
-              alt="Monsieur Croissant Craft Bakery"
+              alt={t('imageAlt')}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -56,7 +56,7 @@ export function AboutPage() {
                   hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(58,35,24,0.22)]
                   active:translate-y-0 transition-all duration-300"
               >
-                Наші вироби
+                {t('cta')}
               </Link>
             </div>
           </div>
