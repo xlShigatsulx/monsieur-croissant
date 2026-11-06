@@ -354,12 +354,19 @@
   "profile": {
     "title": "My Profile",
     "welcome": "Welcome back, {name}!",
-    "email": "Email address",
-    "id": "Customer ID",
+    "customerBadge": "Bakery Customer",
+    "guest": "Guest",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "status": "Account Status",
+    "activeStatus": "Active Account",
+    "clubPerk": "Member of the Monsieur Croissant Bakery Club",
     "notAuthenticated": "You are not logged in yet.",
-    "signInPrompt": "Sign in with your Shopify account to view your order history and manage your settings.",
+    "signInPrompt": "Sign in with your account to manage your details and view your order history.",
     "signInBtn": "Sign In",
-    "logoutBtn": "Sign Out"
+    "logoutBtn": "Sign Out",
+    "backToProducts": "← Explore our treats",
+    "viewCart": "View shopping bag →"
   },
   "policies": {
     "title": "Policies & Terms",

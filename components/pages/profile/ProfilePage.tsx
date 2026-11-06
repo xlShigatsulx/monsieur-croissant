@@ -20,9 +20,16 @@ export function ProfilePage() {
   if (!isAuthenticated || !customer) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center px-4 py-12">
-        <div className="max-w-md w-full bg-white/70 rounded-3xl p-8 sm:p-10 border border-caramel/15 shadow-xl text-center">
+        <div className="max-w-md w-full bg-cream/70 rounded-3xl p-8 sm:p-10 border border-caramel/15 shadow-xl text-center">
           <div className="w-16 h-16 rounded-full bg-caramel/10 text-caramel flex items-center justify-center mx-auto mb-6">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
@@ -49,16 +56,18 @@ export function ProfilePage() {
     );
   }
 
-  const fullName = [customer.firstName, customer.lastName].filter(Boolean).join(' ') || 'Гість';
+  const fullName =
+    [customer.firstName, customer.lastName].filter(Boolean).join(' ') ||
+    t('guest');
 
   return (
     <div className="min-h-screen py-12 sm:py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="bg-white/70 rounded-3xl p-8 sm:p-12 border border-caramel/15 shadow-xl">
+        <div className="bg-cream/70 rounded-3xl p-8 sm:p-12 border border-caramel/15 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-caramel/15">
             <div>
               <span className="inline-block text-[10px] uppercase tracking-[0.2em] font-medium text-caramel bg-caramel/10 px-3 py-1 rounded-full mb-3">
-                Shopify Customer
+                {t('customerBadge')}
               </span>
               <h1 className="font-serif italic text-3xl sm:text-4xl text-mocha font-semibold">
                 {t('welcome', { name: fullName })}
@@ -78,7 +87,16 @@ export function ProfilePage() {
 
           <div className="py-8 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-sand/40 rounded-2xl p-5">
+              <div className="bg-sand/40 rounded-2xl p-5 border border-caramel/10">
+                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mb-1">
+                  {t('fullName')}
+                </span>
+                <span className="font-jost text-sm sm:text-base text-mocha font-medium">
+                  {fullName}
+                </span>
+              </div>
+
+              <div className="bg-sand/40 rounded-2xl p-5 border border-caramel/10">
                 <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mb-1">
                   {t('email')}
                 </span>
@@ -86,14 +104,19 @@ export function ProfilePage() {
                   {customer.email || '—'}
                 </span>
               </div>
+            </div>
 
-              <div className="bg-sand/40 rounded-2xl p-5">
-                <span className="block font-jost text-[10px] tracking-[0.15em] uppercase text-mocha/70 font-medium mb-1">
-                  {t('id')}
-                </span>
-                <span className="font-jost text-xs sm:text-sm text-mocha/80 font-mono truncate block">
-                  {customer.id}
-                </span>
+            <div className="bg-caramel/5 border border-caramel/15 rounded-2xl p-5 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0 ring-4 ring-emerald-500/15" />
+                <div>
+                  <span className="block font-jost text-xs sm:text-sm font-medium text-mocha">
+                    {t('activeStatus')}
+                  </span>
+                  <span className="block font-jost text-xs text-mocha/65 mt-0.5">
+                    {t('clubPerk')}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -101,16 +124,16 @@ export function ProfilePage() {
           <div className="pt-6 border-t border-caramel/15 flex flex-wrap gap-4 justify-between items-center">
             <Link
               href={pageConfig.products}
-              className="font-jost text-xs tracking-[0.15em] uppercase text-caramel hover:underline"
+              className="font-jost text-xs tracking-[0.15em] uppercase text-caramel hover:text-mocha transition-colors"
             >
-              ← До асортименту пекарні
+              {t('backToProducts')}
             </Link>
 
             <Link
               href={pageConfig.cart}
-              className="font-jost text-xs tracking-[0.15em] uppercase text-caramel hover:underline"
+              className="font-jost text-xs tracking-[0.15em] uppercase text-caramel hover:text-mocha transition-colors"
             >
-              Переглянути кошик →
+              {t('viewCart')}
             </Link>
           </div>
         </div>
