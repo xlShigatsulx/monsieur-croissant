@@ -52,13 +52,13 @@ export function CollectionsPage() {
             <Link
               key={collection.id}
               href={pageConfig.collection(collection.handle)}
-              className="group relative overflow-hidden rounded-3xl border border-caramel/15
-                bg-white/40 shadow-[0_8px_30px_rgba(58,35,24,0.06)]
-                hover:shadow-[0_20px_40px_rgba(58,35,24,0.14)] hover:border-caramel/40
-                transition-all duration-500 flex flex-col"
+              className="group relative flex flex-col rounded-3xl border border-caramel/15
+                bg-white/80 shadow-[0_8px_30px_rgba(58,35,24,0.04)]
+                hover:shadow-[0_20px_40px_rgba(58,35,24,0.12)] hover:border-caramel/40 hover:bg-white
+                hover:-translate-y-1 transition-all duration-300 overflow-hidden p-4 sm:p-5"
             >
               {/* Image Container */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-caramel/5">
+              <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-2xl bg-caramel/5">
                 {collection.image ? (
                   <Image
                     src={collection.image.url}
@@ -70,49 +70,39 @@ export function CollectionsPage() {
                   />
                 ) : (
                   <div className="w-full h-full bg-caramel/10 flex items-center justify-center">
-                    <span className="font-serif italic text-2xl text-caramel/50">
-                      {collection.title}
+                    <span className="font-serif italic text-3xl text-caramel/50">
+                      🥐
                     </span>
                   </div>
                 )}
 
-                {/* Gradient Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-mocha/80 via-mocha/30 to-transparent pointer-events-none" />
-
-                {/* Floating Craft Badge */}
-                <div className="absolute top-4 right-4 z-10">
+                {/* Floating Craft Badge on Image */}
+                <div className="absolute top-3 right-3 z-10">
                   <span className="px-3 py-1 rounded-full text-[10px] font-sans font-semibold uppercase tracking-wider bg-cream/90 text-mocha backdrop-blur-md shadow-xs">
                     {t('craftBadge')}
                   </span>
                 </div>
+              </div>
 
-                {/* Card Title & Link in Bottom Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <h2
-                    className="font-serif italic text-2xl sm:text-3xl text-cream font-semibold leading-tight mb-2"
-                    style={{
-                      textShadow:
-                        '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)',
-                    }}
-                  >
+              {/* Content Block below the image */}
+              <div className="pt-5 px-1 flex flex-col flex-1 justify-between gap-3">
+                <div>
+                  <h2 className="font-serif italic text-2xl sm:text-3xl text-mocha font-semibold group-hover:text-caramel transition-colors leading-tight mb-2">
                     {collection.title}
                   </h2>
 
                   {collection.description && (
-                    <p
-                      className="font-jost text-xs sm:text-sm text-cream/90 line-clamp-2 leading-relaxed mb-4"
-                      style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}
-                    >
+                    <p className="font-jost text-xs sm:text-sm text-mocha/70 line-clamp-2 leading-relaxed">
                       {collection.description}
                     </p>
                   )}
+                </div>
 
-                  <div className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-amber-200 group-hover:text-white transition-colors duration-200">
-                    <span>{t('explore')}</span>
-                    <span className="group-hover:translate-x-1.5 transition-transform duration-300">
-                      →
-                    </span>
-                  </div>
+                <div className="pt-3 border-t border-caramel/10 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-caramel group-hover:text-mocha transition-colors">
+                  <span>{t('explore')}</span>
+                  <span className="w-7 h-7 rounded-full bg-caramel/10 group-hover:bg-mocha text-caramel group-hover:text-cream flex items-center justify-center transition-all duration-200">
+                    →
+                  </span>
                 </div>
               </div>
             </Link>
