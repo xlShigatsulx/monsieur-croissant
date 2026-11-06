@@ -17,7 +17,7 @@ export function CartDrawer() {
   const locale = useLocale();
   const pathname = usePathname();
 
-  const { isDrawerOpen, cart, cartLoading, cartId } = useCartData();
+  const { isDrawerOpen, cart, cartLoading, isLoading, cartId } = useCartData();
   const { closeDrawer, updateItem, removeItem, clearCart } = useCartActions();
   const { optimisticLines } = useCartOptimistic();
 
@@ -159,9 +159,9 @@ export function CartDrawer() {
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto px-6 py-4 divide-y divide-caramel/10">
-          {cartLoading && !cart && <DrawerSkeleton />}
+          {(cartLoading || isLoading) && visibleLines.length === 0 && <DrawerSkeleton />}
 
-          {(!cartId || visibleLines.length === 0) && !cartLoading && (
+          {!cartLoading && !isLoading && (!cartId || visibleLines.length === 0) && (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <div className="w-20 h-20 rounded-full bg-caramel/10 text-caramel flex items-center justify-center mb-5">
                 <EmptyCartIcon />
