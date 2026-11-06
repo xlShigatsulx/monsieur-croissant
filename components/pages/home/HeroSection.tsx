@@ -9,7 +9,7 @@ export function HeroSection() {
   const { data, loading } = useHeroData();
   const t = useTranslations('home.hero');
 
-  if (loading) return <HeroSkeleton />;
+  if (loading && !data) return <HeroSkeleton />;
   if (!data) return null;
 
   return (
@@ -35,7 +35,7 @@ export function HeroSection() {
             className="font-serif italic text-mocha font-semibold leading-[1.05] text-balance mb-5
             text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
           >
-            {data.title}
+            {data.title || t('titleFallback')}
           </h1>
 
           <div className="w-12 h-px bg-caramel/50 mx-auto md:mx-0 mb-6" />
@@ -44,7 +44,7 @@ export function HeroSection() {
             className="italic text-mocha/70 text-base sm:text-lg leading-relaxed whitespace-pre-line text-balance
             max-w-md mx-auto md:mx-0 mb-9"
           >
-            {data.subtitle}
+            {data.subtitle || t('subtitleFallback')}
           </p>
 
           <Link

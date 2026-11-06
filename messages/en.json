@@ -3,6 +3,8 @@
     "explore": "explore",
     "hero": {
       "kicker": "a delicious bakery",
+      "titleFallback": "Fresh French Pastries Every Morning",
+      "subtitleFallback": "Authentic French croissants and artisanal sourdough bread, baked fresh with classic recipes.",
       "ctaFallback": "Our treats",
       "badge": "Tradition & Quality",
       "imageAlt": "Fresh pastries displayed on the counter at Monsieur Croissant"

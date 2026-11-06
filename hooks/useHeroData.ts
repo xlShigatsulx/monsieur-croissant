@@ -10,14 +10,15 @@ type HeroData = {
 
 export function useHeroData(): { data: HeroData | null; loading: boolean } {
   const language = useShopifyLocale();
-  const { data, loading } = useGetShopHeroQuery({
+  const { data, loading, previousData } = useGetShopHeroQuery({
     variables: { language },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
   });
 
-  if (loading || !data) return { data: null, loading };
+  const activeData = data ?? previousData;
+  if (!activeData) return { data: null, loading };
 
-  const fields = data.shop.metafields ?? [];
+  const fields = activeData.shop.metafields ?? [];
   const get = (key: string) => fields.find((f) => f?.key === key)?.value ?? '';
 
   return {
