@@ -6,6 +6,7 @@
   --color-caramel: #945832;
   --color-caramel-light: #ddc5b5;
   --color-sand: #efe0d5;
+  --color-white: #fdf8f0;
 
   --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
   --font-sans: var(--font-manrope), 'Manrope', system-ui, -apple-system, sans-serif;
@@ -73,7 +74,7 @@
 
   ::selection {
     background-color: var(--color-caramel);
-    color: #fff;
+    color: var(--color-white);
   }
 
   ::-webkit-scrollbar {
@@ -118,7 +119,7 @@
   }
 
   .card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 8px 32px -8px rgba(58, 35, 24, 0.12);
