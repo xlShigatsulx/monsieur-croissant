@@ -60,27 +60,74 @@
     }
   },
   "collections": {
-    "title": "Catalog",
-    "subtitle": "Choose a category"
+    "eyebrow": "Bakery Categories",
+    "title": "Our Collections",
+    "subtitle": "Explore our handcrafted menu by category — from crisp golden viennoiseries to rustic sourdough loaves",
+    "explore": "Explore Collection",
+    "craftBadge": "Artisan Craft",
+    "bannerTitle": "Looking for something special?",
+    "bannerSubtitle": "We bake new seasonal specials and time-honored French classics every morning.",
+    "allProductsCta": "View All Treats"
   },
   "collection": {
-    "breadcrumb": "Catalog",
+    "breadcrumb": "Collections",
+    "home": "Home",
     "loadMore": "Load more",
+    "allCollections": "All Categories",
+    "allProducts": "All Treats",
+    "allProductsCta": "All Bakery Treats",
+    "categoryBadge": "Artisan Category",
     "notFound": {
       "title": "Collection not found",
       "link": "Back to catalog"
     },
     "empty": {
       "title": "No products",
-      "subtitle": "This category is currently empty"
-    }
+      "subtitle": "This category is currently empty",
+      "backLink": "Explore other categories"
+    },
+    "filter": {
+      "searchPlaceholder": "Search in this collection...",
+      "inStock": "In stock only",
+      "sortLabel": "Sort by",
+      "sortDefault": "Featured",
+      "sortPriceAsc": "Price: Low to High",
+      "sortPriceDesc": "Price: High to Low",
+      "sortTitleAsc": "Name: A – Z",
+      "showingCount": "Showing {count} of {total}",
+      "reset": "Reset filters",
+      "noResultsTitle": "No treats found in this collection",
+      "noResultsSubtitle": "Try adjusting your filters or browse all treats",
+      "clearSearch": "Clear search"
+    },
+    "browseOther": "Explore Other Categories"
   },
   "products": {
     "eyebrow": "Product Catalog",
     "title": "All products",
     "subtitle": "Freshly baked croissants, brioches, and artisan sourdough bread every morning",
     "empty": "No products",
-    "loadMore": "Load more"
+    "loadMore": "Load more",
+    "allCategories": "All Treats",
+    "filter": {
+      "searchPlaceholder": "Search treats by name...",
+      "inStock": "In stock only",
+      "sortLabel": "Sort by",
+      "sortDefault": "Featured",
+      "sortPriceAsc": "Price: Low to High",
+      "sortPriceDesc": "Price: High to Low",
+      "sortTitleAsc": "Name: A – Z",
+      "showingCount": "Showing {count} of {total}",
+      "reset": "Reset filters",
+      "noResultsTitle": "No treats found",
+      "noResultsSubtitle": "Try adjusting your search query or clearing active filters",
+      "clearSearch": "Clear search"
+    },
+    "badges": {
+      "fresh": "Baked fresh from 5:00 AM",
+      "butter": "100% French farm butter 82.5%",
+      "sourdough": "Natural living sourdough Levain"
+    }
   },
   "product": {
     "notFound": {
