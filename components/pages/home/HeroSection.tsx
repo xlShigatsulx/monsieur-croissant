@@ -64,10 +64,10 @@ export function HeroSection() {
             <Image
               src="/images/hero-bakery.webp"
               alt={t('imageAlt')}
-              width={1376}
-              height={768}
+              width={896}
+              height={1200}
               priority
-              sizes="(max-width: 768px) 90vw, 500px"
+              sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 600px"
               className="w-full h-full object-cover"
             />
           </div>
