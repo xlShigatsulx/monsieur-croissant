@@ -14,7 +14,7 @@ export function BestsellersSection() {
   const locale = useLocale();
   const { products, loading } = useBestsellers(BESTSELLERS_COUNT);
 
-  if (loading) return <BestsellersSectionSkeleton />;
+  if (loading && products.length === 0) return <BestsellersSectionSkeleton />;
   if (products.length === 0) return null;
 
   return (
@@ -48,9 +48,10 @@ function BestsellersSectionSkeleton() {
         <div className="h-8 w-56 bg-caramel/10 rounded animate-pulse mb-10" />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i}>
-              <div className="aspect-square bg-caramel/10 rounded-xl sm:rounded-2xl animate-pulse mb-3" />
+            <div key={i} className="flex flex-col gap-3">
+              <div className="aspect-square bg-caramel/10 rounded-xl sm:rounded-2xl animate-pulse" />
               <div className="h-4 w-3/4 bg-caramel/10 rounded animate-pulse" />
+              <div className="h-3 w-1/3 bg-caramel/10 rounded animate-pulse" />
             </div>
           ))}
         </div>

@@ -75,7 +75,7 @@ export function CollectionPage({ handle }: CollectionPageProps) {
 
   const textShadow = '0 1px 8px rgba(0,0,0,0.6), 0 2px 24px rgba(0,0,0,0.4)';
 
-  if (loading) return <CollectionPageSkeleton />;
+  if (loading && !collection) return <CollectionPageSkeleton />;
   if (!collection)
     return (
       <NotFound

@@ -21,7 +21,7 @@ export function ProductPage({ handle }: ProductPageProps) {
 
   const { product, images, variants, loading } = useProductByHandle(handle);
 
-  if (loading) return <ProductPageSkeleton />;
+  if (loading && !product) return <ProductPageSkeleton />;
 
   if (!product)
     return (

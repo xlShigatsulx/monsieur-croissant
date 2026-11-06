@@ -11,7 +11,7 @@ export function CollectionsPage() {
   const t = useTranslations('collections');
   const { collections, loading } = useCollections();
 
-  if (loading) return <CollectionsSkeleton />;
+  if (loading && collections.length === 0) return <CollectionsSkeleton />;
 
   return (
     <div className="min-h-screen py-8 sm:py-14">

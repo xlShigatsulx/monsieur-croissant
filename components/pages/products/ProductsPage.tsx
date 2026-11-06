@@ -68,7 +68,7 @@ export function ProductsPage() {
     setInStockOnly(false);
   };
 
-  if (loading) return <ProductsSkeleton />;
+  if (loading && products.length === 0) return <ProductsSkeleton />;
 
   if (products.length === 0)
     return (

@@ -12,7 +12,7 @@ export function useCollectionByHandle(
 
   const { data, loading, error, fetchMore } = useGetCollectionByHandleQuery({
     variables: { handle, first, language },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     nextFetchPolicy: 'cache-first',
   });
 

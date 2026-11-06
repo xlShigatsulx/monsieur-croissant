@@ -6,7 +6,7 @@ export function useProductByHandle(handle: string) {
 
   const { data, loading, error } = useGetProductByHandleQuery({
     variables: { handle, language },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     nextFetchPolicy: 'cache-first',
   });
 

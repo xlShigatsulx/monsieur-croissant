@@ -16,7 +16,7 @@ export function useCollections(first = DEFAULT_COLLECTIONS_COUNT) {
 
   const { data, loading, error } = useGetCollectionsQuery({
     variables: { first, language },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     nextFetchPolicy: 'cache-first',
   });
 

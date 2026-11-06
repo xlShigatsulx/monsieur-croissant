@@ -16,7 +16,7 @@ export function useProducts(first = DEFAULT_PRODUCTS_COUNT) {
 
   const { data, loading, error, fetchMore } = useGetProductsQuery({
     variables: { first, language },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     nextFetchPolicy: 'cache-first',
   });
 
